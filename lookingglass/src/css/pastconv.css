@@ -1,0 +1,80 @@
+.pastConv_container{
+    margin: 10%;
+    font-size: medium;
+}
+.secBar{
+    box-sizing: content-box;
+    height: 3px;
+    width: 15%;
+    margin: auto;
+    margin-bottom: 5%;
+    background-color:darkred;
+}
+
+.secTitle{
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+
+.convBubble_container{
+    position: relative;
+    padding:5%;
+    margin-top: 5%;
+    /* width: fit-content;
+    height: fit-content; */
+    
+}
+#bubble_img{
+    width: 100%;
+    position: absolute;
+    left: 0%;
+    /* top:10%; */
+}
+.carousel {
+    position: absolute;
+    /* padding:5%; */
+    
+    width:100%;
+    /* background-color: grey; */
+}
+
+.carousel-inner img{
+    padding-top: 1em;
+}
+.carousel-caption{
+    top:20%;
+    left:10% !important
+
+
+}
+.carousel-caption h3 {
+    color: rgb(14,12,14);
+    text-align: left;
+    font-size: 0.7em;
+    padding-bottom: 5%;
+    
+    
+}
+.carousel-caption p{
+    color: rgb(107,102,107);
+    text-overflow: ellipsis;
+    text-align: left;
+    font-size: 60%;
+}
+.carousel-indicators {
+    bottom:-8% !important;
+}
+.carousel-indicators li{
+    background-color:black !important;
+    /* bottom: 5%  !important; */
+    /* margin-top:5% !important; */
+    top:50% !important;
+    width: 50px !important;
+}
+.convTitle{
+    color: darkred;
+    position: absolute;
+    top:7%;
+    left:10% 
+}

@@ -1,0 +1,17 @@
+.video-sec-container{
+    margin:10%;
+}
+
+.ind-video-container{
+    margin-top:5%
+}
+.video iframe{
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+}
+
+.video-source{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}

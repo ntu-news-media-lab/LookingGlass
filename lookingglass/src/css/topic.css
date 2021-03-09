@@ -1,0 +1,50 @@
+
+  .topic_headline{
+      font-size:1em;
+      
+  }
+  .topic_summary{
+    font-size:0.7em;
+    padding-top: 3%;
+}
+
+.topic_image{
+    position: relative;
+}
+.topic_left_top_tag{
+    position: absolute;
+    top:5%;
+    margin-left: 10%;
+    background-color: grey;
+    color: white;
+    padding: 2%;
+}
+
+  .topic_text_container{
+      margin-left: 10%;
+      margin-right: 10%;
+      position: absolute;
+      bottom:10%;
+      color: white;
+  }
+
+  .topic_img{
+    /* background: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0,0.5)),url('https://images.theconversation.com/files/382241/original/file-20210203-21-90gvwb.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip'); */
+  }
+
+
+  .author_row{
+    font-size: 0.5em;
+    margin-top: 5%;
+    text-overflow: ellipsis;
+  }
+  .container {
+    margin-left: 10%;
+  }
+
+img{
+  max-width: 100%;
+}
+.container .row{
+  display: flex;
+}
