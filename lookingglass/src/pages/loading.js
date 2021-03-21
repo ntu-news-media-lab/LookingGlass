@@ -7,7 +7,9 @@ export default function Loading() {
 
     // transition: "opacity 5s",opacity:"0"
     return (
+        
         <div id="loading_page" style={{ position: "relative", height: "100%",transition: "opacity 5s",opacity:"0"}}>
+            <h1>Landing Page</h1>
             <div style={{ position: "absolute" }}>
                 <img src={lg_logo} style={{ width: '50%', marginLeft: "25%", marginTop: "50%" }} />
                 <div style={{ marginTop: "5%", textAlign: "center", textSizeAdjust: "auto" }}>For <span style={{ color: "rgb(161,64,72)" }}>The Conversation</span></div>

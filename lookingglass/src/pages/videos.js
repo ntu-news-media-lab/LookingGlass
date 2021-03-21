@@ -26,26 +26,27 @@ export default function Video(props) {
             <div className="videos">
             <Container className="ind-video-container">
                 <Row className="video">
-                <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/DKPoCQhctWs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </Row>
                 <Row className="video-source">
-                <Image style={{width:24}} roundedCircle src={"https://yt3.ggpht.com/ytc/AAUvwnhSiMEt6hvnT5QbstuehkxgzNl5C3jTanyrFOn-H6g=s68-c-k-c0x00ffffff-no-rj"}/>
+                <Image style={{width:"10%",height:"10%"}} roundedCircle src={"https://yt3.ggpht.com/ytc/AAUvwnhSiMEt6hvnT5QbstuehkxgzNl5C3jTanyrFOn-H6g=s68-c-k-c0x00ffffff-no-rj"}/>
                 <span style={{marginLeft:"2.5%"}}>BBC News</span>
                 </Row>
                 <Row className="video-title">
-                Myanmar junta leader asks Thai counterpart for help on democracy
+                Defiant Myanmar anti-coup protesters return a day after 38 are killed
                 </Row>
             </Container>
             <Container className="ind-video-container">
                 <Row className="video">
-                <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/DKPoCQhctWs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </Row>
                 <Row className="video-source">
-                <Image style={{width:24}} roundedCircle src={"https://yt3.ggpht.com/ytc/AAUvwnhSiMEt6hvnT5QbstuehkxgzNl5C3jTanyrFOn-H6g=s68-c-k-c0x00ffffff-no-rj"}/>
+                <Image style={{width:"10%",height:"10%"}} roundedCircle src={"https://yt3.ggpht.com/ytc/AAUvwnhSiMEt6hvnT5QbstuehkxgzNl5C3jTanyrFOn-H6g=s68-c-k-c0x00ffffff-no-rj"}/>
                 <span style={{marginLeft:"2.5%"}}>BBC News</span>
                 </Row>
                 <Row className="video-title">
-                Myanmar junta leader asks Thai counterpart for help on democracy
+                Defiant Myanmar anti-coup protesters return a day after 38 are killed
+                
                 </Row>
             </Container>
             </div>

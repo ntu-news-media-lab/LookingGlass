@@ -45,10 +45,10 @@ export default function App() {
           <Global />
           <Video />
         </Route>
-        <Route path="/">
+        <Route path="/landing">
           <Loading />
           
-          <Home />
+          {/* <Home /> */}
         </Route>
       </Switch>
     </Router>

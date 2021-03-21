@@ -27,7 +27,7 @@ export default function Global(props) {
 
             <div className="secTitle">
                 <div className="secBar"></div>
-                <div>Gloval Converage</div>
+                <div>Global Coverage</div>
                 <div style={{ fontSize: "0.7em" }}>Hear from Others</div>
             </div>
 
@@ -69,11 +69,12 @@ function FreeScroll(props){
             <div class="indivual-story">
                 <Container>
                     <Col>
-                        <Row><Image src={glo_image} style={{marginTop:5, width:200,height:200, borderRadius:5}}></Image></Row>
+                        <Row><Image src={glo_image}  style={{marginTop:5, width:200,height:200, borderRadius:5}}></Image></Row>
                         <div className="glo-text-container">
                             <Row className="org-name"><span>New York Times</span></Row>
                             {/* TODO need to consider the case of overflow */}
                             <Row className="glo-headlines">As Bullets and Threats Fly, Myanmar Protesters Prodly Hold The Line</Row>
+                            
                         </div>
                        
                     </Col>
