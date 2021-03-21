@@ -18,7 +18,8 @@ import Topic from "./pages/topics";
 import PastConv from "./pages/pastConv";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Global from "./pages/global"
-import Video from "./pages/videos"
+import Video from "./pages/videos";
+import Landing from "./pages/landing";
 
 
 
@@ -37,17 +38,18 @@ export default function App() {
       <Switch>
         <Route path="/about">
           <About />
-          
+        </Route>
+        <Route path="/admin">
+          <Landing />
         </Route>
         <Route path="/topics">
           <Topic data={data}/>
           <PastConv />
-          <Global />
+          {/* <Global /> */}
           <Video />
         </Route>
         <Route path="/">
           <Loading />
-          
           <Home />
         </Route>
       </Switch>

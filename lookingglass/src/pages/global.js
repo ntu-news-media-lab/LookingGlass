@@ -16,7 +16,7 @@ import glo_image from "../img/glo_image.jpg"
 import ItemsCarousel from 'react-items-carousel';
 import range from 'lodash/range';
 import { FlickingEvent, SelectEvent, ChangeEvent, NeedPanelEvent } from "@egjs/flicking";
-import Flicking from "@egjs/react-flicking";
+// import Flicking from "@egjs/react-flicking";
 
 
 
@@ -44,7 +44,7 @@ function FreeScroll(props){
      
       return (
         <div id="free-scroll" className="container">
-          <Flicking
+          {/* <Flicking
             className="flicking flicking1"
             deceleration = {0.0075}
             gap={20}
@@ -52,7 +52,7 @@ function FreeScroll(props){
             anchor={0}
             circular={false}
             moveType={"snap"}
-          >
+          > */}
             <div class="indivual-story">
                 <Container>
                     <Col>
@@ -82,8 +82,8 @@ function FreeScroll(props){
             <div className="panel"><div className="anchor"></div></div>
             <div className="panel"><div className="anchor"></div></div>
             <div className="panel"><div className="anchor"></div></div>
-          </Flicking>
-        </div>
+          {/* </Flicking>  */}
+         </div>
       )
   }
   
