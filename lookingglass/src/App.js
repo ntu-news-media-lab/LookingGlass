@@ -42,10 +42,10 @@ export default function App() {
         <Route path="/admin">
           <Landing />
         </Route>
-        <Route path="/topics">
+        <Route path="/topics/:topicId">
           <Topic data={data}/>
           <PastConv />
-          {/* <Global /> */}
+          <Global />
           <Video />
         </Route>
         <Route path="/">

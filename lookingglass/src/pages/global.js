@@ -16,7 +16,7 @@ import glo_image from "../img/glo_image.jpg"
 import ItemsCarousel from 'react-items-carousel';
 import range from 'lodash/range';
 import { FlickingEvent, SelectEvent, ChangeEvent, NeedPanelEvent } from "@egjs/flicking";
-// import Flicking from "@egjs/react-flicking";
+import Flicking from "@egjs/react-flicking";
 
 
 
@@ -27,7 +27,7 @@ export default function Global(props) {
 
             <div className="secTitle">
                 <div className="secBar"></div>
-                <div>Gloval Converage</div>
+                <div>Global Coverage</div>
                 <div style={{ fontSize: "0.7em" }}>Hear from Others</div>
             </div>
 
@@ -44,7 +44,7 @@ function FreeScroll(props){
      
       return (
         <div id="free-scroll" className="container">
-          {/* <Flicking
+          <Flicking
             className="flicking flicking1"
             deceleration = {0.0075}
             gap={20}
@@ -52,7 +52,7 @@ function FreeScroll(props){
             anchor={0}
             circular={false}
             moveType={"snap"}
-          > */}
+          >
             <div class="indivual-story">
                 <Container>
                     <Col>
@@ -69,11 +69,12 @@ function FreeScroll(props){
             <div class="indivual-story">
                 <Container>
                     <Col>
-                        <Row><Image src={glo_image} style={{marginTop:5, width:200,height:200, borderRadius:5}}></Image></Row>
+                        <Row><Image src={glo_image}  style={{marginTop:5, width:200,height:200, borderRadius:5}}></Image></Row>
                         <div className="glo-text-container">
                             <Row className="org-name"><span>New York Times</span></Row>
                             {/* TODO need to consider the case of overflow */}
                             <Row className="glo-headlines">As Bullets and Threats Fly, Myanmar Protesters Prodly Hold The Line</Row>
+                            
                         </div>
                        
                     </Col>
@@ -82,8 +83,8 @@ function FreeScroll(props){
             <div className="panel"><div className="anchor"></div></div>
             <div className="panel"><div className="anchor"></div></div>
             <div className="panel"><div className="anchor"></div></div>
-          {/* </Flicking>  */}
-         </div>
+          </Flicking>
+        </div>
       )
   }
   

@@ -1,7 +1,12 @@
 import TLError from "../core/TLError"
 import { fetchCSV } from '../core/CSV';
 import { trim, isEmptyObject, mergeData, trace } from "../core/Util";
-
+import $ from 'jquery';
+function clean_integer(s) {
+    if (s) {
+        return s.replace(/[\s,]+/g, ''); // doesn't handle '.' as comma separator, but how to distinguish that from decimal separator?
+    }
+}
 
 
 /**
@@ -33,50 +38,183 @@ export function makeGoogleCSVURL(url_or_key) {
     throw new TLError('invalid_url_err', url_or_key);
 }
 
-// /**
-//  * Given a Google Sheets URL (or mere document ID), read the data and return
-//  * a Timeline JSON file suitable for instantiating a timeline.
-//  * 
-//  * @param {string} url 
-//  */
-// export async function readGoogleAsCSV(url, sheets_proxy) {
+/**
+ * Given a Google Sheets URL (or mere document ID), read the data and return
+ * a Timeline JSON file suitable for instantiating a timeline.
+ * 
+ * @param {string} url 
+ */
+export async function readGoogleAsCSV(url, sheets_proxy) {
 
-//     let rows = []
+    let rows = []
 
-//     url = makeGoogleCSVURL(url)
-//     let error = null;
+    url = makeGoogleCSVURL(url)
+    let error = null;
 
-//     await fetchCSV({
-//         url: `${sheets_proxy}${url}`,
-//     }).then(d => {
-//         rows = d;
-//     }).catch(error_json => {
-//         if (error_json.proxy_err_code == 'response_not_csv') {
-//             throw new TLError('Timeline could not read the data for your timeline. Make sure you have published it to the web.')
-//         }
-//         throw new TLError(error_json.message)
-//     })
+    await fetchCSV({
+        url: `${sheets_proxy}${url}`,
+    }).then(d => {
+        rows = d;
+    }).catch(error_json => {
+        if (error_json.proxy_err_code == 'response_not_csv') {
+            throw new TLError('Timeline could not read the data for your timeline. Make sure you have published it to the web.')
+        }
+        throw new TLError(error_json.message)
+    })
 
-//     let timeline_config = { 'events': [], 'errors': [], 'warnings': [], 'eras': [] }
+    let topic_list_config = { 'events': [], 'errors': [], 'warnings': [], 'eras': [],'topics':[] }
 
-//     rows.forEach((row, i) => {
-//         try {
-//             if (!isEmptyObject(row)) {
-//                 let event = extractEventFromCSVObject(row)
-//                 handleRow(event, timeline_config)
-//             }
-//         } catch (e) {
-//             if (e.constructor == TLError) {
-//                 timeline_config.errors.push(e);
-//             } else {
-//                 if (e.message) {
-//                     e = e.message;
-//                 }
-//                 let label = row['Headline'] || i
-//                 timeline_config.errors.push(e + `[${label}]`);
-//             }
-//         }
-//     });
-//     console.log(timeline_config);
-//     return timeline_config
-// }
+    rows.forEach((row, i) => {
+        
+        try {
+            if (!isEmptyObject(row)) {
+                let event = extractEventFromCSVObject(row)
+                handleRow(event, topic_list_config)
+            }
+        } catch (e) {
+            if (e.constructor == TLError) {
+                topic_list_config.errors.push(e);
+            } else {
+                if (e.message) {
+                    e = e.message;
+                }
+                let label = row['Headline'] || i
+                topic_list_config.errors.push(e + `[${label}]`);
+            }
+        }
+    });
+    // console.log(topic_list_config);
+    return topic_list_config
+}
+
+function handleRow(event, timeline_config) {
+    var row_type = 'event';
+    if (typeof(event.type) != 'undefined') {
+        row_type = event.type;
+        delete event.type;
+    }
+    let url  = event.article_url;
+    timeline_config.topics.push(event);
+
+
+    fetch("https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States", {'mode':'no-cors'})
+    .then(async res=>{
+        let result = await res.text();
+        console.log(result);
+    });
+    // fetch(url, {'mode':'no-cors'}).then(res=>{
+    //     console.log(result);
+    // });
+    
+    
+    // .then(function(t){
+    //     if(200==t.status)
+    //     return t.text?t.text():"no text"
+    // });
+
+   
+
+    // window.fetch(url, { mode: 'cors' })
+    //             .then(function(response) {
+    //                 if (response.status != 200) {
+    //                     if (response.headers.get('content-type') == "application/json") {
+    //                         response.text().then(text => {
+    //                             console.log("uncessful");
+    //                         })
+    //                     } else {
+    //                        console.log("uncessful");
+    //                     }
+    //                     return;
+    //                 }
+    //                 if (response.text) {
+    //                     return response.text();
+    //                 } else {
+    //                     return response;
+    //                 }
+    //             })
+    //             .catch(msg => {
+    //                 console.log("uncessful");
+    //                 return;
+    //             });
+
+}
+
+function extractEventFromCSVObject(orig_row) {
+
+    let row = {}
+    Object.keys(orig_row).forEach(k => {
+        row[k] = trim(orig_row[k]) // get rid of white-space and reduce all-blank cells to empty strings
+    })
+    var d = {
+        // media: {
+        //     caption: row['Media Caption'] || '',
+        //     credit: row['Media Credit'] || '',
+        //     url: row['Media'] || '',
+        //     thumbnail: row['Media Thumbnail'] || ''
+        // },
+        // text: {
+        //     headline: row['Headline'] || '',
+        //     text: row['Text'] || ''
+        // },
+        // display_date: row['Display Date'] || '', // only in v3 but no problem
+        // group: row['Group'] || row['Tag'] || '', // small diff between v1 and v3 sheets
+        // // background: interpretBackground(row['Background']), // only in v3 but no problem
+        // type: row['Type'] || '',
+        topic_keyword:row['keyword'] || '',
+        article_url:row['url'] || ''
+
+    }
+
+    // if (Object.keys(row).includes('Start Date') || Object.keys(row).includes('End Date')) {
+    //     // V1 date handling
+    //     // if (row['Start Date']) {
+    //     //     d.start_date = parseDate(row['Start Date'])
+    //     // }
+    //     // if (row['End Date']) {
+    //     //     d.end_date = parseDate(row['End Date'])
+    //     // }
+    // } else {
+    //     // V3 date handling
+    //     // every date must have at least a year to be valid.
+    //     if (row['Year']) {
+    //         d.start_date = {
+    //             year: clean_integer(row['Year']),
+    //             month: clean_integer(row['Month']) || '',
+    //             day: clean_integer(row['Day']) || ''
+    //         }
+    //     }
+    //     if (row['End Year']) {
+    //         d.end_date = {
+    //             year: clean_integer(row['End Year']) || '',
+    //             month: clean_integer(row['End Month']) || '',
+    //             day: clean_integer(row['End Day']) || ''
+    //         }
+    //     }
+
+    //     if (row['Time']) {
+    //         // if (d.start_date) {
+    //         //     mergeData(d.start_date, parseTime(row['Time']));
+    //         // } else {
+    //         //     throw new TLError("invalid_start_time_without_date")
+    //         // }
+    //     }
+
+    //     if (row['End Time']) {
+    //         // if (d.end_date) {
+    //         //     mergeData(d.end_date, parseTime(row['End Time']));
+    //         // } else {
+    //         //     throw new TLError("invalid_end_time_without_date")
+    //         // }
+    //     }
+
+    //     // if (d.start_date && !validDateConfig(d.start_date)) {
+    //     //     throw new TLError("invalid_date_err")
+    //     // }
+
+    //     // if (d.end_date && !validDateConfig(d.end_date)) {
+    //     //     throw new TLError("invalid_date_err")
+    //     // }
+
+
+    return d
+}

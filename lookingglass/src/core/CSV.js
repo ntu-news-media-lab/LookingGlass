@@ -271,6 +271,5 @@ export function parseObjects(s, dialect) {
         rows.fields.forEach((f, i) => obj[f] = record[i])
         objects.push(obj)
     })
-    console.log(objects);
     return objects
 }

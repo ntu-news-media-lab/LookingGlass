@@ -1,13 +1,37 @@
-import react from 'react';
+import react,{useEffect,useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import { Container, Grid, Col, Row } from 'react-bootstrap';
+import {readGoogleAsCSV} from '../core/Config';
 import "../css/topic.css";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+    useParams,
+    useLocation
+  } from "react-router-dom";
 
 export default function Topic(props) {
+    let { topicId } = useParams();
+
+    const [topic_list,set_topic_list] = useState([]);
+    useEffect(() => {
+        readGoogleAsCSV(topicId, '')
+        .then(
+        data => set_topic_list(data),
+        // console.log("this is a bullshit"),
+        // console.log(topic_list.topics[0]),
+        )
+    }, []);
+
+
+    
     return (
         <div>
-            <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{props.data.topic_word}</div>
+            {/* <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{topic_list.topics[0].topic_keyword}</div> */}
             <div style={{ position: "relative"}}>
                 <Col>
                     <Image src={props.data.img_src} style={{ width: "150%", height: "auto"}}/>
@@ -34,23 +58,3 @@ export default function Topic(props) {
         </div>
     )
 }
-
-
-{/* <Container>
-           
-            <Row>
-                <Col>1</Col>
-                <Col>1</Col>
-                <Col>1</Col>
-            </Row>
-        </Container> */}
-
-// <div className="topic_word" style={{ width: "50%", margin: "auto", }}>{props.topic}</div>
-// <div className="topic_article_container">
-//     <img src={props.img_src} />
-//     <div className="topic_article_text">
-//         <div className="topic_headline">{props.headline}</div>
-//         <div className="topic_summary">{props.summary}</div>
-//     </div>
-// </div>
-
