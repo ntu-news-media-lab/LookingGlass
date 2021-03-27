@@ -87,6 +87,15 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
     return topic_list_config
 }
 
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+
 function handleRow(event, timeline_config) {
     var row_type = 'event';
     if (typeof(event.type) != 'undefined') {
@@ -95,47 +104,30 @@ function handleRow(event, timeline_config) {
     }
     let url  = event.article_url;
     timeline_config.topics.push(event);
+    let google_url = 'https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/pub?output=csv'
+    url = "https://theconversation.com/id/articles.atom"
+    window.fetch(url, { mode: 'cors' })
+                .then(function(response) {
+                    if (response.status != 200) {
+                        if (response.headers.get('content-type') == "application/atom+xml") {
+                            response.text().then(text => {
+                                JSON.parse(text)});
+                        }
+                        
+                    }
+                    if (response.text) {
+                        console.log(response.text());
+                        return response.text();
+                    } else {
+                        return response;
+                    }
+                })
 
-
-    fetch("https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States", {'mode':'no-cors'})
-    .then(async res=>{
-        let result = await res.text();
-        console.log(result);
-    });
-    // fetch(url, {'mode':'no-cors'}).then(res=>{
+    // fetch("https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States", {'mode':'no-cors'})
+    // .then(async res=>{
+    //     let result = await res.text();
     //     console.log(result);
     // });
-    
-    
-    // .then(function(t){
-    //     if(200==t.status)
-    //     return t.text?t.text():"no text"
-    // });
-
-   
-
-    // window.fetch(url, { mode: 'cors' })
-    //             .then(function(response) {
-    //                 if (response.status != 200) {
-    //                     if (response.headers.get('content-type') == "application/json") {
-    //                         response.text().then(text => {
-    //                             console.log("uncessful");
-    //                         })
-    //                     } else {
-    //                        console.log("uncessful");
-    //                     }
-    //                     return;
-    //                 }
-    //                 if (response.text) {
-    //                     return response.text();
-    //                 } else {
-    //                     return response;
-    //                 }
-    //             })
-    //             .catch(msg => {
-    //                 console.log("uncessful");
-    //                 return;
-    //             });
 
 }
 
