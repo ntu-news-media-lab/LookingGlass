@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a35d63ae.chunk.css",
+    "main.js": "/static/js/main.a81f7257.chunk.js",
+    "main.js.map": "/static/js/main.a81f7257.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b3ed9d23.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b3ed9d23.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.93ed1bbf.chunk.js": "/static/js/2.93ed1bbf.chunk.js",
+    "static/js/2.93ed1bbf.chunk.js.map": "/static/js/2.93ed1bbf.chunk.js.map",
+    "static/js/3.0ae72f2a.chunk.js": "/static/js/3.0ae72f2a.chunk.js",
+    "static/js/3.0ae72f2a.chunk.js.map": "/static/js/3.0ae72f2a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.a35d63ae.chunk.css.map": "/static/css/main.a35d63ae.chunk.css.map",
+    "static/js/2.93ed1bbf.chunk.js.LICENSE.txt": "/static/js/2.93ed1bbf.chunk.js.LICENSE.txt",
+    "static/media/NewsMediaLabLogo.bb8aa3b8.png": "/static/media/NewsMediaLabLogo.bb8aa3b8.png",
+    "static/media/glo_image.fc8bd81d.jpg": "/static/media/glo_image.fc8bd81d.jpg",
+    "static/media/iphone-mockup.99a394ca.png": "/static/media/iphone-mockup.99a394ca.png",
+    "static/media/landing.css": "/static/media/krub-v4-latin-regular.f3598e8d.eot",
+    "static/media/looking-glass@4x.c5f002c6.png": "/static/media/looking-glass@4x.c5f002c6.png",
+    "static/media/white_bg.830fc026.png": "/static/media/white_bg.830fc026.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b3ed9d23.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.93ed1bbf.chunk.js",
+    "static/css/main.a35d63ae.chunk.css",
+    "static/js/main.a81f7257.chunk.js"
+  ]
+}
