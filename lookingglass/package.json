@@ -11,6 +11,7 @@
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.0",
     "jquery": "^3.6.0",
+    "link-preview-generator": "0.0.5",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.1",
     "react-dom": "^17.0.1",

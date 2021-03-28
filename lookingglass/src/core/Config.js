@@ -2,6 +2,7 @@ import TLError from "../core/TLError"
 import { fetchCSV } from '../core/CSV';
 import { trim, isEmptyObject, mergeData, trace } from "../core/Util";
 import $ from 'jquery';
+// import {linkPreviewGenerator} from "link-preview-generator"
 function clean_integer(s) {
     if (s) {
         return s.replace(/[\s,]+/g, ''); // doesn't handle '.' as comma separator, but how to distinguish that from decimal separator?
@@ -102,10 +103,15 @@ function handleRow(event, timeline_config) {
         row_type = event.type;
         delete event.type;
     }
-    let url  = event.article_url;
+    
+    console.log(url);
     timeline_config.topics.push(event);
     let google_url = 'https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/pub?output=csv'
-    url = "https://theconversation.com/id/articles.atom"
+    let wiki = "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States";
+    
+    let url  = event.article_url;
+    // url = "https://theconversation.com/id/articles.atom";
+    
     window.fetch(url, { mode: 'cors' })
                 .then(function(response) {
                     if (response.status != 200) {
@@ -122,6 +128,17 @@ function handleRow(event, timeline_config) {
                         return response;
                     }
                 })
+
+
+
+    // clinkPreviewGenerator(
+    //     "https://www.youtube.com/watch?v=8mqqY2Ji7_g"
+    // ).then(
+    //     previewData=>{
+    //         console.log(previewData);
+    //     }
+    // );
+   
 
     // fetch("https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States", {'mode':'no-cors'})
     // .then(async res=>{
