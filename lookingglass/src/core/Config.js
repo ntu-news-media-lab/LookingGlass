@@ -1,7 +1,7 @@
 import TLError from "../core/TLError"
 import { fetchCSV } from '../core/CSV';
 import { trim, isEmptyObject, mergeData, trace } from "../core/Util";
-import $ from 'jquery';
+
 // import {linkPreviewGenerator} from "link-preview-generator"
 function clean_integer(s) {
     if (s) {
@@ -63,14 +63,17 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
         throw new TLError(error_json.message)
     })
 
-    let topic_list_config = { 'events': [], 'errors': [], 'warnings': [], 'eras': [],'topics':[] }
+
+
+    let topic_list_config = { 'events': [], 'errors': [], 'warnings': [], 'eras': [],'topics':[],'fetched_info':[] }
 
     rows.forEach((row, i) => {
         
         try {
             if (!isEmptyObject(row)) {
                 let event = extractEventFromCSVObject(row)
-                handleRow(event, topic_list_config)
+                 handleRow(event, topic_list_config)
+                
             }
         } catch (e) {
             if (e.constructor == TLError) {
@@ -84,16 +87,27 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
             }
         }
     });
-    // console.log(topic_list_config);
-    return topic_list_config
-}
+    console.log(topic_list_config);
 
-function httpGet(theUrl)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
+    // topic_list_config.topics.forEach((topic,i)=>{
+    //     try{
+    //         if(topic.article_url){
+    //             let fetch_info = null;
+    //             let keyword=topic.topic_keyword
+    //             let url = `http://127.0.0.1:5000/news?url=${topic.article_url}&keyword=${keyword}`
+    //             read_news(url).then(res=>{
+    //                 topic_list_config.fetched_info.push(res);
+    //             })
+                
+        
+    //         }
+    //     }
+    //     catch(e){
+
+    //     }
+    // });
+    
+    return topic_list_config
 }
 
 
@@ -103,49 +117,23 @@ function handleRow(event, timeline_config) {
         row_type = event.type;
         delete event.type;
     }
-    
-    console.log(url);
     timeline_config.topics.push(event);
-    let google_url = 'https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/pub?output=csv'
-    let wiki = "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States";
-    
-    let url  = event.article_url;
-    // url = "https://theconversation.com/id/articles.atom";
-    
-    window.fetch(url, { mode: 'cors' })
-                .then(function(response) {
-                    if (response.status != 200) {
-                        if (response.headers.get('content-type') == "application/atom+xml") {
-                            response.text().then(text => {
-                                JSON.parse(text)});
-                        }
-                        
-                    }
-                    if (response.text) {
-                        console.log(response.text());
-                        return response.text();
-                    } else {
-                        return response;
-                    }
-                })
+    console.log(event.article_url)
+
+}
 
 
-
-    // clinkPreviewGenerator(
-    //     "https://www.youtube.com/watch?v=8mqqY2Ji7_g"
-    // ).then(
-    //     previewData=>{
-    //         console.log(previewData);
-    //     }
-    // );
-   
-
-    // fetch("https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States", {'mode':'no-cors'})
-    // .then(async res=>{
-    //     let result = await res.text();
-    //     console.log(result);
-    // });
-
+async function read_news(url){
+    return new Promise((resolve,) =>{
+        window.fetch(url, { mode: 'cors' })
+            .then(response=> {
+                resolve(response.json());
+            })
+            .catch(msg=>{
+                console.log("error");
+            }
+            )
+    })
 }
 
 function extractEventFromCSVObject(orig_row) {

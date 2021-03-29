@@ -68,6 +68,7 @@ export async function fetchCSV(dataset) {
                         return;
                     }
                     if (response.text) {
+                    
                         return response.text();
                     } else {
                         return response;

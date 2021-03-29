@@ -14,7 +14,7 @@ import {
     useLocation
   } from "react-router-dom";
 
-export default function Topic(props) {
+export default function News(props) {
     let { topicId } = useParams();
 
     const [topic_list,set_topic_list] = useState([]);
@@ -22,11 +22,9 @@ export default function Topic(props) {
         readGoogleAsCSV(topicId, '')
         .then(
         data => set_topic_list(data),
-        // console.log("this is a bullshit"),
-        // console.log(topic_list.topics[0]),
+   
         )
     }, []);
-
 
     
     return (

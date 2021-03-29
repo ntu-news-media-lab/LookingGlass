@@ -20,6 +20,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Global from "./pages/global"
 import Video from "./pages/videos";
 import Landing from "./pages/landing";
+import Navigation from "./pages/navigation";
 
 
 
@@ -32,22 +33,28 @@ export default function App() {
 "author_icon":"https://cdn.theconversation.com/avatars/960001/width170/file-20200207-27560-1cvbuj9.jpg",
 "author_name":"Michael W. Charney",
 "author_bio":"Professor of Asian and Military History, SOAS, University of London"}
-    
   return (
     <Router>
       <Switch>
         <Route path="/about">
           <About />
         </Route>
+
         <Route path="/admin">
           <Landing />
         </Route>
-        <Route path="/topics/:topicId">
+
+        <Route path="/news/:doc">
           <Topic data={data}/>
           <PastConv />
           <Global />
           <Video />
         </Route>
+
+        <Route path="/topics/:topicId">
+          
+        </Route>
+        
         <Route path="/">
           <Loading />
           <Home />
