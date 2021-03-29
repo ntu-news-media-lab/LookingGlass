@@ -14,13 +14,13 @@ import Loading from "./pages/loading";
 // import "./css/common.css";
 // import "./css/features.css";
 // import "./css/highlight.css";
-import Topic from "./pages/topics";
+import News from "./pages/news";
 import PastConv from "./pages/pastConv";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Global from "./pages/global"
 import Video from "./pages/videos";
 import Landing from "./pages/landing";
-import Navigation from "./pages/navigation";
+import Topics from "./pages/topics";
 
 
 
@@ -44,15 +44,15 @@ export default function App() {
           <Landing />
         </Route>
 
-        <Route path="/news/:doc">
-          <Topic data={data}/>
+        <Route path="/news/:source">
+          <News data={data}/>
           <PastConv />
           <Global />
           <Video />
         </Route>
 
-        <Route path="/topics/:topicId">
-          
+        <Route path="/topics/:source">
+          <Topics data={data}/>
         </Route>
         
         <Route path="/">
