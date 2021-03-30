@@ -24,6 +24,7 @@ import Topics from "./pages/topics";
 
 
 
+
 export default function App() {
   const data = {
     'topic_word': 'Myanmar Coup',
@@ -75,4 +76,3 @@ function Home() {
 function About() {
   return <h2>About</h2>;
 }
-

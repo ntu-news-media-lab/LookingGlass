@@ -89,23 +89,23 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
     });
     console.log(topic_list_config);
 
-    // topic_list_config.topics.forEach((topic,i)=>{
-    //     try{
-    //         if(topic.article_url){
-    //             let fetch_info = null;
-    //             let keyword=topic.topic_keyword
-    //             let url = `http://127.0.0.1:5000/news?url=${topic.article_url}&keyword=${keyword}`
-    //             read_news(url).then(res=>{
-    //                 topic_list_config.fetched_info.push(res);
-    //             })
+    topic_list_config.topics.forEach((topic,i)=>{
+        try{
+            if(topic.article_url){
+                let fetch_info = null;
+                let keyword=topic.topic_keyword
+                let url = `http://127.0.0.1:5000/news?url=${topic.article_url}&keyword=${keyword}`
+                read_news(url).then(res=>{
+                    topic_list_config.fetched_info.push(res);
+                })
                 
         
-    //         }
-    //     }
-    //     catch(e){
+            }
+        }
+        catch(e){
 
-    //     }
-    // });
+        }
+    });
     
     return topic_list_config
 }
@@ -157,8 +157,9 @@ function extractEventFromCSVObject(orig_row) {
         // group: row['Group'] || row['Tag'] || '', // small diff between v1 and v3 sheets
         // // background: interpretBackground(row['Background']), // only in v3 but no problem
         // type: row['Type'] || '',
-        topic_keyword:row['keyword'] || '',
-        article_url:row['url'] || ''
+        topic_keyword:row['page_keyword'] || '',
+        article_url:row['main_article_url'] || '',
+        gobal_cov: row['global_coverage'] || ""
 
     }
 
