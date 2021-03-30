@@ -1,50 +1,113 @@
 
-  .topic_headline{
-      font-size:1em;
-      
-  }
-  .topic_summary{
-    font-size:0.7em;
-    padding-top: 3%;
+@font-face {
+  font-family: 'Krub';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/krub-v4-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/krub-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/krub-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/krub-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/krub-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/krub-v4-latin-regular.svg#Krub') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url('../fonts/RedHatDisplay-MediumItalic.eot');
+  src: local(''),
+       url("../fonts/RedHatDisplay-Medium.woff2") format("woff2"),
+       url("../fonts/RedHatDisplay-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url('../fonts/RedHatDisplay-Regular.eot');
+  src: local(''),
+       url("../fonts/RedHatDisplay-Regular.woff2") format("woff2"),
+       url("../fonts/RedHatDisplay-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 300;
+  font-display: fallback;
 }
 
-.topic_image{
-    position: relative;
+.topic_headline{
+    font-size:1em;  
+}
+.topic_summary{
+  font-size:0.7em;
+  padding-top: 3%;
 }
 .topic_left_top_tag{
-    position: absolute;
-    top:5%;
-    margin-left: 10%;
-    background-color: grey;
-    color: white;
-    padding: 2%;
+  position: absolute;
+  top:5%;
+  margin-left: 10%;
+  background-color: darkgray;
+  opacity: 60px;
+  text-emphasis-style: bold;
+  color: white;
+  padding: 2%;
+}
+.topic-text-container {
+  position: relative;
+  font-family: 'Krub';
+  right:0;
+}
+.topic-text-container .content {
+  position: absolute; /* Position the background text */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f2f2f2; /* Grey text */
+  width: 100%; /* Full width */
+  height: 100%;
+  padding: 300px 30px 0px 40px; /* Some padding */
 }
 
-  .topic_text_container{
-      margin-left: 10%;
-      margin-right: 10%;
-      position: absolute;
-      bottom:10%;
-      color: white;
-  }
-
-  .topic_img{
-    /* background: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0,0.5)),url('https://images.theconversation.com/files/382241/original/file-20210203-21-90gvwb.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip'); */
-  }
-
-
-  .author_row{
-    font-size: 0.5em;
-    margin-top: 5%;
-    text-overflow: ellipsis;
-  }
-  .container {
-    margin-left: 10%;
-  }
-
-img{
-  max-width: 100%;
+.topic-img img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}  
+.topic-img .img-overlay{
+  height: inherit;
+  color: black;
+  opacity: 60%;
 }
-.container .row{
-  display: flex;
+.author {
+  margin-left:10%;
+  margin-top: 5%;
+  width: 80%;
+  max-width: 500px;
+  height: max-content;
+}
+.author-img img {
+  border-radius: 50%;
+  height: auto;
+  width:50px;
+}
+.author-img-left{
+  float: left;
+  right:0;
+  width: 20%;
+}
+.author-desc-right{
+  float:right;
+  padding-left:10px;
+  left:0;
+  width: 80%;
+  line-height: 1em;
+}
+#author-name {
+  font-size:14px;
+  font-family: 'RedHatDisplay';
+  font-weight: 500px;
+}
+#author-bio {
+  font-size:12px;
+  font-family: 'RedHatDisplay';
+  font-weight:200px;
 }

@@ -1,5 +1,8 @@
 .pastConv_container{
-    margin: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50%;
+    position: relative;
     font-size: medium;
 }
 .secBar{

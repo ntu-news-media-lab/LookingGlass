@@ -40,10 +40,6 @@ export default function App() {
           <About />
         </Route>
 
-        <Route path="/admin">
-          <Landing />
-        </Route>
-
         <Route path="/news/:source">
           <News data={data}/>
           <PastConv />
@@ -57,7 +53,7 @@ export default function App() {
         
         <Route path="/">
           <Loading />
-          <Home />
+          <Landing />
         </Route>
       </Switch>
     </Router>
