@@ -43,7 +43,7 @@ export default function Landing(props) {
             <div className="navbar">
                 <a href="#about">About</a>
                 <a href="#howitworks">How it works</a>
-                <a href="#examples">Example</a>
+                {/* <a href="#examples">Example</a> */}
             </div>
             </div>
             </header>
@@ -53,7 +53,7 @@ export default function Landing(props) {
                 <div id="line"></div>
                 <span> Create A </span><br></br>
                 <span>Looking Glass Page</span><br></br>
-                <p style={{marginTop: "1%", marginBottom:"1%", fontFamily: 'Krub'}}>Simply copy and paste the URL onto your social media post to publicise it, or use the iframe to embed the Looking Glass widget on your website!</p>
+                <p style={{marginTop: "5%", marginBottom: "5%", lineHeight:"1.5em", fontFamily: 'Krub'}}>Simply copy and paste the URL onto your social media post to publicise it, or use the iframe to embed the Looking Glass widget on your website!</p>
                 <div className="input-group input-group-mb-3 round" style={{marginTop: "20px"}}>
                     <input type="text" class="form-control round" placeholder="Google Spreadsheet URL" />
                     <input type="text" class="form-control round" placeholder="Image URL of Logo" />
@@ -154,11 +154,23 @@ export default function Landing(props) {
                         <div className="instruction-pane">
                             <span id="number">1</span>
                             <span id="name">
-                                <h3>Create</h3>
-                                <h3>Your Spreadsheet</h3>
+                                <h3>Build Your</h3>
+                                <h3>Looking Glass</h3>
                             </span>
-                            <p>Build a new Google Spreadsheet using our template. You'll need to copy the the spreadsheet to your own Google Drive account by clicking the "Make a Copy" button.</p>
-                            <div id="resp-table">
+                            <p>Get a copy of a Google sheet by pressing the red button below. Then, on the Google Sheets interface, save a copy to your Google Drive with the “Make a copy” button.</p>
+                            
+                            <br></br>
+                            <button id="btn-call-to-action" value="get-template">Get The Template &nbsp; &nbsp;<i className="bi bi-arrow-right" style={{fontSize:"20px"}}></i><a href="#"></a></button>
+                        </div>
+                       </Col>
+                       <Col>
+                        <div className="instruction-pane">
+                            <span id="number">2</span>
+                            <span id="name">
+                                <h3>Tailor the Looking Glass</h3>
+                                <h3>To Your Needs</h3>
+                            </span>
+                            <div id="resp-table" style={{marginTop: "5%"}}>
                                 <div id="resp-table-header">
                                     <div className="table-header-cell">
                                         topic_name
@@ -166,42 +178,22 @@ export default function Landing(props) {
                                     <div className="table-header-cell">
                                         main_article_url
                                     </div>
+                                    <div className="table-header-cell">
+                                        global_coverage
+                                    </div>
                                 </div>
                                 <div id="resp-table-body">
                                     <div className="resp-table-row">
                                         <div className="table-body-cell">Myammar</div>
-                                        <div className="table-body-cell">https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650</div>
+                                        <div className="table-body-cell">https://lookingglass.com/1</div>
+                                        <div className="table-body-cell">https://lookingglass.com/2</div>
                                     </div>
                                 </div>
                             </div>
-                            <br></br>
-                            <button id="btn-call-to-action" value="get-template">Get The Template &nbsp; &nbsp;<i className="bi bi-arrow-right" style={{fontSize:"20px"}}></i><a href="#"></a></button>
+                            <p>Enter your article’s keyword in the first column, and the URL in the second column.</p>
+                            <p> If you have any relevant stories you wish to feature, add the links in the third column.</p>
                             <div id="warning">
-                                <span style={{color: "#C11010"}}>Note: </span><span>Don't change or remove any column headers in the spreadsheet.</span>
-                            </div>
-                        </div>
-                       </Col>
-                       <Col>
-                        <div className="instruction-pane">
-                            <span id="number">2</span>
-                            <span id="name">
-                                <h3>Publish To</h3>
-                                <h3>The Web</h3>
-                            </span>
-                            <div className="left">
-                                <span>test</span>
-                            </div>
-                            <div className="right">
-                                <p>Under the File menu, select "Publish to the Web".</p>
-                                <div id="warning">
-                                    <span style={{color: "#C11010"}}>Note: </span><span>Don't change the column headers or remove any columns. Don't leave any blank rows in your spreadsheet.</span>
-                                </div>
-                            </div>
-                            <div className="left">
-                                <span>test</span>
-                            </div>
-                            <div className="right">
-                                <p>In the next window, change the menu that reads "entire document" to "od1." Then click "Publish". Select "OK" to proceed.</p>
+                                <span style={{color: "#C11010"}}>Note: </span><span>Don't change or remove any column headers in the spreadsheet. Don't leave any blank rows in your spreadsheet.</span>
                             </div>
                         </div>
                        </Col>       
@@ -214,13 +206,16 @@ export default function Landing(props) {
                                 <h3>Generate Your</h3>
                                 <h3>Looking Glass Page</h3>
                             </span>
-                            <p>Copy/paste spreadsheet URL into the box below to generate your Looking Glass page. Make sure you have published the spreadsheet. </p>
+                            <p>Paste the spreadsheet URL to the box below and press the red button. Also, enter the URL to your newsroom’s logo. </p>
                             <div className="input-group input-group-mb-3 round" style={{marginTop: "20px"}}>
                                 <input type="text" class="form-control round" placeholder="Google Spreadsheet URL" />
                                 <input type="text" class="form-control round" placeholder="Image URL of Logo" />
                                 <div class="input-group-append round">
-                                    <button onClick={() => Show()} class="btn btn-outline-secondary round" style={{backgroundColor: "rgb(199, 37, 37)", width: "80px"}}><i class="bi bi-chevron-right" aria-hidden="true" style={{color:"white"}}></i></button>
+                                    <button class="btn btn-outline-secondary round" style={{backgroundColor: "#C11010", width: "80px"}}><i class="bi bi-chevron-right" aria-hidden="true" style={{color:"white"}}></i></button>
                                 </div>
+                            </div>
+                            <div id="warning">
+                                <span style={{color: "#C11010"}}>Note: </span><span>To generate a new Looking Glass page, please use a new Google spreadsheet. </span>
                             </div>
                         </div>
                        </Col>
@@ -231,16 +226,15 @@ export default function Landing(props) {
                                 <h3>Your Looking Glass</h3>
                                 <h3>Page Is Ready</h3>
                             </span>
-                            <p style={{fontFamily: "RedHatDisplay", fontWeight: "400px"}}>Use this to link directly to your Looking Glass. </p>
+                            <p style={{fontFamily: "RedHatDisplay", fontWeight: "400px"}}>Notify your readers! Paste the link to your social media accounts, newsletters or even Telegram channels.</p>
                             <div className="input-group-2" style={{height: "max-content"}}>
-                            <div className="input-group-2-icon"><button onClick={() => Copy(1)}><i class="bi bi-files" aria-hidden="true" style={{fontSize:"25px"}}></i><span> Copy link</span></button></div>
-                            <div className="input-group-2-area"><input type="text" id="link" placeholder="Email Address" value="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650" flex-wrap="wrap"/></div>
+                            <div className="input-group-2-icon"><button><i class="bi bi-files" aria-hidden="true" style={{fontSize:"25px"}}></i><span> Copy link</span></button></div>
+                            <div className="input-group-2-area"><input type="text" id="link" style={{background: "#f3f3f3"}} placeholder="Email Address" value="https://lookingglass.com/news/source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg" flex-wrap="wrap" readOnly /></div>
                             </div>
-                            <p style={{fontFamily: "RedHatDisplay", fontWeight: "400px"}}>Embed</p>
-                            <p>Copy this embed code and paste it on your site where you want to view the Looking Glass (just like a Youtube video).</p>
+                            <p style={{fontFamily: "RedHatDisplay", fontWeight: "400px"}}>Copy this embed code and paste it on your site where you want to view the Looking Glass (just like a Youtube video).</p>
                             <div className="input-group-2" style={{height: "max-content"}}>
-                            <div className="input-group-2-icon"><button onClick={() => Copy(0)}><i class="bi bi-files" aria-hidden="true" style={{fontSize:"25px"}}></i><span> Copy link</span></button></div>
-                            <div className="input-group-2-area"><input type="text" id="iframe" placeholder="Email Address" value="<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>" wrap="hard"/></div>
+                            <div className="input-group-2-icon"><button><i class="bi bi-files" aria-hidden="true" style={{fontSize:"25px"}}></i><span> Copy link</span></button></div>
+                            <div className="input-group-2-area"><input type="text" id="iframe" style={{background: "#f3f3f3"}} placeholder="Email Address" value="<iframe src='https://lookingglass.com//news/source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>" wrap="hard" readOnly/></div>
                             </div>
                         </div>
                        </Col>       
@@ -251,7 +245,7 @@ export default function Landing(props) {
             
             
             <Container>
-            <div className="pane-4">
+            <div className="pane-4" style={{display: "none"}}>
                 <div className="title-1">
                     <div id="line"></div>
                     <h1>Examples</h1>
