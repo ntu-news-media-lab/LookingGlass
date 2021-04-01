@@ -72,7 +72,7 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
         try {
             if (!isEmptyObject(row)) {
                 let event = extractEventFromCSVObject(row)
-                 handleRow(event, topic_list_config)
+                handleRow(event, topic_list_config)
                 
             }
         } catch (e) {
@@ -87,39 +87,39 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
             }
         }
     });
-    console.log(topic_list_config);
-
-    topic_list_config.topics.forEach((topic,i)=>{
+    let promises = [];
+   topic_list_config.topics.forEach((topic,i)=>{
         try{
             if(topic.article_url){
                 let fetch_info = null;
                 let keyword=topic.topic_keyword
-                let url = `http://127.0.0.1:5000/news?url=${topic.article_url}&keyword=${keyword}`
-                read_news(url).then(res=>{
+                let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword}`
+                promises.push(read_news(url).then(res=>{
                     topic_list_config.fetched_info.push(res);
-                })
-                
-        
+                }))
             }
         }
         catch(e){
 
         }
     });
-    
-    return topic_list_config
+    return Promise.all(promises).then(()=>{
+        console.log(topic_list_config);
+        return topic_list_config
+    }
+    )
+   
 }
 
 
-function handleRow(event, timeline_config) {
+function handleRow(event, topic_list_config) {
     var row_type = 'event';
     if (typeof(event.type) != 'undefined') {
         row_type = event.type;
         delete event.type;
     }
-    timeline_config.topics.push(event);
-    console.log(event.article_url)
-
+    topic_list_config.topics.push(event);
+   
 }
 
 

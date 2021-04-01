@@ -8,9 +8,7 @@ import {
   useParams,
   useLocation
 } from "react-router-dom";
-import { makeGoogleCSVURL } from "./core/Config"
 // import FreeScroll from "./pages/content"
-import Loading from "./pages/loading";
 // import "./css/common.css";
 // import "./css/features.css";
 // import "./css/highlight.css";
@@ -21,6 +19,11 @@ import Global from "./pages/global"
 import Video from "./pages/videos";
 import Landing from "./pages/landing";
 import Topics from "./pages/topics";
+
+
+// logo
+import lg_logo from "./img/looking-glass@4x.png"
+import nml_log from "./img/NewsMediaLabLogo.png"
 
 
 
@@ -72,3 +75,20 @@ function Home() {
 function About() {
   return <h2>About</h2>;
 }
+
+function Loading() {
+
+  // transition: "opacity 5s",opacity:"0"
+  return (
+      <div id="loading_page" style={{ position: "relative", height: "100%",transition: "opacity 5s",opacity:"0"}}>
+          <div style={{ position: "absolute" }}>
+              <img src={lg_logo} style={{ width: '50%', marginLeft: "25%", marginTop: "50%" }} />
+              <div style={{ marginTop: "5%", textAlign: "center", textSizeAdjust: "auto" }}>For <span style={{ color: "rgb(161,64,72)" }}>The Conversation</span></div>
+              <div style={{ marginTop: "35%", textAlign: "center", textSizeAdjust: "auto" }}> Powered by </div>
+              <img src={nml_log} style={{ width: '50%', marginLeft: "25%" }} />
+          </div>
+      </div>
+  )
+
+}
+
