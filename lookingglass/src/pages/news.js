@@ -4,7 +4,6 @@ import Image from 'react-bootstrap/Image';
 import { Container, Grid, Col, Row } from 'react-bootstrap';
 import {readGoogleAsCSV} from '../core/Config';
 import "../css/news.css";
-import TClogo from "../img/TC-logo.png"
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,8 +13,8 @@ import {
     useParams,
     useLocation
   } from "react-router-dom";
-import Pastconv from './pastConv';
 
+  
 export default function News(props) {
     let { source } = useParams();
 
@@ -48,15 +47,18 @@ export default function News(props) {
                 </div>
                 <div className="topic_left_top_tag">SPOTLIGHT</div>
             </div>
-            <div className="author">
-                <div className="author-img-left">
-                    <div className="author-img"><img src={props.data.author_icon} /></div>
-                </div>
-                <div className="author-desc-right">
-                        <span id="author-name">{props.data.author_name}</span>
-                        <br></br>
-                        <span id="author-bio">{props.data.author_bio}</span>
-                </div>
+            <div class="author_row">
+            <Container>
+            <Row >
+                    <Col>
+                        <Image src={props.data.author_icon} roundedCircle style={{ width:"20%"  }} />
+                    </Col>
+                    <Col >
+                        <div>{props.data.author_name}</div>
+                        <div>{props.data.author_bio}</div>
+                    </Col>
+            </Row>
+            </Container>
             </div>
         </div>
     )

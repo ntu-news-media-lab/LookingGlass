@@ -1,0 +1,70 @@
+.topiclist{
+    
+    margin:auto;
+    padding:10%;
+    
+}
+
+.list-group  a{
+    text-decoration: none !important;
+    color: #212529
+    
+}
+
+.list-group-item{
+    border: none !important;
+    border-bottom: 1px solid rgba(0,0,0,.125) !important;
+    
+}
+
+.topic_thumbnail{
+    /* something wrong here */
+    width: 5%;
+    height: auto;
+    margin-right: 5%;
+}
+
+.topic-page-tagline{
+    padding: 5% 15% 0 15%;
+}
+
+#first-tagline{
+    font-size: small;
+}
+
+.search-section{
+    margin:auto;
+    padding: 0 10% 3% 10%;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    
+}
+
+button{
+    position: absolute;
+    right: 0%;
+    
+}
+
+input{
+    border: none;
+    width: 90%;
+}
+.news-org-logo{
+    width: 100%;
+    padding-top: 5%;
+    margin-left: 20%;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.topic_container{
+    max-width: 100%;
+    max-height: 100%;
+}
