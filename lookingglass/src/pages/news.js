@@ -13,8 +13,8 @@ import {
     useParams,
     useLocation
   } from "react-router-dom";
+import TClogo from "../img/TC-logo.png";
 
-  
 export default function News(props) {
     let { source } = useParams();
 
@@ -49,15 +49,17 @@ export default function News(props) {
             </div>
             <div class="author_row">
             <Container>
-            <Row >
-                    <Col>
-                        <Image src={props.data.author_icon} roundedCircle style={{ width:"20%"  }} />
-                    </Col>
-                    <Col >
-                        <div>{props.data.author_name}</div>
-                        <div>{props.data.author_bio}</div>
-                    </Col>
-            </Row>
+                <div className="author">
+                    <div className="author-img-left">
+                    <div className="author-img">
+                        <img src={props.data.author_icon} alt="author" />
+                    </div>
+                    </div>
+                    <div className="author-desc-right">
+                        <div id="author-name">{props.data.author_name}</div>
+                        <div id="author-bio">{props.data.author_bio}</div>
+                    </div>
+                </div>
             </Container>
             </div>
         </div>

@@ -16,7 +16,7 @@ export default function Landing(props) {
         var setLink = document.getElementById("link");
         var setIframe = document.getElementById("iframe");
 
-        let regex = "/[^w]/g";
+        let regex = "/^[a-zA-Z0-9-_]+$/";
         var output = userInput.match(regex);
 
         setLink.value = String(output);
@@ -88,7 +88,7 @@ export default function Landing(props) {
                 <Col md="auto"><br></br><span style={{color:"white"}}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></Col>
                 <Col md="auto">
                 <div className="preview-tab">
-                    <button><i class="bi bi-box-arrow-up-right" style={{fontSize: "25px"}}></i><br></br><span>Open preview</span></button>
+                    <button><i className="bi bi-box-arrow-up-right" style={{fontSize: "25px"}}></i><br></br><span>Open preview</span></button>
                 </div>
                 </Col>
                 <Col>
