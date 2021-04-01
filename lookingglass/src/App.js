@@ -26,7 +26,7 @@ import Topics from "./pages/topics";
 
 export default function App() {
   const data = {
-    'topic_word': 'Myanmar Coup',
+    "topic_word": "Myanmar Coup",
   "img_src": "https://images.theconversation.com/files/382241/original/file-20210203-21-90gvwb.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip",
 "headline":"Myanmar coup: how the military has held onto power for 60 years",
 "summary":"After arresting Aung San Suu Kyi once again, the army is clearly not ready to relinquish control.",
@@ -43,7 +43,7 @@ export default function App() {
         <Route path="/news/:source">
           <News data={data}/>
           <PastConv />
-          <Global />
+          {/* <Global /> */}
           <Video />
         </Route>
 

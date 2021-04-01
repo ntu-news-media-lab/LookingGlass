@@ -32,6 +32,12 @@ export default function News(props) {
     return (
         <div>
             {/* <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{topic_list.topics[0].topic_keyword}</div> */}
+            <div className="topic-container">
+                <div id="back-icon"><i class="bi bi-chevron-left" style={{fontSize: "20px", fontWeight: "400px", color: "black"}} /></div>
+                <div id="topic-title">
+                    <strong>{props.data.topic_word}</strong>
+                </div>
+            </div>
             <div className="topic-text-container">
                 <div className="topic-img"><img src={props.data.img_src} /></div>
                     

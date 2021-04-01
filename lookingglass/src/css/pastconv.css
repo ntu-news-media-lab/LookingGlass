@@ -1,35 +1,49 @@
 .pastConv_container{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50%;
+    margin-top: 40%;
     position: relative;
     font-size: medium;
 }
-.secBar{
-    box-sizing: content-box;
-    height: 3px;
-    width: 15%;
-    margin: auto;
-    margin-bottom: 5%;
-    background-color:darkred;
+
+#line {
+    background-color: #C11010;
+    display: block;
+    width: 40px;
+    height:2px;
+    position: relative;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
 }
 
 .secTitle{
     margin-bottom: 5%;
     text-align: center;
 }
-
+.convTitle{
+    color: #C11010;
+    position: absolute;
+    font-size: 10px;
+    top:10%;
+    left:10%; 
+}
 
 .convBubble_container{
     position: relative;
-    padding:5%;
+    margin-left:5%;
+    margin-right:5%;
+    padding:1%;
     margin-top: 5%;
-    /* width: fit-content;
-    height: fit-content; */
+    width:auto;
+    height: max-content;
     
 }
 #bubble_img{
     width: 100%;
+    height: max-content;
     position: absolute;
     left: 0%;
     /* top:10%; */
@@ -37,8 +51,8 @@
 .carousel {
     position: absolute;
     /* padding:5%; */
-    
-    width:100%;
+    width: 100% !important; 
+    height: 100% !important;
     /* background-color: grey; */
 }
 
@@ -46,38 +60,39 @@
     padding-top: 1em;
 }
 .carousel-caption{
-    top:20%;
+    top:10%;
     left:10% !important
-
-
 }
 .carousel-caption h3 {
-    color: rgb(14,12,14);
+    color: #0b0b0b;
     text-align: left;
-    font-size: 0.7em;
-    padding-bottom: 5%;
-    
-    
+    font-size: 18px;
+    line-height: 1.2em !important;
 }
 .carousel-caption p{
-    color: rgb(107,102,107);
+    color: #0b0b0b;
     text-overflow: ellipsis;
     text-align: left;
-    font-size: 60%;
+    font-size: 12px;
 }
 .carousel-indicators {
-    bottom:-8% !important;
+    bottom:-2px !important;
 }
 .carousel-indicators li{
-    background-color:black !important;
+    background-color:gray !important;
     /* bottom: 5%  !important; */
     /* margin-top:5% !important; */
     top:50% !important;
     width: 50px !important;
 }
-.convTitle{
-    color: darkred;
-    position: absolute;
-    top:7%;
-    left:10% 
+.carousel-indicators .active{
+    background-color: #c11010 !important;
 }
+.tc-logo {
+    position: relative;
+    margin-top: 25%;
+}
+.author-container {
+    margin-top: 5%;
+}
+
