@@ -65,7 +65,7 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
 
 
 
-    let topic_list_config = { 'events': [], 'errors': [], 'warnings': [], 'eras': [],'topics':[],'fetched_info':[] }
+    let topic_list_config = { 'events': [], 'errors': [], 'warnings': [], 'eras': [],'topics':[] }
 
     rows.forEach((row, i) => {
         
@@ -93,9 +93,12 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
             if(topic.article_url){
                 let fetch_info = null;
                 let keyword=topic.topic_keyword
-                let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword}`
+                let local = "http://127.0.0.1:5000/"
+                let url = local + `news?url=${topic.article_url}&keyword=${keyword}`;
+                // let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword}`
                 promises.push(read_news(url).then(res=>{
-                    topic_list_config.fetched_info.push(res);
+                    topic['fetched']= res;
+                    topic_list_config[keyword]= res;
                 }))
             }
         }
@@ -143,76 +146,32 @@ function extractEventFromCSVObject(orig_row) {
         row[k] = trim(orig_row[k]) // get rid of white-space and reduce all-blank cells to empty strings
     })
     var d = {
-        // media: {
-        //     caption: row['Media Caption'] || '',
-        //     credit: row['Media Credit'] || '',
-        //     url: row['Media'] || '',
-        //     thumbnail: row['Media Thumbnail'] || ''
-        // },
-        // text: {
-        //     headline: row['Headline'] || '',
-        //     text: row['Text'] || ''
-        // },
-        // display_date: row['Display Date'] || '', // only in v3 but no problem
-        // group: row['Group'] || row['Tag'] || '', // small diff between v1 and v3 sheets
-        // // background: interpretBackground(row['Background']), // only in v3 but no problem
-        // type: row['Type'] || '',
+    
         topic_keyword:row['page_keyword'] || '',
         article_url:row['main_article_url'] || '',
         gobal_cov: row['global_coverage'] || ""
 
     }
-
-    // if (Object.keys(row).includes('Start Date') || Object.keys(row).includes('End Date')) {
-    //     // V1 date handling
-    //     // if (row['Start Date']) {
-    //     //     d.start_date = parseDate(row['Start Date'])
-    //     // }
-    //     // if (row['End Date']) {
-    //     //     d.end_date = parseDate(row['End Date'])
-    //     // }
-    // } else {
-    //     // V3 date handling
-    //     // every date must have at least a year to be valid.
-    //     if (row['Year']) {
-    //         d.start_date = {
-    //             year: clean_integer(row['Year']),
-    //             month: clean_integer(row['Month']) || '',
-    //             day: clean_integer(row['Day']) || ''
-    //         }
-    //     }
-    //     if (row['End Year']) {
-    //         d.end_date = {
-    //             year: clean_integer(row['End Year']) || '',
-    //             month: clean_integer(row['End Month']) || '',
-    //             day: clean_integer(row['End Day']) || ''
-    //         }
-    //     }
-
-    //     if (row['Time']) {
-    //         // if (d.start_date) {
-    //         //     mergeData(d.start_date, parseTime(row['Time']));
-    //         // } else {
-    //         //     throw new TLError("invalid_start_time_without_date")
-    //         // }
-    //     }
-
-    //     if (row['End Time']) {
-    //         // if (d.end_date) {
-    //         //     mergeData(d.end_date, parseTime(row['End Time']));
-    //         // } else {
-    //         //     throw new TLError("invalid_end_time_without_date")
-    //         // }
-    //     }
-
-    //     // if (d.start_date && !validDateConfig(d.start_date)) {
-    //     //     throw new TLError("invalid_date_err")
-    //     // }
-
-    //     // if (d.end_date && !validDateConfig(d.end_date)) {
-    //     //     throw new TLError("invalid_date_err")
-    //     // }
-
-
     return d
+}
+
+
+export async function youtube_video(keyword){
+    // let domain = "https://looking-glass-backend.herokuapp.com"
+    let keyword_cleaned = keyword.trim().replace(" ", "+");
+    let domain = "http://127.0.0.1:5000";
+    let url = `${domain}/videos?keyword=${keyword_cleaned}`;
+    let res = null;
+        return new Promise((resolve,) =>{
+            window.fetch(url, { mode: 'cors' })
+                .then(response=> {
+                    res = response.json();
+                    console.log(res);
+                    resolve(res);
+                })
+                .catch(msg=>{
+                    console.log("error in resolving");
+                }
+                )
+        })
 }
