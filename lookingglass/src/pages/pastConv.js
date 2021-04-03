@@ -9,45 +9,50 @@ import white_bg from "../img/white_bg.png"
 import cn_lgogo from "../img/The-Conversation.png"
 import Skeleton from 'react-loading-skeleton';
 
+
 export default function Pastconv(props) {
 
-    if (props.topic_data){
+    if (props.topic_data) {
         let pastconv_result = props.topic_data.past_conv;
-       
-        if (pastconv_result){
-            if (pastconv_result.length==0){
+
+        if (pastconv_result) {
+            if (pastconv_result.length == 0) {
                 return null;
             }
-            else{
+            else {
                 return (
                     <div className="pastConv_container">
                         <div className="secTitle">
-                            <div className="secBar"></div>
-                            <div>Perspectives</div>
-                            <div style={{ fontSize: "0.7em" }}>From past converages</div>
+                            <div id="line"></div>
+                            <h1>Perspectives</h1>
+                            <p style={{ fontSize: "10px", marginTop: "-5px" }}></p>
                         </div>
+
                         <div className="convBubble_container">
                             <Image id="bubble_img" src={convBubble} />
-                            <Carousel>
+                            <Carousel interval={99999}>
                                 {
                                     pastconv_result.forEach((item, i) => <PastConv_item data={item} />)
                                 }
                             </Carousel>
                         </div>
-                        <Image src={cn_lgogo} style={{ marginTop: "10%" }} />
+                        <div className="tc-logo">
+                            <img src={cn_lgogo} alt="the-conversation-logo" />
+                        </div>
                     </div>
                 );
             }
-            
-        }}
+
+        }
+    }
 }
 
 const PastConv_item = (props) => {
-    if (props.data!==undefined){
+    if (props.data !== undefined) {
         let past_conv = props.data;
         console.log(past_conv);
-        return(
-                <Carousel.Item>
+        return (
+            <Carousel.Item>
                 <img
                     className="d-block w-100"
                     src={white_bg}
@@ -60,11 +65,13 @@ const PastConv_item = (props) => {
                     <p>{past_conv.summary}</p>
                 </Carousel.Caption>
             </Carousel.Item>
-            )
+        )
     }
-    else{
-        return(
-        <Skeleton count={10} />
+    else {
+        return (
+            <Skeleton count={10} />
         );
     }
 }
+
+

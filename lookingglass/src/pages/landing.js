@@ -5,13 +5,30 @@ import "../css/landing.css";
 import logo from "../img/looking-glass@4x.png";
 import iphone from "../img/iphone-mockup.png";
 import nml from "../img/NewsMediaLabLogo.png";
+import vid from "../img/LG-how-to.jpg";
 
 
 export default function Landing(props) {
+    function Generate() {
+        const domain = "https://lookingglass.com"
+        // var userInput = document.getElementById("sheet");
+        var userInput = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/edit#gid=0"
+        var setLink = document.getElementById("link");
+        var setIframe = document.getElementById("iframe");
+
+        let regex = "/^[a-zA-Z0-9-_]+$/";
+        var output = userInput.match(regex);
+
+        setLink.value = String(output);
+        // if (getMatch == true) {
+        //     sheetId = getMatch;
+        // }
+
+    }
     function Copy(choice) {
         if (choice==1) {
             var copyText = document.getElementById("link");
-        } else {
+        }else {
             var copyText = document.getElementById("iframe");
         }
             /* Select the text field */
@@ -25,6 +42,7 @@ export default function Landing(props) {
             alert("You have copied the Looking Glass " + copyText.id);
     }
     function Show() {
+        Generate();
         var x = document.getElementById("pane-1");
         if (x.style.display == "none") {
             x.style.display = "block";
@@ -40,6 +58,7 @@ export default function Landing(props) {
             <div className="img_logo">
                 <a href="#"><img src={logo} style={{height: "50px", width: "auto"}}></img></a>
             </div>
+            <a id="top"></a>
             <div className="navbar">
                 <a href="#about">About</a>
                 <a href="#howitworks">How it works</a>
@@ -55,8 +74,8 @@ export default function Landing(props) {
                 <span>Looking Glass Page</span><br></br>
                 <p style={{marginTop: "5%", marginBottom: "5%", lineHeight:"1.5em", fontFamily: 'Krub'}}>Simply copy and paste the URL onto your social media post to publicise it, or use the iframe to embed the Looking Glass widget on your website!</p>
                 <div className="input-group input-group-mb-3 round" style={{marginTop: "20px"}}>
-                    <input type="text" class="form-control round" placeholder="Google Spreadsheet URL" />
-                    <input type="text" class="form-control round" placeholder="Image URL of Logo" />
+                    <input type="text" id= "sheet" class="form-control round" placeholder="Google Spreadsheet URL" />
+                    <input type="text" class="form-control round" placeholder="Image URL of Logo (optional)" />
                     <div class="input-group-append round">
                         <button onClick={() => Show()} class="btn btn-outline-secondary round" style={{backgroundColor: "rgb(199, 37, 37)", width: "80px"}}><i class="bi bi-chevron-right" aria-hidden="true" style={{color:"white"}}></i></button>
                     </div>
@@ -69,7 +88,7 @@ export default function Landing(props) {
                 <Col md="auto"><br></br><span style={{color:"white"}}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></Col>
                 <Col md="auto">
                 <div className="preview-tab">
-                    <button><i class="bi bi-box-arrow-up-right" style={{fontSize: "25px"}}></i><br></br><span>Open preview</span></button>
+                    <button><i className="bi bi-box-arrow-up-right" style={{fontSize: "25px"}}></i><br></br><span>Open preview</span></button>
                 </div>
                 </Col>
                 <Col>
@@ -125,12 +144,14 @@ export default function Landing(props) {
                     <Row>
                         <Col>
                         <div className="video">
-                            <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <img src={vid} alt="LG how to" style={{width:"300px", height:"auto"}}/>
+                            {/* <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                         </div>
                         </Col>
                         <Col>
                         <div className="video">
-                            <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <img src={vid} alt="LG-demo" style={{width:"300px", height:"auto"}} />
+                            {/* <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                         </div>
                         </Col>
                     </Row>
@@ -208,10 +229,10 @@ export default function Landing(props) {
                             </span>
                             <p>Paste the spreadsheet URL to the box below and press the red button. Also, enter the URL to your newsroom’s logo. </p>
                             <div className="input-group input-group-mb-3 round" style={{marginTop: "20px"}}>
-                                <input type="text" class="form-control round" placeholder="Google Spreadsheet URL" />
-                                <input type="text" class="form-control round" placeholder="Image URL of Logo" />
+                                <input type="text" class="form-control round" placeholder="Google Spreadsheet URL" disabled />
+                                <input type="text" class="form-control round" placeholder="Image URL of Logo" disabled />
                                 <div class="input-group-append round">
-                                    <button class="btn btn-outline-secondary round" style={{backgroundColor: "#C11010", width: "80px"}}><i class="bi bi-chevron-right" aria-hidden="true" style={{color:"white"}}></i></button>
+                                    <button class="btn btn-outline-secondary round" style={{backgroundColor: "#C11010", width: "80px", pointerEvents: "none"}}><i class="bi bi-chevron-right" aria-hidden="true" style={{color:"white"}}></i></button>
                                 </div>
                             </div>
                             <div id="warning">
@@ -228,14 +249,15 @@ export default function Landing(props) {
                             </span>
                             <p style={{fontFamily: "RedHatDisplay", fontWeight: "400px"}}>Notify your readers! Paste the link to your social media accounts, newsletters or even Telegram channels.</p>
                             <div className="input-group-2" style={{height: "max-content"}}>
-                            <div className="input-group-2-icon"><button><i class="bi bi-files" aria-hidden="true" style={{fontSize:"25px"}}></i><span> Copy link</span></button></div>
-                            <div className="input-group-2-area"><input type="text" id="link" style={{background: "#f3f3f3"}} placeholder="Email Address" value="https://lookingglass.com/news/source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg" flex-wrap="wrap" readOnly /></div>
+                            <div className="input-group-2-icon"><button  style={{pointerEvents: "none"}}><i class="bi bi-files" aria-hidden="true" style={{fontSize:"25px"}}></i><span> Copy link</span></button></div>
+                            <div className="input-group-2-area"><input type="text" id="link" placeholder="Email Address" value="https://lookingglass.com/news/source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg" flex-wrap="wrap" disabled /></div>
                             </div>
                             <p style={{fontFamily: "RedHatDisplay", fontWeight: "400px"}}>Copy this embed code and paste it on your site where you want to view the Looking Glass (just like a Youtube video).</p>
                             <div className="input-group-2" style={{height: "max-content"}}>
-                            <div className="input-group-2-icon"><button><i class="bi bi-files" aria-hidden="true" style={{fontSize:"25px"}}></i><span> Copy link</span></button></div>
-                            <div className="input-group-2-area"><input type="text" id="iframe" style={{background: "#f3f3f3"}} placeholder="Email Address" value="<iframe src='https://lookingglass.com//news/source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>" wrap="hard" readOnly/></div>
+                            <div className="input-group-2-icon"><button style={{pointerEvents: "none"}}><i class="bi bi-files" aria-hidden="true" style={{fontSize:"25px"}}></i><span> Copy link</span></button></div>
+                            <div className="input-group-2-area"><input type="text" id="iframe" placeholder="Email Address" value="<iframe src='https://lookingglass.com//news/source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>" wrap="hard" disabled/></div>
                             </div>
+                            <button className="call-to-action"><a href="#top">Create a Looking Glass now!</a></button>
                         </div>
                        </Col>       
                     </Row>

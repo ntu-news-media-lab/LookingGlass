@@ -17,6 +17,7 @@ import News from "./pages/news";
 import Video from "./pages/videos";
 import Landing from "./pages/landing";
 import Topics from "./pages/topics";
+import End from "./pages/end";
 import SuccessDisplay from './pages/test2'
 // import PastConv from "./pages/pastConv";
 // import Global from "./pages/global";
@@ -32,7 +33,7 @@ import Pastconv from "./pages/pastConv";
 
 export default function App() {
   const data = {
-    'topic_word': 'Myanmar Coup',
+    "topic_word": "Myanmar Coup",
   "img_src": "https://images.theconversation.com/files/382241/original/file-20210203-21-90gvwb.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip",
 "headline":"Myanmar coup: how the military has held onto power for 60 years",
 "summary":"After arresting Aung San Suu Kyi once again, the army is clearly not ready to relinquish control.",
@@ -54,6 +55,7 @@ export default function App() {
         <Route path="/news/:source/:topic">
           <News data={data}/>
           <Video />
+          <End/>
         </Route>
 
         <Route path="/topics/:source">

@@ -6,15 +6,21 @@ import { youtube_video} from '../core/Config';
 import { useParams} from "react-router-dom";
 import { Container, Row } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
+import { Container, Grid, Col, Row } from 'react-bootstrap';
+import creative_commons from "../img/creative-commons.png";
+import nml from "../img/NewsMediaLabLogo.png";
 
 
 export default function Video(props) {
-
     let { source, topic } = useParams();
     const [videos, set_videos] = useState([]);
     const [valid_result, set_valid_result] = useState(true);
     const [video_ready, set_video_ready] = useState(false);
 
+
+  
     // console.log(article_info[topic_cleaned]);
     useEffect(()=>{
         const fetchVideos = async ()=>{
@@ -62,28 +68,29 @@ export default function Video(props) {
         return null;
     }
     else {
-        return(
+        return (
+        <div>
             <div className="video-sec-container">
             <div className="secTitle">
                 <div className="secBar"></div>
-                <div>Videos</div>
-                <div style={{ fontSize: "0.7em" }}>See through the news</div>
+                <div id="line"></div>
+                <h1>Videos</h1>
+                <div style={{ fontSize: "10px", marginTop:"-5px"}}>See through the news</div>
             </div>
             <div className="videos">
-                
                 <Skeleton  count={5}/>
             </div>
-    
+            </div>
         </div>
         )
-    
-
     }
 
 }
 
 
+
 const VideoItem = (props) => {
+
     // console.log(props.desc_input);
     // console.log(props.url_input);
     return (
@@ -99,9 +106,8 @@ const VideoItem = (props) => {
               {props.desc}
             </Row>
         </div>
-     
-        
+    
     )
-
+           
 }
 

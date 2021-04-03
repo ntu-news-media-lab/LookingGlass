@@ -31,13 +31,32 @@
   font-weight: 300;
   font-display: fallback;
 }
-
+.topic-container {
+  background-color: white;
+  width:100%;
+  height:max-content;
+  padding: 20px;
+  padding-top: 15%;
+  border-radius: 10px 30px 30px 10px;
+  text-align:center;
+}
+.topic-title {
+  color: #0b0b0b;
+  font-family: 'RedHatDisplay';
+  font-weight: 400px;
+  font-size: 60px;
+}
+#back-icon {
+  position: absolute;
+  left:0;
+  margin-left: 5%;
+}
 .topic_headline{
-    font-size:1em;  
+    font-size:20px;  
 }
 .topic_summary{
-  font-size:0.7em;
-  padding-top: 5%;
+  font-size:12px;
+  padding-top: 3%;
 }
 .topic_left_top_tag{
   position: absolute;

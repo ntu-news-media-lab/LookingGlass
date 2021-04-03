@@ -1,0 +1,84 @@
+.end-pane {
+    margin-top: 10%;
+}
+#double-line {
+    margin-top:5%;
+    margin-bottom: 5%;
+    border-top: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;
+    padding: 3px;
+}
+#h3-title {
+    text-align: center;
+    font-family: 'RedHatDisplay';
+    font-size: 18px;
+}
+.logo {
+    position: relative;
+    margin-bottom: 1%;
+    text-align: center;
+}
+.logo i {
+    color: #C11010;
+    font-size: 40px;
+}
+#certificate {
+    margin-top: 2%;
+    border-radius: 10px;
+    border: solid 1px lightgray;
+    padding: 15px;
+}
+#certificate img {
+    margin-bottom: 5%;
+}
+#certificate h3{
+    font-size: 14px;
+    font-weight: 400px;
+    font-family: "RedHatDisplay";
+    line-height: 1.2em;
+}
+#certificate p{
+    font-size: 10px;
+}
+.btn-learn-more {
+    position:relative; 
+    margin-top: 5%;
+    background-color: #C11010;
+    border-radius: 10px;
+    padding: 30px 20px 60px 20px;
+}
+.textbox {
+    width:70%;
+    height: 100%;
+    float:left;
+    align-content: center;
+}
+.textbox p{
+    color: #f2f2f2;
+    font-size: 14px;
+    font-family: "Krub";
+    line-height: 0.2em;
+}
+.textbox #title {
+    font-family: 'RedHatDisplay';
+    font-weight: 300px;
+}
+.arrow-right i{
+    font-size: 20px;
+    color: white;
+    position: relative;
+    float:right;
+    right:0px;
+    margin-right:10%;
+}
+footer {
+    width:100%;
+    height: auto;
+    font-size:8px;
+    padding:8px;
+    background-color: #F2F2F2;
+    margin-top: 10%;
+    position: relative; 
+    text-align: right;
+    align-content: center;
+}

@@ -13,26 +13,26 @@
          url('../fonts/krub-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
          url('../fonts/krub-v4-latin-regular.svg#Krub') format('svg'); /* Legacy iOS */
   }
-  @font-face {
-    font-family: "RedHatDisplay";
-    src: url('../fonts/RedHatDisplay-MediumItalic.eot');
-    src: local(''),
-         url("../fonts/RedHatDisplay-Medium.woff2") format("woff2"),
-         url("../fonts/RedHatDisplay-Medium.woff") format("woff");
-    font-style: normal;
-    font-weight: 400;
-    font-display: fallback;
-  }
-  @font-face {
-    font-family: "RedHatDisplay";
-    src: url('../fonts/RedHatDisplay-Regular.eot');
-    src: local(''),
-         url("../fonts/RedHatDisplay-Regular.woff2") format("woff2"),
-         url("../fonts/RedHatDisplay-Regular.woff") format("woff");
-    font-style: normal;
-    font-weight: 300;
-    font-display: fallback;
-  }
+@font-face {
+font-family: "RedHatDisplay";
+src: url('../fonts/RedHatDisplay-MediumItalic.eot');
+src: local(''),
+        url("../fonts/RedHatDisplay-Medium.woff2") format("woff2"),
+        url("../fonts/RedHatDisplay-Medium.woff") format("woff");
+font-style: normal;
+font-weight: 400;
+font-display: fallback;
+}
+@font-face {
+font-family: "RedHatDisplay";
+src: url('../fonts/RedHatDisplay-Regular.eot');
+src: local(''),
+        url("../fonts/RedHatDisplay-Regular.woff2") format("woff2"),
+        url("../fonts/RedHatDisplay-Regular.woff") format("woff");
+font-style: normal;
+font-weight: 300;
+font-display: fallback;
+}
 body {
     font-family: 'Krub';
 }
@@ -233,6 +233,7 @@ button:active {
     border-radius: 10px;
     padding: 40px 15px;
     width: 100px;
+    height: max-content;
     font-size: 10px;
 }
 button, input[type="submit"], input[type="reset"] {
@@ -270,7 +271,7 @@ button, input[type="submit"], input[type="reset"] {
 #video {
     display: inline-block;
     position: relative;
-    width: auto;
+    width: 300px;
     border-radius:10px;
     height: auto;
 }
@@ -378,6 +379,22 @@ button, input[type="submit"], input[type="reset"] {
     float: right;
     width: 50%;
     height: max-content;
+}
+.call-to-action {
+    margin-top:10%;
+    position:absolute;
+    padding: 10px;
+    margin-right:10%;
+    right:0;
+    border-radius: 10px;
+    background-color: #C11010;
+    color: white;   
+
+}
+.call-to-action a {
+    text-decoration: none;
+    color: white; 
+    padding: 10px;
 }
 .pane-4 {
     align-content: center;

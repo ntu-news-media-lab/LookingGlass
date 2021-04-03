@@ -104,7 +104,6 @@ const Author = (props) => {
 }
 
 const AuthorNew = (props) => {
-
     return (
         <Row>
             <div className="author-img-left">
