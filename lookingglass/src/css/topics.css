@@ -41,13 +41,12 @@
     
 }
 
-button{
+#search_button{
     position: absolute;
     right: 0%;
-    
 }
 
-input{
+#search_input{
     border: none;
     width: 90%;
 }

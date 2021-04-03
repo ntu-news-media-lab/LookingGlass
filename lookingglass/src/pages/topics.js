@@ -136,9 +136,9 @@ class SearchForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
 
-        <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search articles" />
+        <input id="search_input" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search articles" />
 
-        <button ><BiSearch size={25} /><input type="submit" value="" /></button>
+        <button id="search_button"><BiSearch size={25} /><input type="submit" value="" /></button>
       </form>
 
     );

@@ -84,7 +84,7 @@
   width: 100%; /* Full width */
   height: 100%;
 }
-.content{
+#content{
   position: absolute;
   top:0;
   bottom:0;

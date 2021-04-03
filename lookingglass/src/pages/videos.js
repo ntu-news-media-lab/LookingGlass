@@ -8,7 +8,6 @@ import { Container, Row } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-import { Container, Grid, Col, Row } from 'react-bootstrap';
 import creative_commons from "../img/creative-commons.png";
 import nml from "../img/NewsMediaLabLogo.png";
 

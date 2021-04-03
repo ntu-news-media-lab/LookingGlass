@@ -10,7 +10,6 @@ import {
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import FreeScroll from "./pages/content"
-import "./css/common.css";
 // import "./css/features.css";
 // import "./css/highlight.css";
 import News from "./pages/news";
@@ -53,9 +52,12 @@ export default function App() {
         </Route>
 
         <Route path="/news/:source/:topic">
-          <News data={data}/>
+         <div id="">
+         <News data={data}/>
           <Video />
           <End/>
+         </div>
+          
         </Route>
 
         <Route path="/topics/:source">
@@ -63,7 +65,6 @@ export default function App() {
         </Route>
         
         <Route path="/">
-          <Loading />
           <Landing />
         </Route>
       </Switch>

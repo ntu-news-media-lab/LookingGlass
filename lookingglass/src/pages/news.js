@@ -53,7 +53,7 @@ function MainArticle(props) {
                 <div className="topic-text-container">
                     <a href={article_info['og']['url'] || ""} > <div className="topic-img"><Image src={article_info['og']['image']} /></div>
                     
-                        <div className="content">
+                        <div id="content">
                             <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
                             <span>{moment(article_info['pub_time']).format('DD MM YYYY HH:mm')}</span>
                             <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
