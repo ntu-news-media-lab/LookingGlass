@@ -14,3 +14,19 @@
     margin-left:auto;
     margin-right: auto;
 }
+
+#global-news-anchor{
+    text-decoration: none !important;
+    color: black;
+}
+
+.topic_thumbnail{
+    width:25px !important;
+    height: 25px !important;
+
+}
+.img-thumbnail{
+    padding:0;
+    border:none;
+
+}

@@ -8,22 +8,25 @@ import {
   useParams,
   useLocation
 } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import FreeScroll from "./pages/content"
-// import "./css/common.css";
 // import "./css/features.css";
 // import "./css/highlight.css";
 import News from "./pages/news";
-import PastConv from "./pages/pastConv";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Global from "./pages/global"
 import Video from "./pages/videos";
 import Landing from "./pages/landing";
 import Topics from "./pages/topics";
+import End from "./pages/end";
+import SuccessDisplay from './pages/test2'
+// import Global from "./pages/global";
 
 
 // logo
 import lg_logo from "./img/looking-glass@4x.png"
 import nml_log from "./img/NewsMediaLabLogo.png"
+import nml from "./img/NewsMediaLabLogo.png";
+import Pastconv from "./pages/pastConv";
+import Global from "./pages/global";
 
 
 
@@ -41,22 +44,33 @@ export default function App() {
     <Router>
       <Switch>
         <Route path="/about">
-          <About />
+        <SuccessDisplay />
+          {/* <About /> */}
         </Route>
 
-        <Route path="/news/:source">
-          <News data={data}/>
-          <PastConv />
-          <Global />
+
+        <Route path="/news/:source/:topic">
+         <News data={data}/>
+         <Global />
           <Video />
+          
+          <End/>
+          <Footer/>
         </Route>
 
         <Route path="/topics/:source">
           <Topics data={data}/>
         </Route>
+
+        <Route path="/pastcov">
+          <Pastconv />
+        </Route>
+
+        <Route path="/global/:topic">
         
+        </Route>
+
         <Route path="/">
-          <Loading />
           <Landing />
         </Route>
       </Switch>
@@ -73,7 +87,16 @@ function Home() {
 }
 
 function About() {
-  return <h2>About</h2>;
+ return(
+  <div id="loading_page" style={{ position: "relative", height: "100%",transition: "opacity 3s",opacity:"0"}}>
+  <div style={{ position: "absolute" }}>
+      <img src={lg_logo} style={{ width: '50%', marginLeft: "25%", marginTop: "50%" }} />
+      <div style={{ marginTop: "5%", textAlign: "center", textSizeAdjust: "auto" }}>For <span style={{ color: "rgb(161,64,72)" }}>The Conversation</span></div>
+      <div style={{ marginTop: "35%", textAlign: "center", textSizeAdjust: "auto" }}> Powered by </div>
+      <img src={nml_log} style={{ width: '50%', marginLeft: "25%" }} />
+  </div>
+</div>
+ )
 }
 
 function Loading() {
@@ -92,3 +115,12 @@ function Loading() {
 
 }
 
+
+function Footer(){
+  return(
+    <footer>
+    <span>Copyright 2021 &copy; The Looking Glass</span>
+    <span>&emsp; Supported by &emsp;<img src={nml} style={{width: "auto", height: "10px"}} /></span>
+</footer>
+  )
+}

@@ -6,7 +6,6 @@
 .pastConv_container{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40%;
     position: relative;
     font-size: medium;
 }
@@ -23,6 +22,9 @@
     margin-left:auto;
     margin-right: auto;
 }
+/* .carousel-item{
+    display: block !important;
+} */
 
 .secTitle{
     margin-bottom: 5%;
@@ -46,6 +48,8 @@
     height: max-content;
     
 }
+
+
 #bubble_img{
     width: 100%;
     height: max-content;
@@ -54,12 +58,10 @@
     /* top:10%; */
 }
 .carousel {
-    position: absolute;
     /* padding:5%; */
     width: 100% !important; 
     height: 100% !important;
-    /* background-color: grey; */
-}
+} 
 
 .carousel-inner img{
     padding-top: 1em;
@@ -73,15 +75,17 @@
     text-align: left;
     font-size: 18px;
     line-height: 1.2em !important;
+    
 }
 .carousel-caption p{
     color: #0b0b0b;
     text-overflow: ellipsis;
     text-align: left;
     font-size: 12px;
+    margin-top:20%;
 }
 .carousel-indicators {
-    bottom:-2px !important;
+    bottom: 50px !important;
 }
 .carousel-indicators li{
     background-color:gray !important;
@@ -95,9 +99,19 @@
 }
 .tc-logo {
     position: relative;
-    margin-top: 25%;
 }
 .author-container {
     margin-top: 5%;
 }
 
+
+.bubble_imge-container{
+    background-image: url('../img/speech_bubble2.png');
+    background-size: cover;
+    width: 80%;
+    height: 400px;
+    max-width: 500px;
+    min-height: 400px;
+    max-height: 500px;
+
+}
