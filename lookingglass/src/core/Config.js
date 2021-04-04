@@ -96,8 +96,8 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
                 let twitter_id = topic.twitter_id;
                 let global_cov = topic.global_cov;
                 let local = "http://127.0.0.1:5000/"
-                let url = local + `news?url=${topic.article_url}&keyword=${keyword}`;
-                // let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword}`
+                // let url = local + `news?url=${topic.article_url}&keyword=${keyword}`;
+                let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword}`
                 promises.push(read_news(url).then(res=>{
                     topic['fetched']= res;
                     res['twitter_id']=twitter_id;
@@ -168,9 +168,9 @@ function extractEventFromCSVObject(orig_row) {
 
 
 export async function youtube_video(keyword){
-    // let domain = "https://looking-glass-backend.herokuapp.com"
+    let domain = "https://looking-glass-backend.herokuapp.com"
     let keyword_cleaned = keyword.trim().replace(" ", "+");
-    let domain = "http://127.0.0.1:5000";
+    // let domain = "http://127.0.0.1:5000";
     let url = `${domain}/videos?keyword=${keyword_cleaned}`;
     let res = null;
         return new Promise((resolve,) =>{
