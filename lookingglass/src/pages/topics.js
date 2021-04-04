@@ -19,6 +19,7 @@ export default function Topics(props) {
   const [topic_list, set_topic_list] = useState([]);
   const [fetch_info, set_fetch_info] = useState([]);
   const [fetch_all, set_fetch_all] = useState({});
+  const [visit_status, set_visit_status] = useState(false);
   // const [topics,set_topics] = useState([]);
 
 
@@ -26,44 +27,53 @@ export default function Topics(props) {
     const fetchData = async () => {
       const data = await readGoogleAsCSV(source, '');
       set_topic_list(data.topics);
+      set_visit_status(true);
     }
     fetchData();
   }, []);
 
 
-  return (
-    <div class="topic_page_overall" >
-    <Loading />
-    <div class="topic_container">
-      <Header />
-      <div className="topiclist">
-        <ListGroup variant="flush">
-          {
-            topic_list.map((item, i) => 
-            <TopicListItems topic_data={item} index={i} csv_source={source} />)
-          }
-        </ListGroup>
+  if (visit_status) {
+    return (
+      <div class="topic_page_overall" >
+        <Loading />
+        <div class="topic_container">
+          <Header />
+          <div className="topiclist">
+            <ListGroup variant="flush">
+              {
+                topic_list.map((item, i) =>
+                  <TopicListItems topic_data={item} index={i} csv_source={source} />)
+              }
+            </ListGroup>
+          </div>
+          <SearchBar />
+        </div>
       </div>
-      <SearchBar />
-    </div>
-    </div>
-  )
-
+    )
+  }
+  else {
+    return (
+      <div class="topic_page_overall" >
+        <Loading />
+      </div>
+    )
+  }
 }
 
-function TopicListItems(props){
-  let news_link = "/news/" + props.csv_source + "/" + props.topic_data.topic_keyword.replace(' ','+');
-  if (props!==undefined){
-    
+function TopicListItems(props) {
+  let news_link = "/news/" + props.csv_source + "/" + props.topic_data.topic_keyword.replace(' ', '+');
+  if (props !== undefined) {
+
     return (
       <a href={news_link} >
         <ListGroup.Item>
-          <Image className="topic_thumbnail" src={props.topic_data['fetched']['og']['image']}  />{props.topic_data.topic_keyword}
+          <Image className="topic_thumbnail" src={props.topic_data['fetched']['og']['image']} />{props.topic_data.topic_keyword}
         </ListGroup.Item></a>
     )
   }
-  
-  
+
+
 }
 
 

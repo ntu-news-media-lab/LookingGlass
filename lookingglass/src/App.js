@@ -18,14 +18,15 @@ import Landing from "./pages/landing";
 import Topics from "./pages/topics";
 import End from "./pages/end";
 import SuccessDisplay from './pages/test2'
-// import PastConv from "./pages/pastConv";
 // import Global from "./pages/global";
 
 
 // logo
 import lg_logo from "./img/looking-glass@4x.png"
 import nml_log from "./img/NewsMediaLabLogo.png"
+import nml from "./img/NewsMediaLabLogo.png";
 import Pastconv from "./pages/pastConv";
+import Global from "./pages/global";
 
 
 
@@ -47,23 +48,28 @@ export default function App() {
           {/* <About /> */}
         </Route>
 
-        <Route path="/pastconv">
-            
-        </Route>
 
         <Route path="/news/:source/:topic">
-         <div id="">
          <News data={data}/>
+         <Global />
           <Video />
-          <End/>
-         </div>
           
+          <End/>
+          <Footer/>
         </Route>
 
         <Route path="/topics/:source">
           <Topics data={data}/>
         </Route>
+
+        <Route path="/pastcov">
+          <Pastconv />
+        </Route>
+
+        <Route path="/global/:topic">
         
+        </Route>
+
         <Route path="/">
           <Landing />
         </Route>
@@ -109,3 +115,12 @@ function Loading() {
 
 }
 
+
+function Footer(){
+  return(
+    <footer>
+    <span>Copyright 2021 &copy; The Looking Glass</span>
+    <span>&emsp; Supported by &emsp;<img src={nml} style={{width: "auto", height: "10px"}} /></span>
+</footer>
+  )
+}

@@ -42,7 +42,7 @@ export default function Video(props) {
         return (
             <div className="video-sec-container">
                 <div className="secTitle">
-                    <div className="secBar"></div>
+                    <div id="line"></div>
                     <div>Videos</div>
                     <div style={{ fontSize: "0.7em" }}>See through the news</div>
                 </div>
@@ -95,14 +95,10 @@ const VideoItem = (props) => {
     return (
        <div id={'video_'+props.id} className="ind-video">
             <Row className="video">
-                <iframe src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </Row>
-            {/* <Row className="video-source">
-                <Image style={{ width: 24 }} roundedCircle src={"https://yt3.ggpht.com/ytc/AAUvwnhSiMEt6hvnT5QbstuehkxgzNl5C3jTanyrFOn-H6g=s68-c-k-c0x00ffffff-no-rj"} />
-                <span style={{ marginLeft: "2.5%" }}>BBC News</span>
-            </Row> */}
             <Row className="video-title">
-              {props.desc}
+              <span>{props.desc}</span>
             </Row>
         </div>
     

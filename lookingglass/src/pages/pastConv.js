@@ -1,5 +1,6 @@
 import react, { Component, useEffect, useState } from "react";
 import "../css/pastconv.css";
+import "../css/news.css";
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel'
@@ -12,14 +13,9 @@ import Skeleton from 'react-loading-skeleton';
 
 export default function Pastconv(props) {
 
-    if (props.topic_data) {
-        let pastconv_result = props.topic_data.past_conv;
-
-        if (pastconv_result) {
-            if (pastconv_result.length == 0) {
-                return null;
-            }
-            else {
+    if (props.past_convs) {
+        const pastconv_result = props.past_convs;
+        console.log(pastconv_result);
                 return (
                     <div className="pastConv_container">
                         <div className="secTitle">
@@ -29,49 +25,44 @@ export default function Pastconv(props) {
                         </div>
 
                         <div className="convBubble_container">
-                            <Image id="bubble_img" src={convBubble} />
-                            <Carousel interval={99999}>
-                                {
-                                    pastconv_result.forEach((item, i) => <PastConv_item data={item} />)
-                                }
-                            </Carousel>
-                        </div>
+                            <ControlledCarousel  pastconv_result={pastconv_result}/>
+
                         <div className="tc-logo">
                             <img src={cn_lgogo} alt="the-conversation-logo" />
                         </div>
                     </div>
+                    </div>
                 );
             }
-
         }
-    }
-}
 
-const PastConv_item = (props) => {
-    if (props.data !== undefined) {
-        let past_conv = props.data;
-        console.log(past_conv);
-        return (
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={white_bg}
-                    style={{ height: "125%" }}
-                    alt="Second slide"
-                />
-                <div className="convTitle">PAST COVERAGE</div>
-                <Carousel.Caption>
-                    <h3>{past_conv.headline}</h3>
-                    <p>{past_conv.summary}</p>
-                </Carousel.Caption>
+
+function ControlledCarousel(props) {
+    const [index, setIndex] = useState(0);
+    
+    const handleSelect = (selectedIndex, e) => {
+      setIndex(selectedIndex);
+    };
+    console.log(props);
+    const past_ind = props.pastconv_result.map((item, i) => {
+        return(
+            <Carousel.Item id={"past_item_"+i}>
+            <a href={item['url']}>
+            <div className="bubble_imge-container" />
+            <div className="convTitle">PAST COVERAGE</div>
+            <Carousel.Caption>
+            <h3>{item['headline']}</h3>
+            <p id="past_summary">{item['summary']}</p>
+            </Carousel.Caption>
+            </a>
             </Carousel.Item>
+            
         )
-    }
-    else {
-        return (
-            <Skeleton count={10} />
-        );
-    }
-}
-
-
+            })
+    
+    return (
+      <Carousel activeIndex={index} onSelect={handleSelect} interval={99999}>
+            {past_ind}
+      </Carousel>
+    );
+  }

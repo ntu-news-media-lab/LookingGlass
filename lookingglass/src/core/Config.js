@@ -92,12 +92,16 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
         try{
             if(topic.article_url){
                 let fetch_info = null;
-                let keyword=topic.topic_keyword
+                let keyword=topic.topic_keyword;
+                let twitter_id = topic.twitter_id;
+                let global_cov = topic.global_cov;
                 let local = "http://127.0.0.1:5000/"
                 let url = local + `news?url=${topic.article_url}&keyword=${keyword}`;
                 // let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword}`
                 promises.push(read_news(url).then(res=>{
                     topic['fetched']= res;
+                    res['twitter_id']=twitter_id;
+                    res['global_cov']=global_cov;
                     topic_list_config[keyword]= res;
                 }))
             }
@@ -149,9 +153,16 @@ function extractEventFromCSVObject(orig_row) {
     
         topic_keyword:row['page_keyword'] || '',
         article_url:row['main_article_url'] || '',
-        gobal_cov: row['global_coverage'] || ""
+        global_cov: row['global_coverage'] || "",
+        twitter_id:row['twitter_url'] || "",
 
     }
+
+    if (row['twitter_url']) {
+        let split_url = row['twitter_url'].trim().split("/")
+        d.twitter_id =split_url[split_url.length-1];
+    }
+ 
     return d
 }
 
@@ -161,6 +172,26 @@ export async function youtube_video(keyword){
     let keyword_cleaned = keyword.trim().replace(" ", "+");
     let domain = "http://127.0.0.1:5000";
     let url = `${domain}/videos?keyword=${keyword_cleaned}`;
+    let res = null;
+        return new Promise((resolve,) =>{
+            window.fetch(url, { mode: 'cors' })
+                .then(response=> {
+                    res = response.json();
+                    console.log(res);
+                    resolve(res);
+                })
+                .catch(msg=>{
+                    console.log("error in resolving");
+                }
+                )
+        })
+}
+
+export async function global_coverage_search(keyword){
+    // let domain = "https://looking-glass-backend.herokuapp.com"
+    let keyword_cleaned = keyword.trim().replace(" ", "+");
+    let domain = "http://127.0.0.1:5000";
+    let url = `${domain}/global?keyword=${keyword_cleaned}`;
     let res = null;
         return new Promise((resolve,) =>{
             window.fetch(url, { mode: 'cors' })

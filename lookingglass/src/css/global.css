@@ -2,3 +2,19 @@
     margin-bottom: 10%;
     margin-top: 10%;
 }
+
+#global-news-anchor{
+    text-decoration: none !important;
+    color: black;
+}
+
+.topic_thumbnail{
+    width:25px !important;
+    height: 25px !important;
+
+}
+.img-thumbnail{
+    padding:0;
+    border:none;
+
+}

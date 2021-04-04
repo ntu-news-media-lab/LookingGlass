@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from 'react';
 import "../css/end.css";
 import creative_commons from "../img/creative-commons.png";
-import nml from "../img/NewsMediaLabLogo.png";
+
 
 export default function End(props){
 
@@ -30,11 +30,6 @@ export default function End(props){
                     </div>
                 </a>
         </div>
-            
-            <footer>
-                <span>Copyright 2021 &copy; The Looking Glass</span>
-                <span>&emsp; Supported by &emsp;<img src={nml} style={{width: "auto", height: "10px"}} /></span>
-            </footer>
             
     </div>
     )
