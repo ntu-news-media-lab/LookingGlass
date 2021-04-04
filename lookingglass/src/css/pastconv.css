@@ -1,8 +1,8 @@
-#container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.mobile-container {
+    max-width:700px;
+    margin-left:auto;
+    margin-right:auto;
+}
 .pastConv_container{
     margin-left: auto;
     margin-right: auto;

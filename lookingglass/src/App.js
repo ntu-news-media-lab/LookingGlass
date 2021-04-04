@@ -48,7 +48,7 @@ export default function App() {
           {/* <About /> */}
         </Route>
 
-
+        <div className="mobile-container">
         <Route path="/news/:source/:topic">
          <News data={data}/>
          <Global />
@@ -57,6 +57,7 @@ export default function App() {
           <End/>
           <Footer/>
         </Route>
+        </div>
 
         <Route path="/topics/:source">
           <Topics data={data}/>
@@ -67,7 +68,6 @@ export default function App() {
         </Route>
 
         <Route path="/global/:topic">
-        
         </Route>
 
         <Route path="/">

@@ -1,8 +1,7 @@
-
-#container {   
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+.mobile-container {
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
 }
 #line {
     background-color: #C11010;
@@ -18,11 +17,19 @@
 }
 
 .video-sec-container{
-    margin:10%;
+    max-width: 700px;
+    align-content: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .ind-video-container{
     margin-top:5%;
+    margin-bottom: 5%;
+}
+.videos {
+    margin-left:auto;
+    margin-right:auto;
 }
 .video iframe{
     width: auto;
@@ -39,8 +46,7 @@
     margin-bottom:3%;
 }
 
-.video-title span 
-{
-    padding-left: 3%;
+.video-title span {
+    padding: 3% 0% 0% 5%;
 }
 

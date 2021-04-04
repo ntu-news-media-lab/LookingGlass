@@ -30,10 +30,10 @@
   font-weight: 300;
   font-display: fallback;
 }
-#container {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+.mobile-container {
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
 }
 .topic-container {
   background-color: white;
@@ -123,6 +123,7 @@
 .author {
   margin-left:10%;
   margin-top: 5%;
+  margin-bottom: 2%;
   width: 80%;
   max-width: 500px;
   height: max-content;

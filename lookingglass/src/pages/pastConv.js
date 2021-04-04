@@ -17,11 +17,12 @@ export default function Pastconv(props) {
         const pastconv_result = props.past_convs;
         console.log(pastconv_result);
                 return (
+                    <div className="mobile-container">
                     <div className="pastConv_container">
                         <div className="secTitle">
                             <div id="line"></div>
                             <h1>Perspectives</h1>
-                            <p style={{ fontSize: "10px", marginTop: "-5px" }}></p>
+                            <p style={{ fontSize: "10px", marginTop: "-5px" }}>Hear From Others</p>
                         </div>
 
                         <div className="convBubble_container">
@@ -30,6 +31,7 @@ export default function Pastconv(props) {
                         <div className="tc-logo">
                             <img src={cn_lgogo} alt="the-conversation-logo" />
                         </div>
+                    </div>
                     </div>
                     </div>
                 );
