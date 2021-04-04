@@ -14,6 +14,7 @@ import cn_lgogo from "../img/The-Conversation.png"
 export default function Pastconv(props) {
     
     return (
+        <div id="container">
         <div className="pastConv_container">
             <div className="secTitle">
             <div id="line"></div>
@@ -28,7 +29,7 @@ export default function Pastconv(props) {
                     <Carousel.Item>
                         <img className="d-block w-100"
                             src={white_bg}
-                            style={{height:"125%"}}
+                            style={{height:"100%"}}
                             alt="First slide" 
                         />
                         <a href="https://www.youtube.com/" target="_blank">
@@ -73,7 +74,7 @@ export default function Pastconv(props) {
                 <img src={cn_lgogo} alt="the-conversation-logo" />
             </div>
         </div>
-
+        </div>
     )
 }
 

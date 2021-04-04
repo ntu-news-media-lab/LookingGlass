@@ -1,3 +1,9 @@
+
+#container {   
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
 #line {
     background-color: #C11010;
     display: block;

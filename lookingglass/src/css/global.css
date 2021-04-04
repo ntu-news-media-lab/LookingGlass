@@ -2,3 +2,15 @@
     margin-bottom: 10%;
     margin-top: 10%;
 }
+#line {
+    background-color: #C11010;
+    display: block;
+    width: 40px;
+    height:2px;
+    position: relative;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}

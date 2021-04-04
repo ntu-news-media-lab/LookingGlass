@@ -29,7 +29,7 @@ export default function News(props) {
 
     
     return (
-        <div>
+        <div id="container">
             {/* <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{topic_list.topics[0].topic_keyword}</div> */}
             <div className="topic-container">
                 <div id="back-icon"><i class="bi bi-chevron-left" style={{fontSize: "20px", fontWeight: "400px", color: "black"}} /></div>
@@ -40,7 +40,7 @@ export default function News(props) {
             <div className="topic-text-container">
                 <div className="topic-img"><img src={props.data.img_src} /></div>
                     
-                <div className="content">
+                <div id="content">
                 <img src={TClogo} alt="TC logo" style={{height:"25px", width:"auto", marginBottom:"3%"}} />
                 <div className="topic_headline">{props.data.headline}</div>
                 <div className="topic_summary">{props.data.summary}</div>

@@ -14,13 +14,13 @@ export default function Video(props) {
     const newsroom = "https://theconversation.com/id/in-english"
 
     return (
-        <div>
+        <div id="container">
             <div className="video-sec-container">
             <div className="secTitle">
                 <div className="secBar"></div>
                 <div id="line"></div>
                 <h1>Videos</h1>
-                <div style={{ fontSize: "10px", marginTop:"-5px"}}>See through the news</div>
+                <p style={{ fontSize: "10px", marginTop:"-5px"}}>See through the news</p>
             </div>
 
             <div className="videos">

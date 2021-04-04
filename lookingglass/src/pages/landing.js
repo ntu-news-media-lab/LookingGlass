@@ -10,20 +10,18 @@ import vid from "../img/LG-how-to.jpg";
 
 export default function Landing(props) {
     function Generate() {
-        const domain = "https://lookingglass.com"
-        // var userInput = document.getElementById("sheet");
-        var userInput = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/edit#gid=0"
+        let domain = "https://looking-glass.vercel.app/topics/"
+        var userInput = document.getElementById("sheet").value;
+        // var userInput = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/edit#gid=0";
         var setLink = document.getElementById("link");
         var setIframe = document.getElementById("iframe");
+        var output;
 
-        let regex = "/^[a-zA-Z0-9-_]+$/";
-        var output = userInput.match(regex);
-
-        setLink.value = String(output);
-        // if (getMatch == true) {
-        //     sheetId = getMatch;
-        // }
-
+        output = userInput.split('/');
+        let sourceID = String(output[5])
+        let link = domain + sourceID
+        console.log(link)
+        setLink.value = link;
     }
     function Copy(choice) {
         if (choice==1) {
@@ -62,6 +60,7 @@ export default function Landing(props) {
             <div className="navbar">
                 <a href="#about">About</a>
                 <a href="#howitworks">How it works</a>
+                <a href="/topics">Archive</a>
                 {/* <a href="#examples">Example</a> */}
             </div>
             </div>
@@ -74,10 +73,10 @@ export default function Landing(props) {
                 <span>Looking Glass Page</span><br></br>
                 <p style={{marginTop: "5%", marginBottom: "5%", lineHeight:"1.5em", fontFamily: 'Krub'}}>Simply copy and paste the URL onto your social media post to publicise it, or use the iframe to embed the Looking Glass widget on your website!</p>
                 <div className="input-group input-group-mb-3 round" style={{marginTop: "20px"}}>
-                    <input type="text" id= "sheet" class="form-control round" placeholder="Google Spreadsheet URL" />
-                    <input type="text" class="form-control round" placeholder="Image URL of Logo (optional)" />
+                    <input type="text" id= "sheet" className="form-control round" placeholder="Google Spreadsheet URL" />
+                    <input type="text" className="form-control round" placeholder="Image URL of Logo (optional)" />
                     <div class="input-group-append round">
-                        <button onClick={() => Show()} class="btn btn-outline-secondary round" style={{backgroundColor: "rgb(199, 37, 37)", width: "80px"}}><i class="bi bi-chevron-right" aria-hidden="true" style={{color:"white"}}></i></button>
+                        <button onClick={() => Show()} className="btn btn-outline-secondary round" style={{backgroundColor: "#c11010", width: "80px"}}><i class="bi bi-chevron-right" aria-hidden="true" style={{color:"white"}}></i></button>
                     </div>
                 </div>
             </div>
@@ -157,7 +156,7 @@ export default function Landing(props) {
                     </Row>
                 </div>
                 <div className="right-pane">
-                    <img src={iphone} style={{width:"234.2px", height: "511.2px"}} />
+                    <img src={iphone} style={{width:"50%", height: "auto", marginTop: "40%"}} />
                 </div>
             </div>   
 

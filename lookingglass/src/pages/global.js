@@ -24,11 +24,11 @@ import Flicking from "@egjs/react-flicking";
 export default function Global(props) {
     return (
         <div className="global_container">
-
+            <div id="line"></div>
             <div className="secTitle">
                 <div className="secBar"></div>
-                <div>Global Coverage</div>
-                <div style={{ fontSize: "0.7em" }}>Hear from Others</div>
+                <h1>Global Coverage</h1>
+                <p style={{ fontSize: "10px", marginTop:"-5px"}}>Hear from Others</p>
             </div>
 
             <div className="global_stories">
@@ -53,7 +53,7 @@ function FreeScroll(props){
             circular={false}
             moveType={"snap"}
           >
-            <div class="indivual-story">
+            <div className="indivual-story">
                 <Container>
                     <Col>
                         <Row><Image src={glo_image} style={{marginTop:5, width:200,height:200, borderRadius:5}}></Image></Row>
@@ -66,7 +66,7 @@ function FreeScroll(props){
                     </Col>
                 </Container>
             </div>
-            <div class="indivual-story">
+            <div className="indivual-story">
                 <Container>
                     <Col>
                         <Row><Image src={glo_image}  style={{marginTop:5, width:200,height:200, borderRadius:5}}></Image></Row>

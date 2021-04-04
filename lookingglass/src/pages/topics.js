@@ -64,7 +64,7 @@ export default function Global(props) {
      return(
         <a href={props.topic_data.og.url} >
         <ListGroup.Item> 
-            <Image className="topic_thumbnail" src={props.topic_data.og.image} roundedCircle />{props.topic_data.topic}
+            <Image className="topic_thumbnail" src={props.topic_data.og.image} style={{borderRadius: "50%"}} />{props.topic_data.topic}
         </ListGroup.Item></a>
      )
  }

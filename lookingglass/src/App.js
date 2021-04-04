@@ -47,7 +47,7 @@ export default function App() {
         <Route path="/news/:source">
           <News data={data}/>
           <PastConv />
-          {/* <Global /> */}
+          <Global />
           <Video />
         </Route>
 
