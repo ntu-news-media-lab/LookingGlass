@@ -48,7 +48,7 @@ export default function News(props) {
         )
     }
     else {
-        return <MainArticleLoading/>;
+        return <MainArticleLoading />;
     }
 
 }
@@ -106,27 +106,27 @@ function MainArticleLoading() {
             <div className="topic-text-container">
                 <div className="topic-img"><Skeleton /></div>
 
-                    
-                        {/* <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
+
+                {/* <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
                         <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
                         <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                         <div className="topic_summary">{article_info['og']['description'] || "summary"}</div> */}
-                        {<Skeleton count={20}/>}
-                    
-            
+                {<Skeleton count={20} />}
+
+
                 {/* <div className="topic_left_top_tag">SPOTLIGHT</div> */}
             </div>
 
-            <div class="author">
+            <div className="author">
                 <Container>
                     <Row>
                         <div className="author-img-left">
-                            <div className="author-img">{<Skeleton/>}</div>
+                            <div className="author-img">{<Skeleton />}</div>
                         </div>
                         <div className="author-desc-right">
-                            <span id="author-name">{<Skeleton/>}</span>
+                            <span id="author-name">{<Skeleton />}</span>
                             <br></br>
-                            <span id="author-bio">{<Skeleton/>}</span>
+                            <span id="author-bio">{<Skeleton />}</span>
                         </div>
                     </Row>
                 </Container>

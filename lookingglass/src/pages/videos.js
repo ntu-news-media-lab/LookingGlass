@@ -43,8 +43,8 @@ export default function Video(props) {
             <div className="video-sec-container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <div>Videos</div>
-                    <div style={{ fontSize: "0.7em" }}>See through the news</div>
+                    <h1>Videos</h1>
+                    <p style={{ fontSize: "10px", marginTop: "-5px" }}>See through the news</p>
                 </div>
                 <div className="videos">
                 <Container className="ind-video-container">
@@ -68,16 +68,16 @@ export default function Video(props) {
     }
     else {
         return (
-        <div>
+        <div className="mobile-container">
             <div className="video-sec-container">
             <div className="secTitle">
                 <div className="secBar"></div>
                 <div id="line"></div>
                 <h1>Videos</h1>
-                <div style={{ fontSize: "10px", marginTop:"-5px"}}>See through the news</div>
+                <p style={{ fontSize: "10px", marginTop:"-5px"}}>See through the news</p>
             </div>
             <div className="videos">
-                <Skeleton  count={5}/>
+                <Skeleton  count={5} />
             </div>
             </div>
         </div>

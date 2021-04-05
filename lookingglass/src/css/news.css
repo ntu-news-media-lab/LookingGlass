@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Krub';
   font-style: normal;
@@ -31,6 +30,11 @@
   font-weight: 300;
   font-display: fallback;
 }
+.mobile-container {
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+}
 .topic-container {
   background-color: white;
   width:100%;
@@ -47,7 +51,7 @@
   font-size: 60px;
 }
 #back-icon {
-  position: absolute;
+  position: relative;
   left:0;
   margin-left: 5%;
 }
@@ -94,6 +98,16 @@
   padding: 70% 10% 5%;
   color: #f2f2f2; /* Grey text */
 }
+#content{
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  background: rgb(0, 0, 0);  /*Fallback color */
+  background: rgba(0, 0, 0, 0.5); /*Black background with 0.5 opacity */
+  padding: 70% 10% 5%;
+  color: #f2f2f2; /* Grey text */
+}
 
 
 .topic-img img {
@@ -109,6 +123,7 @@
 .author {
   margin-left:10%;
   margin-top: 5%;
+  margin-bottom: 2%;
   width: 80%;
   max-width: 500px;
   height: max-content;

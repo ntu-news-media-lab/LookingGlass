@@ -35,9 +35,9 @@ export default function Topics(props) {
 
   if (visit_status) {
     return (
-      <div class="topic_page_overall" >
+      <div className="topic_page_overall" >
         <Loading />
-        <div class="topic_container">
+        <div className="topic_container">
           <Header />
           <div className="topiclist">
             <ListGroup variant="flush">
@@ -54,7 +54,7 @@ export default function Topics(props) {
   }
   else {
     return (
-      <div class="topic_page_overall" >
+      <div className="topic_page_overall" >
         <Loading />
       </div>
     )
@@ -66,7 +66,7 @@ function TopicListItems(props) {
   if (props !== undefined) {
 
     return (
-      <a href={news_link} >
+      <a href={news_link} target="_blank">
         <ListGroup.Item>
           <Image className="topic_thumbnail" src={props.topic_data['fetched']['og']['image']} />{props.topic_data.topic_keyword}
         </ListGroup.Item></a>

@@ -35,6 +35,8 @@ font-display: fallback;
 }
 body {
     font-family: 'Krub';
+    margin-left:auto;
+    margin-right:auto;
 }
 h1 {
     font-size: 25px;

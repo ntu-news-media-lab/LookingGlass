@@ -48,26 +48,30 @@ export default function App() {
           {/* <About /> */}
         </Route>
 
-
         <Route path="/news/:source/:topic">
+          <div className="mobile-container">
          <News data={data}/>
          <Global />
           <Video />
           
           <End/>
           <Footer/>
+          </div>
         </Route>
 
         <Route path="/topics/:source">
+          {/* <div className="mobile-container"> */}
           <Topics data={data}/>
+          {/* </div> */}
         </Route>
 
         <Route path="/pastcov">
+        <div className="mobile-container">
           <Pastconv />
+          </div>
         </Route>
 
         <Route path="/global/:topic">
-        
         </Route>
 
         <Route path="/">

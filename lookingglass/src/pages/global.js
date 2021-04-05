@@ -9,8 +9,6 @@ import { global_coverage_search } from '../core/Config'
 import Flicking from "@egjs/react-flicking";
 
 
-
-
 export default function Global(props) {
     let { source, topic } = useParams();
     let topic_keyword = null;
