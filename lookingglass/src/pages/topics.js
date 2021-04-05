@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import lg_logo from "../img/looking-glass@4x.png"
+import smol_logo from "../img/smol-logo.png";
 import cn_logo from "../img/conv-logo.svg"
 import { ListGroup, Image } from 'react-bootstrap';
 import '../css/topics.css'
@@ -105,16 +106,10 @@ function Header(props) {
 
   return (
     <div>
-      <img
-        src={lg_logo}
-        style={{
-          marginLeft: "40%",
-          maxWidth: "20%",
-          marginTop: "5%"
-        }} />
-      <div className="topic-page-tagline">
-        
-        <div id="second-tagline">{props.header_content[0]['header'] || "What's Treading?"}</div>
+      <div id="image-container">
+        <img src={smol_logo} /></div>
+      <div className="topic-page-tagline" style={{ textAlign: "none" }}>
+        <div id="second-tagline"><strong>{props.header_content[0]['header'] || "What's Treading?"}</strong></div>
         <div id="first-tagline">{props.header_content[0]['subheader'] || "THIS WEEK"}</div>
       </div>
     </div>
@@ -124,23 +119,18 @@ function Header(props) {
 
 function SearchBar() {
   return (
-
-    <div className="search-section">
-      <ListGroup variant="flush">
-        <ListGroup.Item>
-          <SearchForm />
-        </ListGroup.Item>
-      </ListGroup>
-      <div className="news-org-logo">
-        <span>on  </span>
-        <img
-          src={cn_logo}
-          style={{
-            maxWidth: "50%",
-          }} />
+    <div className="mobile-container">
+      <div className="search-section">
+        <ListGroup variant="flush">
+          <ListGroup.Item>
+            <SearchForm />
+          </ListGroup.Item>
+        </ListGroup>
+        <div className="news-org-logo">
+          <span>on &nbsp; <img src={cn_logo} /></span>
+        </div>
       </div>
     </div>
-
   )
 
 }

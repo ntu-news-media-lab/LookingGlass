@@ -14,15 +14,32 @@
     margin-left:auto;
     margin-right: auto;
 }
-
+.secTitle h3 {
+    margin-top:3%;
+}
+.secTitle p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+#news-org-title {
+    font-size:14px;
+    font-family:"RedHatDisplay";
+    font-weight: 400px;
+}
 #global-news-anchor{
     text-decoration: none !important;
     color: black;
 }
-
+.glo-headlines{
+    font-size: 18px;
+    line-height: 1.5em;
+    font-style:bold;
+    font-weight: 400px;
+    font-family: 'RedHatDisplay';
+}
 .topic_thumbnail{
-    width:25px !important;
-    height: 25px !important;
+    width:20px !important;
+    height:20px !important;
 
 }
 .img-thumbnail{

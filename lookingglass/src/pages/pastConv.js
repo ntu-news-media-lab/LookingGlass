@@ -17,20 +17,18 @@ export default function Pastconv(props) {
         const pastconv_result = props.past_convs;
         console.log(pastconv_result);
         return (
-            <div className="mobile-container">
-                <div className="pastConv_container">
-                    <div className="secTitle">
-                        <div id="line"></div>
-                        <h1>Related News</h1>
-                        {/* <p>Hear From Others</p> */}
-                    </div>
+            <div className="pastConv_container">
+                <div className="secTitle">
+                    <div id="line"></div>
+                    <h3>Related News</h3>
+                    {/* <p>Hear From Others</p> */}
+                </div>
 
-                    <div className="convBubble_container">
-                        <ControlledCarousel pastconv_result={pastconv_result} />
+                <div className="convBubble_container">
+                    <ControlledCarousel pastconv_result={pastconv_result} />
 
-                        <div className="tc-logo">
-                            <img src={cn_lgogo} className="news_org_logo" alt="the-conversation-logo" />
-                        </div>
+                    <div className="tc-logo">
+                        <img src={cn_lgogo} alt="the-conversation-logo" />
                     </div>
                 </div>
             </div>

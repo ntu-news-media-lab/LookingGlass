@@ -14,6 +14,9 @@ export default function Landing(props) {
     function Generate() {
         let domain = "https://looking-glass.vercel.app/topics/"
         let domain_local = "http://localhost:3000/topics/"
+        let iframe_setting_start = "<iframe src='"
+        let iframe_setting_end = "' max-width='400px' height='650px' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>"
+
         var userInput = document.getElementById("sheet").value;
         // var userInput = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/edit#gid=0";
         var setLink = document.getElementById("link");
@@ -22,9 +25,13 @@ export default function Landing(props) {
 
         output = userInput.split('/');
         let sourceID = String(output[5])
+
         let preview_url = domain + sourceID
         // let preview_url = domain_local + sourceID;
         setLink.value = preview_url;
+
+        let iframe = iframe_setting_start + preview_url + iframe_setting_end;
+        setIframe.value = iframe;
 
         //place preview link to button
         var preview = document.getElementById("preview-link");
@@ -92,7 +99,13 @@ export default function Landing(props) {
                 <Container>
                     <div id="pane-1">
                         <Row>
-                            <Col md="auto"><br></br><span style={{ color: "white" }}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></Col>
+                            <Col></Col>
+                            <Col md="auto"></Col>
+                            <Col><div><span id="copy-title">Looking Glass URL</span></div></Col>
+                            <Col><div><span id="copy-title" style={{marginLeft:"8%"}}>Embed</span></div></Col>
+                        </Row>
+                        <Row>
+                            <Col md="auto"><span style={{ color: "white" }}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></Col>
                             <Col md="auto">
                                 <div className="preview-tab">
                                     <a id="preview-link" href="" target="_blank" style={{ textDecoration: "none", color: "white" }}>
@@ -103,7 +116,7 @@ export default function Landing(props) {
                             <Col>
                                 <div className="input-group-2">
                                     <div className="input-group-2-icon"><button onClick={() => Copy(1)}><i class="bi bi-files" aria-hidden="true" style={{ fontSize: "25px" }}></i><span> Copy link</span></button></div>
-                                    <div className="input-group-2-area"><input type="text" id="link" placeholder="Email Address" value="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650" flex-wrap="wrap" /></div>
+                                    <div className="input-group-2-area"><input type="text" id="link" placeholder="Email Address" value="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650" flex-wrap="wrap" readOnly /></div>
                                 </div>
                                 {/* <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
@@ -115,7 +128,7 @@ export default function Landing(props) {
                             <Col>
                                 <div className="input-group-2">
                                     <div className="input-group-2-icon"><button onClick={() => Copy(0)}><i class="bi bi-files" aria-hidden="true" style={{ fontSize: "25px" }}></i><span> Copy link</span></button></div>
-                                    <div className="input-group-2-area"><input type="text" id="iframe" placeholder="Email Address" value="<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameBorder='0'></iframe>" wrap="hard" /></div>
+                                    <div className="input-group-2-area"><input type="text" id="iframe" placeholder="Email Address" value="<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameBorder='0'></iframe>" wrap="hard" readOnly /></div>
                                 </div>
                                 {/* <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
@@ -300,6 +313,7 @@ export default function Landing(props) {
                         </div>
                     </div>
                 </Container>
+                
                 <footer>
                     <span>Copyright 2021 &copy; The Looking Glass</span>
                     <span>&emsp; Supported by &emsp;<img src={nml} style={{ width: "auto", height: "20px" }} /></span>

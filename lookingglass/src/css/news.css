@@ -40,7 +40,7 @@
   width:100%;
   height:max-content;
   padding: 20px;
-  padding-top: 15%;
+  padding-top: 5%;
   /* border-radius: 10px 30px 30px 10px; */
   text-align:center;
 }
@@ -54,18 +54,13 @@
   float: left;
   margin-left: 1%;
 }
-#back-icon {
-  position: relative;
-  left:0;
-  margin-left: 5%;
-}
 .topic_headline{
     font-size:18px;
-    line-height: 1.5em;  
+    line-height: 1.4em;  
 }
 .topic_summary{
   font-size:14px;
-  line-height: 1.5em;
+  line-height: 1.4em;
   padding-top: 3%;
 }
 .topic_left_top_tag{
@@ -113,11 +108,11 @@
   opacity: 50%;
 }
 .author {
-  margin-left:10%;
+  margin-left:6%;
   margin-top: 5%;
-  margin-bottom: 2%;
-  width: 80%;
-  max-width: 500px;
+  margin-bottom: 1%;
+  width: 90%;
+  max-width: 400px;
   height: max-content;
 }
 .author-img img {
@@ -132,7 +127,7 @@
 }
 .author-desc-right{
   float:right;
-  padding-left:10px;
+  padding-left:5px;
   left:0;
   width: 80%;
   line-height: 1em;
@@ -154,7 +149,7 @@ a {
 }
 
 .twitter-tweet{
-  padding: 2% !important;
+  padding: 5% !important;
   margin-top:10% !important;
   margin-bottom: 10% !important;
   margin: 1% 5% 1% 5% !important;

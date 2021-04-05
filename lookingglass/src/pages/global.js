@@ -36,8 +36,8 @@ export default function Global(props) {
             <div className="global_container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <h1>Global Coverage</h1>
-                    <p style={{ fontSize: "10px", marginTop: "-5px" }}>Here from others</p>
+                    <h3>Global Coverage</h3>
+                    <p>Hear from Others</p>
                 </div>
     
                 <div className="global_stories">
@@ -60,7 +60,7 @@ function FreeScroll(props) {
             <Flicking
                 className="flicking flicking1"
                 deceleration={0.0075}
-                gap={20}
+                gap={10}
                 hanger={20}
                 anchor={0}
                 circular={false}
@@ -84,10 +84,10 @@ const GlobalItem = (props) => {
         <Container>
             <a href={props.url} id="global-news-anchor">
                 <Col>
-                    <Row><Image src={props.image_url} style={{ marginTop: 5, width: 200, height: 200, borderRadius: 5, objectFit: "cover"}}></Image></Row>
+                    <Row><Image src={props.image_url} style={{ marginTop: "5%", width: "200px", height: "200px", borderRadius: "10px", objectFit: "cover"}}></Image></Row>
                     <div className="glo-text-container">
                         {/* <Row className="org-name"><span>{props.news_org}</span></Row> */}
-                        <Row className="org-name"><Image className="topic_thumbnail" src={props.icon} thumbnail /><span>{props.news_org}</span></Row>
+                        <Row className="org-name"><Image className="topic_thumbnail" src={props.icon} thumbnail /><span id="news-org-title">{props.news_org}</span></Row>
                         {/* TODO need to consider the case of overflow */}
                         <Row className="glo-headlines">{props.title}</Row>
                     </div>
