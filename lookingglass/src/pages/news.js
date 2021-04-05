@@ -98,7 +98,6 @@ function MainArticle(props) {
                 {/* {
                     article_info['global_cov']=='Yes' && <Global topic={article_info['topic']} />
                 } */}
-
             </div>
 
 

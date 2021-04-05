@@ -21,8 +21,8 @@ export default function Pastconv(props) {
                 <div className="pastConv_container">
                     <div className="secTitle">
                         <div id="line"></div>
-                        <h1>Perspectives</h1>
-                        <p>Hear From Others</p>
+                        <h1>Related News</h1>
+                        {/* <p>Hear From Others</p> */}
                     </div>
 
                     <div className="convBubble_container">
