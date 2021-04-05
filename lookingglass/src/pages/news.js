@@ -31,7 +31,7 @@ export default function News(props) {
     console.log(topic_cleaned);
     useEffect(() => {
         const fetchData = async () => {
-            const data = await readGoogleAsCSV(source, '');
+            const data = await readGoogleAsCSV(source, true,'');
             set_article_list(data);
             set_article_status(true);
 

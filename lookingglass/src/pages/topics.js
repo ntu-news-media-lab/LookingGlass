@@ -30,7 +30,7 @@ export default function Topics(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await readGoogleAsCSV(source, '');
+      const data = await readGoogleAsCSV(source,false, '');
       set_topic_list(data.topics);
       set_visit_status(true);
     }
