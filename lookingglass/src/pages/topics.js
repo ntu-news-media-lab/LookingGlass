@@ -4,9 +4,12 @@ import cn_logo from "../img/conv-logo.svg"
 import { ListGroup, Image } from 'react-bootstrap';
 import '../css/topics.css'
 import { readGoogleAsCSV } from '../core/Config';
+import {Helmet} from "react-helmet";
 import {
   useParams,
-  Link
+  Link,
+  useHistory,
+  useLocation
 } from "react-router-dom";
 import { BiSearch } from 'react-icons/bi';
 import Loading from './loading';
@@ -14,6 +17,8 @@ import Loading from './loading';
 
 
 export default function Topics(props) {
+  let curr_url = useLocation();
+  console.log(curr_url.pathname);
 
   let { source } = useParams();
   const [topic_list, set_topic_list] = useState([]);
@@ -36,14 +41,23 @@ export default function Topics(props) {
   if (visit_status) {
     return (
       <div className="topic_page_overall" >
-        <Loading />
+        
+    <Helmet>
+        <title>My Title</title>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Looking Glass on The Conversation" />
+        <meta nmae="twitter:card" content="summary_large_image" />
+        <meta property="og:url" content={"http://theconversation.com/riset-pandemi-potensial-turunkan-capaian-imunisasi-dasar-nasional-5-20-155368"}/>
+        <meta property="og:description" content="In the early days, Twitter grew so quickly that it was almost impossible to add new features because engineers spent their time trying to keep the rocket ship from stalling." />
+        <meta property="og:image" content="http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg" />
+    </Helmet>
         <div className="topic_container">
           <Header header_content={topic_list}/>
           <div className="topiclist">
             <ListGroup variant="flush">
               {
                 topic_list.map((item, i) =>
-                  <TopicListItems topic_data={item} index={i} csv_source={source} />)
+                  <TopicListItems topic_data={item} index={i} csv_source={source} home_url={curr_url}/>)
               }
             </ListGroup>
           </div>
@@ -62,11 +76,16 @@ export default function Topics(props) {
 }
 
 function TopicListItems(props) {
+  const history = useHistory();
+  // function pushHistory(a, b) {
+        
+  // }
+
   let news_link = "/news/" + props.csv_source + "/" + props.topic_data.topic_keyword.replace(' ', '+');
   if (props !== undefined) {
 
     return (
-      <a href={news_link}>
+      <a href={news_link} onClick={() => history.push(props.home_url, { from: "Topics" })}>
         <ListGroup.Item>
           <Image className="topic_thumbnail" src={props.topic_data['fetched']['og']['image']} />{props.topic_data.topic_keyword}
         </ListGroup.Item></a>
@@ -156,3 +175,4 @@ class SearchForm extends Component {
     );
   }
 }
+

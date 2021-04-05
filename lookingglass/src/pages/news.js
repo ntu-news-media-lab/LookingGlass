@@ -5,9 +5,11 @@ import moment from 'moment';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import Skeleton from 'react-loading-skeleton';
 import "../css/news.css";
+// import browserHistory from "history/createBrowserHistory";
 import {
     BrowserRouter as Router,
     useParams,
+    useHistory
 
 } from "react-router-dom";
 import { useQuery } from 'react-query';
@@ -21,7 +23,6 @@ import loadingGlass from '../img/smol-logo.png'
 // import Video from "./videos";;
 
 export default function News(props) {
-
     let { source, topic } = useParams();
     const topic_cleaned = topic.replace('+', ' ');
     const [article_info, set_article_list] = useState({});
@@ -58,14 +59,19 @@ export default function News(props) {
 
 
 function MainArticle(props) {
+    const history = useHistory();
     const article_info = props.topic_data;
+    console.log(history);
     if (props.flag) {
         return (
 
             <div className="article-top-container">
                 <div className="topic-container">
                     <div id="back-btn-container">
-                        <i class="bi bi-arrow-left" id="back-button"></i>
+                        <button  onClick={() => {
+                    history.goBack();
+                }}>
+                <i class="bi bi-arrow-left" id="back-button"></i></button>
                     </div>
                     {article_info['topic']}
                 </div>

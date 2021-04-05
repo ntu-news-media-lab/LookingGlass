@@ -9,16 +9,12 @@ import {
   useLocation
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import FreeScroll from "./pages/content"
-// import "./css/features.css";
-// import "./css/highlight.css";
 import News from "./pages/news";
 import Video from "./pages/videos";
 import Landing from "./pages/landing";
 import Topics from "./pages/topics";
 import End from "./pages/end";
-import SuccessDisplay from './pages/test2'
-// import Global from "./pages/global";
+import SuccessDisplay from './pages/test2';
 
 
 // logo
