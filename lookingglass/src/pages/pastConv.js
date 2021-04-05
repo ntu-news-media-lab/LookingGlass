@@ -7,7 +7,7 @@ import Carousel from 'react-bootstrap/Carousel'
 
 import convBubble from "../img/speech_bubble.png";
 import white_bg from "../img/white_bg.png"
-import cn_lgogo from "../img/The-Conversation.png"
+import cn_lgogo from "../img/conv-logo.svg"
 import Skeleton from 'react-loading-skeleton';
 
 
@@ -31,7 +31,7 @@ export default function Pastconv(props) {
                             <ControlledCarousel  pastconv_result={pastconv_result}/>
 
                         <div className="tc-logo">
-                            <img src={cn_lgogo} alt="the-conversation-logo" />
+                            <img src={cn_lgogo} className="news_org_logo" alt="the-conversation-logo" />
                         </div>
                     </div>
                     </div>

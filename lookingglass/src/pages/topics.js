@@ -38,7 +38,7 @@ export default function Topics(props) {
       <div className="topic_page_overall" >
         <Loading />
         <div className="topic_container">
-          <Header />
+          <Header header_content={topic_list}/>
           <div className="topiclist">
             <ListGroup variant="flush">
               {
@@ -66,7 +66,7 @@ function TopicListItems(props) {
   if (props !== undefined) {
 
     return (
-      <a href={news_link} target="_blank">
+      <a href={news_link}>
         <ListGroup.Item>
           <Image className="topic_thumbnail" src={props.topic_data['fetched']['og']['image']} />{props.topic_data.topic_keyword}
         </ListGroup.Item></a>
@@ -78,7 +78,8 @@ function TopicListItems(props) {
 
 
 
-function Header() {
+function Header(props) {
+
   return (
     <div>
       <img
@@ -89,8 +90,9 @@ function Header() {
           marginTop: "5%"
         }} />
       <div className="topic-page-tagline">
-        <div id="first-tagline">THIS WEEK</div>
-        <div id="second-tagline">What's Trending</div>
+        
+        <div id="second-tagline">{props.header_content[0]['header'] || "What's Treading?"}</div>
+        <div id="first-tagline">{props.header_content[0]['subheader'] || "THIS WEEK"}</div>
       </div>
     </div>
   )

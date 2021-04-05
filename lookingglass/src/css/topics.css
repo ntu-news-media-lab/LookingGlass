@@ -71,7 +71,7 @@ button:focus {
     height: 100%;
     top: 0;
     bottom: 0;
-    -webkit-animation: show-animation 0.5s linear forwards;
+    -webkit-animation: show-animation 0.1s linear forwards;
 
 }
 
@@ -85,7 +85,7 @@ button:focus {
 }
 
 .success {
-    -webkit-animation: hide-animation 3s  linear forwards;
+    -webkit-animation: hide-animation 2.5s  linear forwards;
     visibility: hidden;
     position: fixed;
     top: 0;

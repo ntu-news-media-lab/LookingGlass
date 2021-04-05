@@ -47,7 +47,7 @@ export default function Video(props) {
                     <p style={{ fontSize: "10px", marginTop: "-5px" }}>See through the news</p>
                 </div>
                 <div className="videos">
-                <Container className="ind-video-container">
+                <Container id="ind-video-container">
                        {
                         videos.map((item,i)=> {
                                console.log(item['url'])
@@ -94,7 +94,7 @@ const VideoItem = (props) => {
     // console.log(props.url_input);
     return (
        <div id={'video_'+props.id} className="ind-video">
-            <Row className="video">
+            <Row className="video" id="video-row">
                 <iframe src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </Row>
             <Row className="video-title">

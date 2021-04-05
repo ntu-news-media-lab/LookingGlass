@@ -36,8 +36,8 @@ export default function Global(props) {
             <div className="global_container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <div>Global Coverage</div>
-                    <div style={{ fontSize: "0.7em" }}>Hear from Others</div>
+                    <h1>Global Coverage</h1>
+                    <p style={{ fontSize: "10px", marginTop: "-5px" }}>Here from others</p>
                 </div>
     
                 <div className="global_stories">
@@ -78,6 +78,7 @@ function FreeScroll(props) {
 
 
 const GlobalItem = (props) => {
+    console.log(props);
     return(
         <div class="indivual-story">
         <Container>

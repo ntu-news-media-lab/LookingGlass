@@ -14,6 +14,7 @@ import { useQuery } from 'react-query';
 import TClogo from "../img/TC-logo.png";
 import Pastconv from './pastConv';
 import Global from './global';
+import loadingGlass from '../img/smol-logo.png'
 
 // import PastConv from "./pastConv";
 // import Global from "./global";
@@ -44,11 +45,12 @@ export default function News(props) {
 
     if (article_info_status) {
         return (
+            //  <MainArticleLoadingTest />
             <MainArticle topic_data={article_info[topic_cleaned]} flag={article_info_status} topic_word={topic_cleaned} />
         )
     }
     else {
-        return <MainArticleLoading />;
+        return <MainArticleLoadingTest />;
     }
 
 }
@@ -103,16 +105,16 @@ function MainArticleLoading() {
     return (
         <div className="article-top-container">
             <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{<Skeleton />}</div>
-            <div className="topic-text-container">
-                <div className="topic-img"><Skeleton /></div>
+            <div className="topic-text-container-loading">
+                {/* <div className="topic-img"><Skeleton /></div> */}
 
 
                 {/* <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
                         <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
                         <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                         <div className="topic_summary">{article_info['og']['description'] || "summary"}</div> */}
-                {<Skeleton count={20} />}
-
+                {/* {<Skeleton count={20} />} */}
+                <img className='rotate' src={loadingGlass}></img>
 
                 {/* <div className="topic_left_top_tag">SPOTLIGHT</div> */}
             </div>
@@ -136,7 +138,17 @@ function MainArticleLoading() {
 }
 
 
+function MainArticleLoadingTest() {
+    return(
+        <div className="article-top-container">
+        <div className="topic-text-container-loading">
 
+        <img className='rotate' src={loadingGlass}></img>
+        </div>
+           
+        </div>
+    )
+}
 
 
 
