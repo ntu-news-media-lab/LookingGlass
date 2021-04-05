@@ -16,57 +16,55 @@ export default function Pastconv(props) {
     if (props.past_convs) {
         const pastconv_result = props.past_convs;
         console.log(pastconv_result);
-                return (
-                    <div className="mobile-container">
-                    <div className="pastConv_container">
-                        <div className="secTitle">
-                            <div id="line"></div>
-                            <h1>Related News</h1>
-                            {/* <div style={{ fontSize: "0.7em" }}>Hear from Others</div> */}
-                        </div>
+        return (
+            <div className="mobile-container">
+                <div className="pastConv_container">
+                    <div className="secTitle">
+                        <div id="line"></div>
+                        <h1>Related News</h1>
+                        {/* <p>Hear From Others</p> */}
+                    </div>
 
-
-
-                        <div className="convBubble_container">
-                            <ControlledCarousel  pastconv_result={pastconv_result}/>
+                    <div className="convBubble_container">
+                        <ControlledCarousel pastconv_result={pastconv_result} />
 
                         <div className="tc-logo">
                             <img src={cn_lgogo} className="news_org_logo" alt="the-conversation-logo" />
                         </div>
                     </div>
-                    </div>
-                    </div>
-                );
-            }
-        }
+                </div>
+            </div>
+        );
+    }
+}
 
 
 function ControlledCarousel(props) {
     const [index, setIndex] = useState(0);
-    
+
     const handleSelect = (selectedIndex, e) => {
-      setIndex(selectedIndex);
+        setIndex(selectedIndex);
     };
     console.log(props);
     const past_ind = props.pastconv_result.map((item, i) => {
-        return(
-            <Carousel.Item id={"past_item_"+i}>
-            <a href={item['url']}>
-            <div className="bubble_imge-container" />
-            <div className="convTitle">PAST COVERAGE</div>
-            <Carousel.Caption>
-            <h3>{item['headline']}</h3>
-            <p id="past_summary">{item['summary']}</p>
-            </Carousel.Caption>
-            </a>
+        return (
+            <Carousel.Item id={"past_item_" + i}>
+                <a href={item['url']}>
+                    <div className="bubble-imge-container" />
+                    <div className="convTitle">PAST COVERAGE</div>
+                    <Carousel.Caption>
+                        <h3>{item['headline']}</h3>
+                        <p id="past_summary">{item['summary']}</p>
+                    </Carousel.Caption>
+                </a>
             </Carousel.Item>
-            
+
         )
-            })
-    
+    })
+
     return (
-      <Carousel activeIndex={index} onSelect={handleSelect} interval={99999}>
+        <Carousel activeIndex={index} onSelect={handleSelect} interval={99999}>
             {past_ind}
-      </Carousel>
+        </Carousel>
     );
-  }
+}

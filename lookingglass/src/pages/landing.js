@@ -13,6 +13,7 @@ export default function Landing(props) {
 
     function Generate() {
         let domain = "https://looking-glass.vercel.app/topics/"
+        let domain_local = "http://localhost:3000/topics/"
         var userInput = document.getElementById("sheet").value;
         // var userInput = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/edit#gid=0";
         var setLink = document.getElementById("link");
@@ -22,6 +23,7 @@ export default function Landing(props) {
         output = userInput.split('/');
         let sourceID = String(output[5])
         let preview_url = domain + sourceID
+        // let preview_url = domain_local + sourceID;
         setLink.value = preview_url;
 
         //place preview link to button
