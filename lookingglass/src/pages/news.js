@@ -66,7 +66,7 @@ function MainArticle(props) {
 
                         <div id="content">
                             <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
-                            <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
+                            <span>{moment(article_info['pub_time']).format('DD MMM YYYY HH:mm')}</span>
                             <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                             <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
                         </div>
@@ -81,20 +81,14 @@ function MainArticle(props) {
                         )}
                     </Container>
                 </div>
-                {  // only render embedded tweet if twitter_id given
-                    article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
-                }
+                
 
                 {  // only render embedded tweet if twitter_id given
                     article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
                 }
-                {/* {
-                    article_info['global_cov']=='Yes' && <Global topic={article_info['topic']} />
-                } */}
-
-
-
-
+                {  // only render embedded tweet if twitter_id given
+                    article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
+                }
             </div>
 
         )

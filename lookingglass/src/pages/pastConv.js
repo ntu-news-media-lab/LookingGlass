@@ -20,9 +20,11 @@ export default function Pastconv(props) {
                     <div className="pastConv_container">
                         <div className="secTitle">
                             <div id="line"></div>
-                            <h1>Perspectives</h1>
-                            <p style={{ fontSize: "10px", marginTop: "-5px" }}></p>
+                            <div>Perspectives</div>
+                            <div style={{ fontSize: "0.7em" }}>Hear from Others</div>
                         </div>
+
+
 
                         <div className="convBubble_container">
                             <ControlledCarousel  pastconv_result={pastconv_result}/>

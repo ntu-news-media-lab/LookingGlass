@@ -3,6 +3,8 @@
     margin-right: auto;
     position: relative;
     font-size: medium;
+    margin-bottom: 10%;
+    margin-top: 10%;
 }
 
 #line {
@@ -103,7 +105,7 @@
 .bubble_imge-container{
     background-image: url('../img/speech_bubble2.png');
     background-size: cover;
-    width: 80%;
+    width: 100%;
     height: 400px;
     max-width: 500px;
     min-height: 400px;
