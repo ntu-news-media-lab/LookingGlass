@@ -1,13 +1,16 @@
 .mobile-container {
-    max-width:700px;
+    max-width:400px;   
     margin-left:auto;
     margin-right:auto;
+  }
+@media only screen and (max-width: 400px) {
+    /* styles for narrow screens */
 }
 .pastConv_container{
+    margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    font-size: medium;
 }
 
 #line {
@@ -30,6 +33,10 @@
     margin-bottom: 5%;
     text-align: center;
 }
+.secTitle p {
+    font-size: 14px;
+    margin-top:-5px;
+}
 .convTitle{
     color: #C11010;
     position: absolute;
@@ -40,23 +47,16 @@
 
 .convBubble_container{
     position: relative;
+    display: block;
     margin-left:5%;
     margin-right:5%;
-    padding:1%;
+    padding: 5%;
     margin-top: 5%;
     width:auto;
     height: max-content;
     
 }
 
-
-#bubble_img{
-    width: 100%;
-    height: max-content;
-    position: absolute;
-    left: 0%;
-    /* top:10%; */
-}
 .carousel {
     /* padding:5%; */
     width: 100% !important; 
@@ -100,18 +100,26 @@
 .tc-logo {
     position: relative;
 }
+.tc-logo img {
+    width: 40%;
+    margin-left: 2%;
+    margin-top:5%;
+}
 .author-container {
     margin-top: 5%;
 }
 
 
-.bubble_imge-container{
-    background-image: url('../img/speech_bubble2.png');
-    background-size: cover;
-    width: 80%;
+.bubble-imge-container{
+    background-image: url('../img/speech_bubble.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
     height: 400px;
-    max-width: 500px;
+    /* max-width: auto; */
     min-height: 400px;
-    max-height: 500px;
-
+    max-height: 600px;
 }

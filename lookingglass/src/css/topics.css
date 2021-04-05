@@ -1,3 +1,8 @@
+.mobile-container {
+    max-width:400px;
+    margin-left:auto;
+    margin-right:auto;
+  }
 .topiclist{
     margin:auto;
     padding:10%;
@@ -61,7 +66,7 @@ button:focus {
     outline: none;
 }
 .topic_page_overall{
-    position: relative;
+    /* position: relative; */
     width: 100%;
     height: 100%;
     max-width:700px;

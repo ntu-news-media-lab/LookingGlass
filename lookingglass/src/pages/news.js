@@ -59,43 +59,48 @@ function MainArticle(props) {
     const article_info = props.topic_data;
     if (props.flag) {
         return (
-            <div className="mobile-container">
-                <div className="article-top-container">
-                    <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{article_info['topic']}</div>
-                    <div className="topic-text-container">
-                        <a href={article_info['og']['url'] || ""} > <div className="topic-img"><Image src={article_info['og']['image']} /></div>
 
-                            <div id="content">
-                                <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
-                                <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
-                                <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
-                                <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
-                            </div>
-                        </a>
-                        <div className="topic_left_top_tag">SPOTLIGHT</div>
+            <div className="article-top-container">
+                <div className="topic-container">
+                    <div id="back-btn-container">
+                        <i class="bi bi-arrow-left" id="back-button"></i>
                     </div>
+                    {article_info['topic']}
+                </div>
+                <div className="topic-text-container">
+                    <a href={article_info['og']['url'] || ""} ><div className="topic-img"><img src={article_info['og']['image']} /></div>
 
-                    <div className="author">
-                        {article_info['authors'].map((item, i) =>
-                            <AuthorNew author={item} />
-                        )}
-                    </div>
+                        <div id="content">
+                            <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
+                            <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
+                            <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
+                            <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
+                        </div>
+                    </a>
+                    <div className="topic_left_top_tag">SPOTLIGHT</div>
+                </div>
+
+                <div className="author">
+                    {article_info['authors'].map((item, i) =>
+                        <AuthorNew author={item} />
+                    )}
+                </div>
+                <div className="twitter-container">
+                    <p><strong>Top tweets</strong></p>
                     {  // only render embedded tweet if twitter_id given
                         article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
                     }
+                </div>
 
-                    {  // only render embedded tweet if twitter_id given
-                        article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
-                    }
-                    {/* {
+                {  // only render embedded tweet if twitter_id given
+                    article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
+                }
+                {/* {
                     article_info['global_cov']=='Yes' && <Global topic={article_info['topic']} />
                 } */}
 
-
-
-
-                </div>
             </div>
+
 
         )
     }
