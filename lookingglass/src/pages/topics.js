@@ -22,8 +22,8 @@ export default function Topics(props) {
 
   let { source } = useParams();
   const [topic_list, set_topic_list] = useState([]);
-  const [fetch_info, set_fetch_info] = useState([]);
-  const [fetch_all, set_fetch_all] = useState({});
+  // const [fetch_info, set_fetch_info] = useState([]);
+  // const [fetch_all, set_fetch_all] = useState({});
   const [visit_status, set_visit_status] = useState(false);
   // const [topics,set_topics] = useState([]);
 
@@ -39,17 +39,20 @@ export default function Topics(props) {
 
 
   if (visit_status) {
+    const header = topic_list[0]['header'] || "What's Treading?";
+    const sub_header = topic_list[0]['subheader'] || "This Week";
+
     return (
       <div className="topic_page_overall" >
         
     <Helmet>
-        <title>My Title</title>
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Looking Glass on The Conversation" />
-        <meta nmae="twitter:card" content="summary_large_image" />
-        <meta property="og:url" content={"http://theconversation.com/riset-pandemi-potensial-turunkan-capaian-imunisasi-dasar-nasional-5-20-155368"}/>
-        <meta property="og:description" content="In the early days, Twitter grew so quickly that it was almost impossible to add new features because engineers spent their time trying to keep the rocket ship from stalling." />
-        <meta property="og:image" content="http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg" />
+        <title>{ header + " " + sub_header}</title>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nytimes" />
+        <meta name="twitter:creator" content="@SarahMaslinNir" />
+        <meta name="twitter:title" content="Parade of Fans for Houston’s Funeral" />
+        <meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here."/>
+        <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg" />
     </Helmet>
         <div className="topic_container">
           <Header header_content={topic_list}/>
