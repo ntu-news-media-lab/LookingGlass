@@ -60,7 +60,7 @@ function FreeScroll(props) {
             <Flicking
                 className="flicking flicking1"
                 deceleration={0.0075}
-                gap={20}
+                gap={10}
                 hanger={20}
                 anchor={0}
                 circular={false}
@@ -78,6 +78,7 @@ function FreeScroll(props) {
 
 
 const GlobalItem = (props) => {
+    console.log(props);
     return(
         <div class="indivual-story">
         <Container>

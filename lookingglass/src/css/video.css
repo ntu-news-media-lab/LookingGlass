@@ -24,6 +24,10 @@
 .secTitle{
     margin-bottom: 5%;
 }
+.secTitle h3 {
+    margin-top:3%;
+    font-size:20px;
+}
 .secTitle p {
     font-size: 14px;
     margin-top:-5px;
@@ -44,7 +48,7 @@
 }
 .video iframe{
     width: auto;
-    height: auto;
+    height: 180px;
     border-radius: 10px;
 }
 
@@ -56,8 +60,8 @@
 
 .video-title span {
     padding: 3% 0% 0% 1%;
-    font-family: "Krub";
+    font-family: "RedHatDisplay";
     font-weight: 400px;
-    font-size: 14px;
+    font-size: 18px;
 }
 

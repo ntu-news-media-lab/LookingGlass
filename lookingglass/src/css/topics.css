@@ -97,7 +97,7 @@ button:focus {
     height: max-content;
     top: 0;
     bottom: 0;
-    -webkit-animation: show-animation 0.5s linear forwards;
+    -webkit-animation: show-animation 1s linear forwards;
 
 }
 

@@ -43,7 +43,7 @@ export default function Video(props) {
             <div className="video-sec-container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <h1>Videos</h1>
+                    <h3>Videos</h3>
                     <p>See through the news</p>
                 </div>
                 <div className="videos">
@@ -72,7 +72,7 @@ export default function Video(props) {
                 <div className="secTitle">
                     <div id="line"></div>
                     <h3>Videos</h3>
-                    <p style={{ fontSize: "10px", marginTop: "-5px" }}>See through the news</p>
+                    <p>See through the news</p>
                 </div>
                 <div className="videos">
                     <Skeleton count={5} />
@@ -90,12 +90,12 @@ const VideoItem = (props) => {
     // console.log(props.desc_input);
     // console.log(props.url_input);
     return (
-        <div id={'video_' + props.id} className="ind-video">
-            <Row className="video">
+       <div id={'video_'+props.id} className="ind-video">
+            <Row className="video" id="video-row">
                 <iframe src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </Row>
             <Row className="video-title">
-                <span><strong>{props.desc}</strong></span>
+                <span>{props.desc}</span>
             </Row>
         </div>
 

@@ -6,22 +6,24 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 import Skeleton from 'react-loading-skeleton';
 import { browserHistory } from 'react-router';
 import "../css/news.css";
+// import browserHistory from "history/createBrowserHistory";
 import {
     BrowserRouter as Router,
     useParams,
+    useHistory
 
 } from "react-router-dom";
 import { useQuery } from 'react-query';
 import TClogo from "../img/TC-logo.png";
 import Pastconv from './pastConv';
 import Global from './global';
+import loadingGlass from '../img/smol-logo.png'
 
 // import PastConv from "./pastConv";
 // import Global from "./global";
 // import Video from "./videos";;
 
 export default function News(props) {
-
     let { source, topic } = useParams();
     const topic_cleaned = topic.replace('+', ' ');
     const [article_info, set_article_list] = useState({});
@@ -45,23 +47,29 @@ export default function News(props) {
 
     if (article_info_status) {
         return (
+            //  <MainArticleLoadingTest />
             <MainArticle topic_data={article_info[topic_cleaned]} flag={article_info_status} topic_word={topic_cleaned} />
         )
     }
     else {
-        return <MainArticleLoading />;
+        return <MainArticleLoadingTest />;
     }
 
 }
 
 function MainArticle(props) {
+    const history = useHistory();
     const article_info = props.topic_data;
+    console.log(history);
     if (props.flag) {
         return (
             <div className="article-top-container">
                 <div className="topic-container">
                     <div id="back-btn-container">
-                        <button><i class="bi bi-arrow-left"></i></button>
+                        <button  onClick={() => {
+                    history.goBack();
+                }}>
+                <i class="bi bi-arrow-left" id="back-button"></i></button>
                     </div>
                     {article_info['topic']}
                 </div>
@@ -92,9 +100,9 @@ function MainArticle(props) {
                         article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
                     }
                 </div>
-                {
+                {/* {
                     article_info['global_cov']=='Yes' && <Global topic={article_info['topic']} />
-                }
+                } */}
             </div>
 
 
@@ -110,16 +118,16 @@ function MainArticleLoading() {
     return (
         <div className="article-top-container">
             <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{<Skeleton />}</div>
-            <div className="topic-text-container">
-                <div className="topic-img"><Skeleton /></div>
+            <div className="topic-text-container-loading">
+                {/* <div className="topic-img"><Skeleton /></div> */}
 
 
                 {/* <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
                         <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
                         <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                         <div className="topic_summary">{article_info['og']['description'] || "summary"}</div> */}
-                {<Skeleton count={20} />}
-
+                {/* {<Skeleton count={20} />} */}
+                <img className='rotate' src={loadingGlass}></img>
 
                 {/* <div className="topic_left_top_tag">SPOTLIGHT</div> */}
             </div>
@@ -143,7 +151,17 @@ function MainArticleLoading() {
 }
 
 
+function MainArticleLoadingTest() {
+    return(
+        <div className="article-top-container">
+        <div className="topic-text-container-loading">
 
+        <img className='rotate' src={loadingGlass}></img>
+        </div>
+           
+        </div>
+    )
+}
 
 
 

@@ -155,6 +155,8 @@ function extractEventFromCSVObject(orig_row) {
         article_url:row['main_article_url'] || '',
         global_cov: row['global_coverage'] || "",
         twitter_id:row['twitter_url'] || "",
+        header:row['header'] || '',
+        subheader:row['subheader'] || ''
 
     }
 
@@ -188,9 +190,9 @@ export async function youtube_video(keyword){
 }
 
 export async function global_coverage_search(keyword){
-    // let domain = "https://looking-glass-backend.herokuapp.com"
+    let domain = "https://looking-glass-backend.herokuapp.com"
     let keyword_cleaned = keyword.trim().replace(" ", "+");
-    let domain = "http://127.0.0.1:5000";
+    // let domain = "http://127.0.0.1:5000";
     let url = `${domain}/global?keyword=${keyword_cleaned}`;
     let res = null;
         return new Promise((resolve,) =>{

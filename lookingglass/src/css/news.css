@@ -155,6 +155,30 @@ a {
   margin: 1% 5% 1% 5% !important;
   width:auto !important;
 }
+
+#ind-video-container {
+  width: 80% !important;
+}
+
+.rotate {
+  animation: rotation 8s infinite linear;
+  width: 30%;
+  margin: 70% 35%;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.topic-text-container-loading{
+  height: 700px;
+}
+
 .twitter-container {
   margin-top:20%;
   margin-bottom: 20%;
