@@ -92,6 +92,7 @@ export async function readGoogleAsCSV(url, basic_search,sheets_proxy) {
         try{
             if(topic.article_url){
                 let fetch_info = null;
+                let keyword =topic.topic_keyword;
                 let keyword_cleaned = encodeURI(keyword.trim());
                 let twitter_id = topic.twitter_id;
                 let global_cov = topic.global_cov;

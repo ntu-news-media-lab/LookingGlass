@@ -31,7 +31,7 @@ export default function Topics(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await readGoogleAsCSV(source,false, '');
+      const data = await readGoogleAsCSV(source,true, '');
       set_topic_list(data.topics);
       set_visit_status(true);
     }
@@ -90,7 +90,7 @@ function TopicListItems(props) {
   if (props !== undefined) {
 
     return (
-      <a href={news_link} onClick={() => history.push(props.home_url, { from: "Topics" })}>
+      <a href={news_link} target="_blank" onClick={() => history.push(props.home_url, { from: "Topics" })}>
         <ListGroup.Item>
           <Image className="topic_thumbnail" src={props.topic_data['fetched']['og']['image']} />{props.topic_data.topic_keyword}
         </ListGroup.Item></a>
