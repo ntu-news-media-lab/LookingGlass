@@ -70,9 +70,8 @@ export default function Video(props) {
         return (
             <div className="video-sec-container">
                 <div className="secTitle">
-                    <div className="secBar"></div>
                     <div id="line"></div>
-                    <h1>Videos</h1>
+                    <h3>Videos</h3>
                     <p style={{ fontSize: "10px", marginTop: "-5px" }}>See through the news</p>
                 </div>
                 <div className="videos">
@@ -96,7 +95,7 @@ const VideoItem = (props) => {
                 <iframe src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </Row>
             <Row className="video-title">
-                <span>{props.desc}</span>
+                <span><strong>{props.desc}</strong></span>
             </Row>
         </div>
 

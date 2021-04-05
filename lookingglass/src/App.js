@@ -54,7 +54,6 @@ export default function App() {
             <News data={data} />
             <Global />
             <Video />
-
             <End />
             <Footer />
           </div>

@@ -4,6 +4,7 @@ import { readGoogleAsCSV, youtube_video } from '../core/Config';
 import moment from 'moment';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import Skeleton from 'react-loading-skeleton';
+import { browserHistory } from 'react-router';
 import "../css/news.css";
 import {
     BrowserRouter as Router,
@@ -53,17 +54,14 @@ export default function News(props) {
 
 }
 
-
-
 function MainArticle(props) {
     const article_info = props.topic_data;
     if (props.flag) {
         return (
-
             <div className="article-top-container">
                 <div className="topic-container">
                     <div id="back-btn-container">
-                        <i class="bi bi-arrow-left" id="back-button"></i>
+                        <button><i class="bi bi-arrow-left"></i></button>
                     </div>
                     {article_info['topic']}
                 </div>
@@ -85,19 +83,18 @@ function MainArticle(props) {
                         <AuthorNew author={item} />
                     )}
                 </div>
+                {  // only render embedded tweet if twitter_id given
+                    article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
+                }
                 <div className="twitter-container">
                     <p><strong>Top tweets</strong></p>
                     {  // only render embedded tweet if twitter_id given
                         article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
                     }
                 </div>
-
-                {  // only render embedded tweet if twitter_id given
-                    article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
-                }
-                {/* {
+                {
                     article_info['global_cov']=='Yes' && <Global topic={article_info['topic']} />
-                } */}
+                }
             </div>
 
 
@@ -127,20 +124,20 @@ function MainArticleLoading() {
                 {/* <div className="topic_left_top_tag">SPOTLIGHT</div> */}
             </div>
 
-            <div className="author">
-                <Container>
-                    <Row>
-                        <div className="author-img-left">
-                            <div className="author-img">{<Skeleton />}</div>
-                        </div>
-                        <div className="author-desc-right">
-                            <span id="author-name">{<Skeleton />}</span>
-                            <br></br>
-                            <span id="author-bio">{<Skeleton />}</span>
-                        </div>
-                    </Row>
-                </Container>
-            </div>
+
+            <Container>
+                <Row>
+                    <div className="author-img-left">
+                        <div className="author-img">{<Skeleton />}</div>
+                    </div>
+                    <div className="author-desc-right">
+                        <span id="author-name">{<Skeleton />}</span>
+                        <br></br>
+                        <span id="author-bio">{<Skeleton />}</span>
+                    </div>
+                </Row>
+            </Container>
+
         </div>
     )
 }
@@ -153,13 +150,17 @@ function MainArticleLoading() {
 const AuthorNew = (props) => {
     return (
         <Row>
-            <div className="author-img-left">
-                <div className="author-img"><img src={props.author.url} /></div>
-            </div>
-            <div className="author-desc-right">
-                <span id="author-name">{props.author.name}</span>
-                <br></br>
-                <span id="author-bio">{props.author.role}</span>
+            <div className="author">
+                <a href={props.author.author_url} style={{textDecoration:"none", color:"#0b0b0b"}}>
+                <div className="author-img-left">
+                    <div className="author-img"><img src={props.author.url} /></div>
+                </div>
+                <div className="author-desc-right">
+                    <span id="author-name">{props.author.name}</span>
+                    <br></br>
+                    <span id="author-bio">{props.author.role}</span>
+                </div>
+                </a>
             </div>
         </Row>
     )

@@ -7,12 +7,11 @@
     /* styles for narrow screens */
 }
 .pastConv_container{
-    margin-top: 10%;
+    margin-top: 20%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
     margin-bottom: 10%;
-    margin-top: 10%;
 }
 
 #line {
@@ -32,8 +31,12 @@
 } */
 
 .secTitle{
+    margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
+}
+.secTitle h3 {
+    margin-top:3%;
 }
 .secTitle p {
     font-size: 14px;
@@ -52,7 +55,7 @@
     display: block;
     margin-left:5%;
     margin-right:5%;
-    padding: 5%;
+    padding: 3%;
     margin-top: 5%;
     width:auto;
     height: max-content;
@@ -83,8 +86,9 @@
     color: #0b0b0b;
     text-overflow: ellipsis;
     text-align: left;
-    font-size: 12px;
-    margin-top:20%;
+    font-size: 14px;
+    margin-top:2%;
+    margin-bottom:5%;
 }
 .carousel-indicators {
     bottom: 50px !important;
@@ -103,8 +107,8 @@
     position: relative;
 }
 .tc-logo img {
-    width: 40%;
-    margin-left: 2%;
+    width: 60%;
+    margin-left:5%;
     margin-top:5%;
 }
 .author-container {

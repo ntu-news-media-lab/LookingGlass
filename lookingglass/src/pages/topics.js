@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import lg_logo from "../img/looking-glass@4x.png"
+import smol_logo from "../img/smol-logo.png";
 import cn_logo from "../img/conv-logo.svg"
 import { ListGroup, Image } from 'react-bootstrap';
 import '../css/topics.css'
@@ -66,7 +67,7 @@ function TopicListItems(props) {
   if (props !== undefined) {
 
     return (
-      <a href={news_link} target="_blank">
+      <a href={news_link}>
         <ListGroup.Item>
           <Image className="topic_thumbnail" src={props.topic_data['fetched']['og']['image']} />{props.topic_data.topic_keyword}
         </ListGroup.Item></a>
@@ -81,16 +82,11 @@ function TopicListItems(props) {
 function Header() {
   return (
     <div>
-      <img
-        src={lg_logo}
-        style={{
-          marginLeft: "40%",
-          maxWidth: "20%",
-          marginTop: "5%"
-        }} />
-      <div className="topic-page-tagline">
+      <div id="image-container">
+        <img src={smol_logo} /></div>
+      <div className="topic-page-tagline" style={{ textAlign: "none" }}>
         <div id="first-tagline">THIS WEEK</div>
-        <div id="second-tagline">What's Trending</div>
+        <div id="second-tagline"><strong>What's Trending</strong></div>
       </div>
     </div>
   )
@@ -99,23 +95,18 @@ function Header() {
 
 function SearchBar() {
   return (
-
-    <div className="search-section">
-      <ListGroup variant="flush">
-        <ListGroup.Item>
-          <SearchForm />
-        </ListGroup.Item>
-      </ListGroup>
-      <div className="news-org-logo">
-        <span>on  </span>
-        <img
-          src={cn_logo}
-          style={{
-            maxWidth: "50%",
-          }} />
+    <div className="mobile-container">
+      <div className="search-section">
+        <ListGroup variant="flush">
+          <ListGroup.Item>
+            <SearchForm />
+          </ListGroup.Item>
+        </ListGroup>
+        <div className="news-org-logo">
+          <span>on &nbsp; <img src={cn_logo} /></span>
+        </div>
       </div>
     </div>
-
   )
 
 }
