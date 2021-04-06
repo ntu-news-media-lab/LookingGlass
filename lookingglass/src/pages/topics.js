@@ -5,7 +5,7 @@ import cn_logo from "../img/conv-logo.svg"
 import { ListGroup, Image } from 'react-bootstrap';
 import '../css/topics.css'
 import { readGoogleAsCSV } from '../core/Config';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import {
   useParams,
   Link,
@@ -31,7 +31,7 @@ export default function Topics(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await readGoogleAsCSV(source,true, '');
+      const data = await readGoogleAsCSV(source, true, '');
       set_topic_list(data.topics);
       set_visit_status(true);
     }
@@ -45,23 +45,23 @@ export default function Topics(props) {
 
     return (
       <div className="topic_page_overall" >
-        
-    <Helmet>
-        <title>{ header + " " + sub_header}</title>
-        {/* <meta name="twitter:card" content="summary_large_image" />
+
+        <Helmet>
+          <title>{header + " " + sub_header}</title>
+          {/* <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@nytimes" />
         <meta name="twitter:creator" content="@SarahMaslinNir" />
         <meta name="twitter:title" content="Parade of Fans for Houston’s Funeral" />
         <meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here."/>
         <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg" /> */}
-    </Helmet>
+        </Helmet>
         <div className="topic_container">
-          <Header header_content={topic_list}/>
+          <Header header_content={topic_list} />
           <div className="topiclist">
             <ListGroup variant="flush">
               {
                 topic_list.map((item, i) =>
-                  <TopicListItems topic_data={item} index={i} csv_source={source} home_url={curr_url}/>)
+                  <TopicListItems topic_data={item} index={i} csv_source={source} home_url={curr_url} />)
               }
             </ListGroup>
           </div>
@@ -72,7 +72,7 @@ export default function Topics(props) {
   }
   else {
     return (
-   
+
       <div className="topic_page_overall" >
         <Loading />
       </div>
@@ -83,7 +83,7 @@ export default function Topics(props) {
 function TopicListItems(props) {
   const history = useHistory();
   // function pushHistory(a, b) {
-        
+
   // }
 
   let news_link = "/news/" + props.csv_source + "/" + props.topic_data.topic_keyword.replace(' ', '+');
@@ -120,14 +120,16 @@ function Header(props) {
 function SearchBar() {
   return (
     <div className="mobile-container">
-      <div className="search-section">
-        <ListGroup variant="flush">
-          <ListGroup.Item>
-            <SearchForm />
-          </ListGroup.Item>
-        </ListGroup>
-        <div className="news-org-logo">
-          <span>on &nbsp; <img src={cn_logo} /></span>
+      <div id="topic-search-container">
+        <div className="search-section">
+          <ListGroup variant="flush">
+            <ListGroup.Item>
+              <SearchForm />
+            </ListGroup.Item>
+          </ListGroup>
+          <div className="news-org-logo">
+            <span>on &nbsp; <img src={cn_logo} /></span>
+          </div>
         </div>
       </div>
     </div>
