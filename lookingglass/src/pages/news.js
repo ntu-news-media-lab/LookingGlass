@@ -95,6 +95,7 @@ function MainArticle(props) {
                     article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
                 }
                 <div className="twitter-container">
+                    <div id="line" style={{marginLeft:"10%", marginBottom:"-3%"}}></div>
                     <p><strong>Top tweets</strong></p>
                     {  // only render embedded tweet if twitter_id given
                         article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
