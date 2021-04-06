@@ -13,6 +13,8 @@ import {
     useHistory
 
 } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 import { useQuery } from 'react-query';
 import TClogo from "../img/TC-logo.png";
 import Pastconv from './pastConv';
@@ -32,7 +34,7 @@ export default function News(props) {
     console.log(topic_cleaned);
     useEffect(() => {
         const fetchData = async () => {
-            const data = await readGoogleAsCSV(source, false,'');
+            const data = await readGoogleAsCSV(source, false, '');
             set_article_list(data);
             set_article_status(true);
 
@@ -62,14 +64,20 @@ function MainArticle(props) {
     const article_info = props.topic_data;
     console.log(history);
     if (props.flag) {
+        let url_split = article_info['og']['url'].split("-");
+        let article_id = url_split[url_split.length - 1];
+        console.log("article_id ");
+        console.log(article_id);
+
         return (
             <div className="article-top-container">
+                {<IncludeGA article_id_input={article_id} />}
                 <div className="topic-container">
                     <div id="back-btn-container">
-                        <button  onClick={() => {
-                    history.goBack();
-                }}>
-                <i class="bi bi-arrow-left" id="back-button"></i></button>
+                        <button onClick={() => {
+                            history.goBack();
+                        }}>
+                            <i class="bi bi-arrow-left" id="back-button"></i></button>
                     </div>
                     {article_info['topic']}
                 </div>
@@ -95,7 +103,7 @@ function MainArticle(props) {
                     article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
                 }
                 <div className="twitter-container">
-                    <div id="line" style={{marginLeft:"10%", marginBottom:"-3%"}}></div>
+                    <div id="line" style={{ marginLeft: "10%", marginBottom: "-3%" }}></div>
                     <p><strong>Top tweets</strong></p>
                     {  // only render embedded tweet if twitter_id given
                         article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
@@ -153,13 +161,13 @@ function MainArticleLoading() {
 
 
 function MainArticleLoadingTest() {
-    return(
+    return (
         <div className="article-top-container">
-        <div className="topic-text-container-loading">
+            <div className="topic-text-container-loading">
 
-        <img className='rotate' src={loadingGlass}></img>
-        </div>
-           
+                <img className='rotate' src={loadingGlass}></img>
+            </div>
+
         </div>
     )
 }
@@ -170,15 +178,15 @@ const AuthorNew = (props) => {
     return (
         <Row>
             <div className="author">
-                <a href={props.author.author_url} style={{textDecoration:"none", color:"#0b0b0b"}}>
-                <div className="author-img-left">
-                    <div className="author-img"><img src={props.author.url} /></div>
-                </div>
-                <div className="author-desc-right">
-                    <span id="author-name">{props.author.name}</span>
-                    <br></br>
-                    <span id="author-bio">{props.author.role}</span>
-                </div>
+                <a href={props.author.author_url} style={{ textDecoration: "none", color: "#0b0b0b" }}>
+                    <div className="author-img-left">
+                        <div className="author-img"><img src={props.author.url} /></div>
+                    </div>
+                    <div className="author-desc-right">
+                        <span id="author-name">{props.author.name}</span>
+                        <br></br>
+                        <span id="author-bio">{props.author.role}</span>
+                    </div>
                 </a>
             </div>
         </Row>
@@ -204,3 +212,18 @@ const AuthorNew = (props) => {
 // {
 //     article_info['global_cov']=='Yes' && <Global topic={props.topic_word}/>
 // }
+
+export const IncludeGA = (props) => {
+
+    let url = `https://counter.theconversation.com/content/${props.article_id_input}/count.gif?distributor=republish-lightbox-advanced`;
+
+    return (
+        <Helmet>
+            <iframe title={"counter_"+props.article_id_input} src={url} width="1" height="1"></iframe>
+            <script type="text/javascript" src="https://theconversation.com/javascripts/lib/content_tracker_hook.js" id="theconversation_tracker_hook" data-counter={url} async="async"></script>
+
+        </Helmet>
+
+    )
+
+}
