@@ -49,7 +49,7 @@
 .video iframe{
     width: auto;
     height: 180px;
-    border-radius: 10px;
+    border-radius: 10px !important;
 }
 
 
