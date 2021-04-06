@@ -45,7 +45,7 @@ export function makeGoogleCSVURL(url_or_key) {
  * 
  * @param {string} url 
  */
-export async function readGoogleAsCSV(url, sheets_proxy) {
+export async function readGoogleAsCSV(url, basic_search,sheets_proxy) {
 
     let rows = []
 
@@ -92,18 +92,28 @@ export async function readGoogleAsCSV(url, sheets_proxy) {
         try{
             if(topic.article_url){
                 let fetch_info = null;
-                let keyword=topic.topic_keyword;
+                let keyword =topic.topic_keyword;
+                let keyword_cleaned = encodeURI(keyword.trim());
                 let twitter_id = topic.twitter_id;
                 let global_cov = topic.global_cov;
                 // let local = "http://127.0.0.1:5000/"
                 // let url = local + `news?url=${topic.article_url}&keyword=${keyword}`;
-                let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword}`
-                promises.push(read_news(url).then(res=>{
-                    topic['fetched']= res;
-                    res['twitter_id']=twitter_id;
-                    res['global_cov']=global_cov;
-                    topic_list_config[keyword]= res;
-                }))
+                if (basic_search){
+                    let url = `https://looking-glass-backend.herokuapp.com/basics?url=${topic.article_url}`
+                    promises.push(read_news(url).then(res=>{
+                        topic['fetched']= res;
+                    }))
+                }
+                else{
+                    let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword_cleaned}`
+                    promises.push(read_news(url).then(res=>{
+                        topic['fetched']= res;
+                        res['twitter_id']=twitter_id;
+                        res['global_cov']=global_cov;
+                        topic_list_config[keyword]= res;
+                    }))
+                }
+                
             }
         }
         catch(e){
@@ -171,7 +181,7 @@ function extractEventFromCSVObject(orig_row) {
 
 export async function youtube_video(keyword){
     let domain = "https://looking-glass-backend.herokuapp.com"
-    let keyword_cleaned = keyword.trim().encodeURI(keyword);
+    let keyword_cleaned = encodeURI(keyword.trim());
     // let domain = "http://127.0.0.1:5000";
     let url = `${domain}/videos?keyword=${keyword_cleaned}`;
     let res = null;
@@ -191,7 +201,7 @@ export async function youtube_video(keyword){
 
 export async function global_coverage_search(keyword){
     let domain = "https://looking-glass-backend.herokuapp.com"
-    let keyword_cleaned = keyword.trim().encodeURI(keyword);
+    let keyword_cleaned = encodeURI(keyword.trim());
     // let domain = "http://127.0.0.1:5000";
     let url = `${domain}/global?keyword=${keyword_cleaned}`;
     let res = null;
