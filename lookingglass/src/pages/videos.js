@@ -92,7 +92,7 @@ const VideoItem = (props) => {
     return (
        <div id={'video_'+props.id} className="ind-video">
             <Row className="video" id="video-row">
-                <iframe src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe title={'video_'+props.id} src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </Row>
             <Row className="video-title">
                 <span>{props.desc}</span>

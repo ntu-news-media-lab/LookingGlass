@@ -8,7 +8,8 @@ import Carousel from 'react-bootstrap/Carousel'
 import convBubble from "../img/speech_bubble.png";
 import white_bg from "../img/white_bg.png"
 import cn_lgogo from "../img/conv-logo.svg"
-import Skeleton from 'react-loading-skeleton';
+
+// import {IncludeGA} from "./topics"
 
 
 export default function Pastconv(props) {
