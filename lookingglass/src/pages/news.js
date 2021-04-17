@@ -1,12 +1,12 @@
-import react, { useEffect, useState } from 'react';
-import { Container, Grid, Col, Row, ListGroup, Image, Button } from 'react-bootstrap';
-import { readGoogleAsCSV, youtube_video } from '../core/Config';
+import { useEffect, useState } from 'react';
+import { Container,  Row  } from 'react-bootstrap';
+import { readGoogleAsCSV } from '../core/Config';
 import moment from 'moment';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import Skeleton from 'react-loading-skeleton';
-import { browserHistory } from 'react-router';
 import "../css/news.css";
 // import browserHistory from "history/createBrowserHistory";
+
 import {
     BrowserRouter as Router,
     useParams,
@@ -21,9 +21,6 @@ import Pastconv from './pastConv';
 import Global from './global';
 import loadingGlass from '../img/smol-logo.png'
 
-// import PastConv from "./pastConv";
-// import Global from "./global";
-// import Video from "./videos";;
 
 export default function News(props) {
     let { source, topic } = useParams();
@@ -109,9 +106,6 @@ function MainArticle(props) {
                         article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
                     }
                 </div>
-                {/* {
-                    article_info['global_cov']=='Yes' && <Global topic={article_info['topic']} />
-                } */}
             </div>
 
 
@@ -128,17 +122,7 @@ function MainArticleLoading() {
         <div className="article-top-container">
             <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{<Skeleton />}</div>
             <div className="topic-text-container-loading">
-                {/* <div className="topic-img"><Skeleton /></div> */}
-
-
-                {/* <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
-                        <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
-                        <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
-                        <div className="topic_summary">{article_info['og']['description'] || "summary"}</div> */}
-                {/* {<Skeleton count={20} />} */}
                 <img className='rotate' src={loadingGlass}></img>
-
-                {/* <div className="topic_left_top_tag">SPOTLIGHT</div> */}
             </div>
 
 
@@ -194,31 +178,13 @@ const AuthorNew = (props) => {
 }
 
 
-
-// function Twitter() {
-//     return (
-//         <div>
-// <blockquote class="twitter-tweet">
-//             <p lang="in" dir="ltr"> Belum lama ini, ramai dugaan perlakuan buruk intern di industri start-up Indonesia.<br></br>
-//             Kata <a href="https://twitter.com/nabiylarisfa?ref_src=twsrc%5Etfw">@nabiylarisfa</a> dari <a href="https://twitter.com/UGMYogyakarta?ref_src=twsrc%5Etfw">@UGMYogyakarta</a>, ini bisa terjadi karena aturan hukum yang ketinggalan zaman dan belum menimbang kondisi ketenagakerjaan di industri start-up:
-//             <a href="https://t.co/QB1rQ4rwKP">https://t.co/QB1rQ4rwKP</a> 
-//             </p> &mdash; The Conversation Indonesia (@ConversationIDN) <a href="https://twitter.com/ConversationIDN/status/1375720939405467649?ref_src=twsrc%5Etfw">March 27, 2021</a> </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-//         </div>
-
-//         )
-
-// }
-
-// {
-//     article_info['global_cov']=='Yes' && <Global topic={props.topic_word}/>
-// }
-
 export const IncludeGA = (props) => {
 
     let url = `https://counter.theconversation.com/content/${props.article_id_input}/count.gif?distributor=republish-lightbox-advanced`;
 
     return (
         <Helmet>
+        <img src={url} alt="The Conversation" width="1" height="1" style="border: none !important; box-shadow: none !important; margin: 0 !important; max-height: 1px !important; max-width: 1px !important; min-height: 1px !important; min-width: 1px !important; opacity: 0 !important; outline: none !important; padding: 0 !important; text-shadow: none !important" />
             <iframe title={"counter_"+props.article_id_input} src={url} width="1" height="1"></iframe>
             <script type="text/javascript" src="https://theconversation.com/javascripts/lib/content_tracker_hook.js" id="theconversation_tracker_hook" data-counter={url} async="async"></script>
 
