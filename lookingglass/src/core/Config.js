@@ -1,13 +1,13 @@
 import TLError from "../core/TLError"
 import { fetchCSV } from '../core/CSV';
-import { trim, isEmptyObject, mergeData, trace } from "../core/Util";
+import { trim, isEmptyObject } from "../core/Util";
 
 // import {linkPreviewGenerator} from "link-preview-generator"
-function clean_integer(s) {
-    if (s) {
-        return s.replace(/[\s,]+/g, ''); // doesn't handle '.' as comma separator, but how to distinguish that from decimal separator?
-    }
-}
+// function clean_integer(s) {
+//     if (s) {
+//         return s.replace(/[\s,]+/g, ''); // doesn't handle '.' as comma separator, but how to distinguish that from decimal separator?
+//     }
+// }
 
 
 /**
@@ -57,7 +57,7 @@ export async function readGoogleAsCSV(url, basic_search,sheets_proxy) {
     }).then(d => {
         rows = d;
     }).catch(error_json => {
-        if (error_json.proxy_err_code == 'response_not_csv') {
+        if (error_json.proxy_err_code === 'response_not_csv') {
             throw new TLError('Timeline could not read the data for your timeline. Make sure you have published it to the web.')
         }
         throw new TLError(error_json.message)
@@ -76,7 +76,7 @@ export async function readGoogleAsCSV(url, basic_search,sheets_proxy) {
                 
             }
         } catch (e) {
-            if (e.constructor == TLError) {
+            if (e.constructor === TLError) {
                 topic_list_config.errors.push(e);
             } else {
                 if (e.message) {
@@ -91,20 +91,22 @@ export async function readGoogleAsCSV(url, basic_search,sheets_proxy) {
    topic_list_config.topics.forEach((topic,i)=>{
         try{
             if(topic.article_url){
-                let fetch_info = null;
                 let keyword =topic.topic_keyword;
                 let keyword_cleaned = encodeURI(keyword.trim());
                 let twitter_id = topic.twitter_id;
                 let global_cov = topic.global_cov;
                 // let local = "http://127.0.0.1:5000/"
-                // let url = local + `news?url=${topic.article_url}&keyword=${keyword}`;
+
                 if (basic_search){
+                    // let url = local + `basics?url=${topic.article_url}`;
                     let url = `https://looking-glass-backend.herokuapp.com/basics?url=${topic.article_url}`
                     promises.push(read_news(url).then(res=>{
                         topic['fetched']= res;
+                        topic_list_config[keyword]= res;
                     }))
                 }
                 else{
+                    // let url = local + `news?url=${topic.article_url}&keyword=${keyword_cleaned}`;
                     let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword_cleaned}`
                     promises.push(read_news(url).then(res=>{
                         topic['fetched']= res;

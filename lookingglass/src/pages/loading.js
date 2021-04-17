@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import lg_logo from "../img/looking-glass@4x.png"
 import nml_log from "../img/NewsMediaLabLogo.png"
 import cn_logo from "../img/conv-logo.svg"
-import ReactDOM from 'react-dom'
 import "../css/topics.css"
 
 export default function Loading() {

@@ -1,10 +1,10 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import "../css/pastconv.css";
 import "../css/flickingFeature.css"
 import "../css/global.css"
 import Image from 'react-bootstrap/Image';
 import { useParams} from "react-router-dom";
-import { Container, Grid, Col, Row } from 'react-bootstrap';
+import { Container,Col, Row } from 'react-bootstrap';
 import { global_coverage_search } from '../core/Config'
 import Flicking from "@egjs/react-flicking";
 
@@ -97,18 +97,3 @@ const GlobalItem = (props) => {
     </div>
     )
 }
-
-
-{/* <div class="indivual-story">
-<Container>
-    <Col>
-        <Row><Image src={glo_image} style={{ marginTop: 5, width: 200, height: 200, borderRadius: 5, objectFit: "cover"}}></Image></Row>
-        <div className="glo-text-container">
-            <Row className="org-name"><span>New York Times</span></Row>
-          
-            <Row className="glo-headlines">As Bullets and Threats Fly, Myanmar Protesters Prodly Hold The Line</Row>
-        </div>
-
-    </Col>
-</Container>
-</div> */}

@@ -54,8 +54,8 @@ export async function fetchCSV(dataset) {
         } else if (dataset.url) {
             window.fetch(dataset.url, { mode: 'cors' })
                 .then(function(response) {
-                    if (response.status != 200) {
-                        if (response.headers.get('content-type') == "application/json") {
+                    if (response.status !== 200) {
+                        if (response.headers.get('content-type') === "application/json") {
                             response.text().then(text => {
                                 reject(JSON.parse(text))
                             })

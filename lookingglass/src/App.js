@@ -1,12 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams,
-  useLocation
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import News from "./pages/news";
@@ -18,8 +14,7 @@ import SuccessDisplay from './pages/test2';
 
 
 // logo
-import lg_logo from "./img/looking-glass@4x.png"
-import nml_log from "./img/NewsMediaLabLogo.png"
+
 import nml from "./img/NewsMediaLabLogo.png";
 import Pastconv from "./pages/pastConv";
 import Global from "./pages/global";
@@ -47,11 +42,11 @@ export default function App() {
 
         <Route path="/news/:source/:topic">
           <div className="mobile-container">
-         <News data={data}/>
-         <Global />
-          <Video />
-          <End/>
-          <Footer/>
+            <News data={data} />
+            <Global />
+            <Video />
+            <End />
+            <Footer />
           </div>
         </Route>
 
@@ -78,42 +73,22 @@ export default function App() {
   );
 }
 
-function Home() {
 
-  return (
 
-    <div><h2>Home</h2></div>
-  );
-}
+// function About() {
+//   return (
+//     <div id="loading_page" style={{ position: "relative", height: "100%", transition: "opacity 3s", opacity: "0" }}>
+//       <div style={{ position: "absolute" }}>
+//         <img src={lg_logo} style={{ width: '50%', marginLeft: "25%", marginTop: "50%" }} />
+//         <div style={{ marginTop: "5%", textAlign: "center", textSizeAdjust: "auto" }}>For <span style={{ color: "rgb(161,64,72)" }}>The Conversation</span></div>
+//         <div style={{ marginTop: "35%", textAlign: "center", textSizeAdjust: "auto" }}> Powered by </div>
+//         <img src={nml_log} style={{ width: '50%', marginLeft: "25%" }} />
+//       </div>
+//     </div>
+//   )
+// }
 
-function About() {
-  return (
-    <div id="loading_page" style={{ position: "relative", height: "100%", transition: "opacity 3s", opacity: "0" }}>
-      <div style={{ position: "absolute" }}>
-        <img src={lg_logo} style={{ width: '50%', marginLeft: "25%", marginTop: "50%" }} />
-        <div style={{ marginTop: "5%", textAlign: "center", textSizeAdjust: "auto" }}>For <span style={{ color: "rgb(161,64,72)" }}>The Conversation</span></div>
-        <div style={{ marginTop: "35%", textAlign: "center", textSizeAdjust: "auto" }}> Powered by </div>
-        <img src={nml_log} style={{ width: '50%', marginLeft: "25%" }} />
-      </div>
-    </div>
-  )
-}
 
-function Loading() {
-
-  // transition: "opacity 5s",opacity:"0"
-  return (
-    <div id="loading_page" style={{ position: "relative", height: "100%", transition: "opacity 5s", opacity: "0" }}>
-      <div style={{ position: "absolute" }}>
-        <img src={lg_logo} style={{ width: '50%', marginLeft: "25%", marginTop: "50%" }} />
-        <div style={{ marginTop: "5%", textAlign: "center", textSizeAdjust: "auto" }}>For <span style={{ color: "rgb(161,64,72)" }}>The Conversation</span></div>
-        <div style={{ marginTop: "35%", textAlign: "center", textSizeAdjust: "auto" }}> Powered by </div>
-        <img src={nml_log} style={{ width: '50%', marginLeft: "25%" }} />
-      </div>
-    </div>
-  )
-
-}
 
 
 function Footer() {

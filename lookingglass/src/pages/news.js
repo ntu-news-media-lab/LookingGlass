@@ -1,24 +1,21 @@
 import { useEffect, useState } from 'react';
-import { Container,  Row  } from 'react-bootstrap';
+import { Row  } from 'react-bootstrap';
 import { readGoogleAsCSV } from '../core/Config';
 import moment from 'moment';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
-import Skeleton from 'react-loading-skeleton';
+// import Skeleton from 'react-loading-skeleton';
 import "../css/news.css";
 // import browserHistory from "history/createBrowserHistory";
 
 import {
-    BrowserRouter as Router,
+    // BrowserRouter as Router,
     useParams,
     useHistory
 
 } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
-import { useQuery } from 'react-query';
 import TClogo from "../img/TC-logo.png";
 import Pastconv from './pastConv';
-import Global from './global';
 import loadingGlass from '../img/smol-logo.png'
 
 
@@ -63,12 +60,11 @@ function MainArticle(props) {
     if (props.flag) {
         let url_split = article_info['og']['url'].split("-");
         let article_id = url_split[url_split.length - 1];
-        console.log("article_id ");
-        console.log(article_id);
-
+        const authors = article_info['authors']?article_info['authors'].map((item, i) =>
+                        <AuthorNew author={item} />):''
         return (
             <div className="article-top-container">
-                {<IncludeGA article_id_input={article_id} />}
+                {article_info['og']['url'].includes('theconversation.com') && <IncludeGA article_id_input={article_id} />}
                 <div className="topic-container">
                     <div id="back-btn-container">
                         <button onClick={() => {
@@ -82,7 +78,7 @@ function MainArticle(props) {
                     <a href={article_info['og']['url'] || ""} ><div className="topic-img"><img src={article_info['og']['image']} /></div>
 
                         <div id="content">
-                            <img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />
+                        {article_info['og']['url'].includes('theconversation.com') &&<img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />}
                             <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
                             <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                             <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
@@ -92,18 +88,16 @@ function MainArticle(props) {
                 </div>
 
                 <div className="author">
-                    {article_info['authors'].map((item, i) =>
-                        <AuthorNew author={item} />
-                    )}
+                    {authors}
                 </div>
                 {  // only render embedded tweet if twitter_id given
                     article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
                 }
                 <div className="twitter-container">
-                    <div id="line" style={{ marginLeft: "10%", marginBottom: "-3%" }}></div>
-                    <p><strong>Top tweets</strong></p>
+                    
+                    
                     {  // only render embedded tweet if twitter_id given
-                        article_info['twitter_id'] !== '' && <TwitterTweetEmbed tweetId={article_info['twitter_id']} />
+                        article_info['twitter_id'] !== '' &&  <TwitterSection twitter_id={article_info['twitter_id']}/>
                     }
                 </div>
             </div>
@@ -117,31 +111,31 @@ function MainArticle(props) {
 
 
 }
-function MainArticleLoading() {
-    return (
-        <div className="article-top-container">
-            <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{<Skeleton />}</div>
-            <div className="topic-text-container-loading">
-                <img className='rotate' src={loadingGlass}></img>
-            </div>
+// function MainArticleLoading() {
+//     return (
+//         <div className="article-top-container">
+//             <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{<Skeleton />}</div>
+//             <div className="topic-text-container-loading">
+//                 <img className='rotate' src={loadingGlass}></img>
+//             </div>
 
 
-            <Container>
-                <Row>
-                    <div className="author-img-left">
-                        <div className="author-img">{<Skeleton />}</div>
-                    </div>
-                    <div className="author-desc-right">
-                        <span id="author-name">{<Skeleton />}</span>
-                        <br></br>
-                        <span id="author-bio">{<Skeleton />}</span>
-                    </div>
-                </Row>
-            </Container>
+//             <Container>
+//                 <Row>
+//                     <div className="author-img-left">
+//                         <div className="author-img">{<Skeleton />}</div>
+//                     </div>
+//                     <div className="author-desc-right">
+//                         <span id="author-name">{<Skeleton />}</span>
+//                         <br></br>
+//                         <span id="author-bio">{<Skeleton />}</span>
+//                     </div>
+//                 </Row>
+//             </Container>
 
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
 
 function MainArticleLoadingTest() {
@@ -156,6 +150,16 @@ function MainArticleLoadingTest() {
     )
 }
 
+const TwitterSection = (props)=>{
+    return(
+        <div>
+        <div id="line" style={{ marginLeft: "10%", marginBottom: "-3%" }}></div>
+        <p><strong>Top tweets</strong></p>
+        <TwitterTweetEmbed tweetId={props.twitter_id} />
+        </div>
+
+    )
+}
 
 
 const AuthorNew = (props) => {

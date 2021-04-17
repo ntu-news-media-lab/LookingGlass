@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container, Grid, Col, Row } from 'react-bootstrap';
+import React from "react";
+import { Container, Col, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../css/landing.css";
 import logo from "../img/looking-glass@4x.png";
@@ -299,13 +299,13 @@ export default function Landing(props) {
                         <div style={{ marginTop: "5%" }}>
                             <Row>
                                 <Col>
-                                    <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe title="demovideo1" src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </Col>
                                 <Col>
-                                    <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe  title="demovideo2" src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </Col>
                                 <Col>
-                                    <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe  title="demovideo3" src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </Col>
                             </Row>
                             <a id="examples"></a>

@@ -1,12 +1,12 @@
-import react, { Component, useEffect, useState } from "react";
+import {useState } from "react";
 import "../css/pastconv.css";
 import "../css/news.css";
-import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
+// import Button from 'react-bootstrap/Button';
+// import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel'
 
-import convBubble from "../img/speech_bubble.png";
-import white_bg from "../img/white_bg.png"
+// import convBubble from "../img/speech_bubble.png";
+// import white_bg from "../img/white_bg.png"
 import cn_lgogo from "../img/conv-logo.svg"
 
 // import {IncludeGA} from "./topics"

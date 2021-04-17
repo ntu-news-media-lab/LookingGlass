@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from 'react';
+// import react, { useEffect, useState } from 'react';
 import "../css/end.css";
 import creative_commons from "../img/creative-commons.png";
 
@@ -20,7 +20,7 @@ export default function End(props){
                     <h3>{title} supports the free flow of information</h3>
                     <p>{title} is not-for-profit company with a unique collaboration between academics and journalists. Our editors turn knowledge and insights from academics into easy-to-read articles.</p>
                 </div>
-                <a href={newsroom_url} target="_blank">
+                <a href={newsroom_url} target="_blank" rel="noreferrer">
                     <div className="btn-learn-more">
                         <div className="textbox">
                             <p>Read more on</p>

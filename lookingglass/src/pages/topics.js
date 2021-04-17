@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-import lg_logo from "../img/looking-glass@4x.png"
+// import lg_logo from "../img/looking-glass@4x.png"
 import smol_logo from "../img/smol-logo.png";
 import cn_logo from "../img/conv-logo.svg"
 import { ListGroup, Image } from 'react-bootstrap';
@@ -8,7 +8,7 @@ import { readGoogleAsCSV } from '../core/Config';
 import { Helmet } from "react-helmet";
 import {
   useParams,
-  Link,
+  // Link,
   useHistory,
   useLocation
 } from "react-router-dom";
