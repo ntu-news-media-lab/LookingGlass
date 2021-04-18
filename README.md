@@ -66,9 +66,9 @@ We hope to improve the product through further iterations:
 
 [Ms Jessica Tan](https://www.linkedin.com/in/jessica-tan-530594/) and [Miss Joan Kelly](https://www.linkedin.com/in/joan-marie-kelly-a2068a5/) for their guidance throughout the News Media Lab course.
 
-Our news partner [Ika Krismantari](https://www.linkedin.com/in/ika-krismantari-9051b0101/) and  [Prodita Sabarini](https://www.linkedin.com/in/prodita-sabarini-71792929/) @ The Conversation Indonesia for her continuous support and valuable feedback.
+Our news partner [Ika Krismantari](https://www.linkedin.com/in/ika-krismantari-9051b0101/) and  [Prodita Sabarini](https://www.linkedin.com/in/prodita-sabarini-71792929/) @ The Conversation Indonesia for their continuous support and valuable feedback.
 
-Our industry mentor [Harish Pillay](https://www.linkedin.com/in/harishpillay/) from Red Hat for her expert guidance.
+Our industry mentor [Harish Pillay](https://www.linkedin.com/in/harishpillay/) from Red Hat for his expert guidance.
 
 Users from our research process, for providing us with insightful comments and feedback.
 
