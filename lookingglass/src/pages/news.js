@@ -186,14 +186,15 @@ export const IncludeGA = (props) => {
 
     let url = `https://counter.theconversation.com/content/${props.article_id_input}/count.gif?distributor=republish-lightbox-advanced`;
 
-    return (
-        <Helmet>
-        {/* <img src={url} alt="The Conversation" width="1" height="1" style="border: none !important; box-shadow: none !important; margin: 0 !important; max-height: 1px !important; max-width: 1px !important; min-height: 1px !important; min-width: 1px !important; opacity: 0 !important; outline: none !important; padding: 0 !important; text-shadow: none !important" /> */}
+    return (        
             <iframe title={"counter_"+props.article_id_input} src={url} width="1" height="1"></iframe>
-            {/* <script type="text/javascript" src="https://theconversation.com/javascripts/lib/content_tracker_hook.js" id="theconversation_tracker_hook" data-counter={url} async="async"></script> */}
-
-        </Helmet>
-
     )
 
 }
+
+ {/* <Helmet> */}
+        {/* <img src={url} alt="The Conversation" width="1" height="1" style="border: none !important; box-shadow: none !important; margin: 0 !important; max-height: 1px !important; max-width: 1px !important; min-height: 1px !important; min-width: 1px !important; opacity: 0 !important; outline: none !important; padding: 0 !important; text-shadow: none !important" /> */}
+            // <iframe title={"counter_"+props.article_id_input} src={url} width="1" height="1"></iframe>
+            {/* <script type="text/javascript" src="https://theconversation.com/javascripts/lib/content_tracker_hook.js" id="theconversation_tracker_hook" data-counter={url} async="async"></script> */}
+
+        // </Helmet>
