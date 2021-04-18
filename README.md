@@ -3,7 +3,7 @@ LookingGlass is a standalone webpage generation tool that allows news organisati
 
 ***Picture here*** 
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=cpSUCF1wS3c" target="_blank"><img src="http://img.youtube.com/vi/cpSUCF1wS3c/0.jpg" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=cpSUCF1wS3c" target="_blank"><img src="./src/LookingGlass.png" 
 alt="IMAGE ALT TEXT HERE" width="50%" height="50%" border="10" /></a>
 
 
@@ -32,11 +32,13 @@ The app is hosted in vercel server, no additional download is required, just fol
 
 ## Demo Video
 
-Guide to create looking glass page
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=YWI5caBZziM" target="_blank"><img src="http://img.youtube.com/vi/YWI5caBZziM/0.jpg" 
+### Guide to create looking glass page
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=YWI5caBZziM" target="_blank"><img src="./src/" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 [https://youtu.be/YWI5caBZziM](https://youtu.be/YWI5caBZziM)
+
+### Scan to experience the LookingGlass
+<img src="./src/ScanToTry.png" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" />
 
 ## Features
 
@@ -75,6 +77,8 @@ Our industry mentor [Harish Pillay](https://www.linkedin.com/in/harishpillay/) f
 Users from our research process, for providing us with insightful comments and feedback.
 
 # 6. Team Members
+<img src="./src/Team.png" 
+alt="IMAGE ALT TEXT HERE" width="75%" height="50%" border="10" />
 
 **Journalists**: [Alex Hor Wen Xua](https://www.linkedin.com/in/alexwenxuan/)n  and [Tatiyana Emylia](https://www.linkedin.com/in/tatiyana-emylia/) 
 
