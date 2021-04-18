@@ -1,7 +1,6 @@
 # LookingGlass - Curated News Roundup in your pocket
 LookingGlass is a standalone webpage generation tool that allows news organisation to better provide mobile-friendly news reading experience and alleviate news fatigue for busy young adults by curated topic pages and multiple perspectives. 
 
-***Picture here*** 
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=cpSUCF1wS3c" target="_blank"><img src="./src/LookingGlass.png" 
 alt="IMAGE ALT TEXT HERE" width="50%" height="auto" border="10" /></a>
@@ -30,10 +29,8 @@ The app is hosted in vercel server, no additional download is required, just fol
 
 # 3. Usage
 
-## Demo Video
-
 ### Guide to create looking glass page
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=YWI5caBZziM" target="_blank"><img src="./src/How-to-create-LG-page-Thumbnail.png" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=2A9-vFhBrEg" target="_blank"><img src="./src/How-to-create-LG-page-Thumbnail.png" 
 alt="IMAGE ALT TEXT HERE" width="50%" height="auto" border="10" /></a>
 
 ### Scan to experience the LookingGlass
