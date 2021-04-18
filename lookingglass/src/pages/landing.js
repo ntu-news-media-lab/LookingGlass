@@ -173,7 +173,7 @@ export default function Landing(props) {
                             </Col>
                             <Col>
                                 <div className="video">
-                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=YWI5caBZziM" target="_blank"><img src={"http://img.youtube.com/vi/YWI5caBZziM/0.jpg"} alt="LG-demo" style={{ width: "300px", height: "auto" }} /></a>
+                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=2A9-vFhBrEg" target="_blank"><img src={"http://img.youtube.com/vi/2A9-vFhBrEg/0.jpg"} alt="LG-demo" style={{ width: "300px", height: "auto" }} /></a>
                                     {/* <iframe title="guidetocreate" src="https://www.youtube.com/embed/YWI5caBZziM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                                 </div>
                             </Col>
