@@ -16,7 +16,7 @@ export default function End(props){
                     <div id="h3-title">You're All Caught Up!</div>
                 <div id="double-line"></div>
                 <div id="certificate">
-                    <img src={creative_commons} style={{width: "auto", height: "20px"}} />
+                    <img src={creative_commons} style={{width: "auto", height: "20px"}} alt="creative commons"/>
                     <h3>{title} supports the free flow of information</h3>
                     <p>{title} is not-for-profit company with a unique collaboration between academics and journalists. Our editors turn knowledge and insights from academics into easy-to-read articles.</p>
                 </div>

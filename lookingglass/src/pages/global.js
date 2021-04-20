@@ -78,7 +78,7 @@ function FreeScroll(props) {
 
 
 const GlobalItem = (props) => {
-    console.log(props);
+    // console.log(props);
     return(
         <div class="indivual-story">
         <Container>

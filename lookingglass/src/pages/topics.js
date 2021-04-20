@@ -31,7 +31,7 @@ export default function Topics(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await readGoogleAsCSV(source, true, '');
+      const data = await readGoogleAsCSV(source, true, '' ,'');
       set_topic_list(data.topics);
       set_visit_status(true);
     }
@@ -86,7 +86,7 @@ function TopicListItems(props) {
 
   // }
 
-  let news_link = "/news/" + props.csv_source + "/" + props.topic_data.topic_keyword.replace(' ', '+');
+  let news_link = "/news/" + props.csv_source + "/" + props.topic_data.id + "/" +props.topic_data.topic_keyword.replace(' ', '+');
   if (props !== undefined) {
 
     return (

@@ -13,33 +13,32 @@ import {
     useHistory
 
 } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import TClogo from "../img/TC-logo.png";
 import Pastconv from './pastConv';
 import loadingGlass from '../img/smol-logo.png'
 
 
 export default function News(props) {
-    let { source, topic } = useParams();
+    let { source,id, topic } = useParams();
     const topic_cleaned = topic.replace('+', ' ');
     const [article_info, set_article_list] = useState({});
     const [article_info_status, set_article_status] = useState(false);
 
-    console.log(topic_cleaned);
+    // console.log(topic_cleaned);
     useEffect(() => {
         const fetchData = async () => {
-            const data = await readGoogleAsCSV(source, false, '');
+            const data = await readGoogleAsCSV(source, false, id,'');
             set_article_list(data);
             set_article_status(true);
 
         }
         fetchData();
     }, []);
-    console.log(article_info);  //This console.log returns "undefined"
+    // console.log(article_info);  //This console.log returns "undefined"
 
-    useEffect(() => {
-        console.log(article_info); //check the result here
-    }, [article_info])
+    // useEffect(() => {
+    //     // console.log(article_info); //check the result here
+    // }, [article_info])
 
     if (article_info_status) {
         return (
@@ -56,7 +55,7 @@ export default function News(props) {
 function MainArticle(props) {
     const history = useHistory();
     const article_info = props.topic_data;
-    console.log(history);
+    // console.log(history);
     if (props.flag) {
         let url_split = article_info['og']['url'].split("-");
         let article_id = url_split[url_split.length - 1];
@@ -75,7 +74,7 @@ function MainArticle(props) {
                     {article_info['topic']}
                 </div>
                 <div className="topic-text-container">
-                    <a href={article_info['og']['url'] || ""} ><div className="topic-img"><img src={article_info['og']['image']} /></div>
+                    <a href={article_info['og']['url'] || ""} ><div className="topic-img"><img src={article_info['og']['image']} alt="article_image" /></div>
 
                         <div id="content">
                         {article_info['og']['url'].includes('theconversation.com') &&<img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />}
@@ -111,31 +110,6 @@ function MainArticle(props) {
 
 
 }
-// function MainArticleLoading() {
-//     return (
-//         <div className="article-top-container">
-//             <div style={{ textAlign: "center", margin: "5%", fontSize: "1em" }}>{<Skeleton />}</div>
-//             <div className="topic-text-container-loading">
-//                 <img className='rotate' src={loadingGlass}></img>
-//             </div>
-
-
-//             <Container>
-//                 <Row>
-//                     <div className="author-img-left">
-//                         <div className="author-img">{<Skeleton />}</div>
-//                     </div>
-//                     <div className="author-desc-right">
-//                         <span id="author-name">{<Skeleton />}</span>
-//                         <br></br>
-//                         <span id="author-bio">{<Skeleton />}</span>
-//                     </div>
-//                 </Row>
-//             </Container>
-
-//         </div>
-//     )
-// }
 
 
 function MainArticleLoadingTest() {
@@ -143,7 +117,7 @@ function MainArticleLoadingTest() {
         <div className="article-top-container">
             <div className="topic-text-container-loading">
 
-                <img className='rotate' src={loadingGlass}></img>
+                <img className='rotate' src={loadingGlass} alt="loadingrotation"></img>
             </div>
 
         </div>
@@ -168,7 +142,7 @@ const AuthorNew = (props) => {
             <div className="author">
                 <a href={props.author.author_url} style={{ textDecoration: "none", color: "#0b0b0b" }}>
                     <div className="author-img-left">
-                        <div className="author-img"><img src={props.author.url} /></div>
+                        <div className="author-img"><img src={props.author.url} alt="author_image"/></div>
                     </div>
                     <div className="author-desc-right">
                         <span id="author-name">{props.author.name}</span>

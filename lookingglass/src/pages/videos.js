@@ -50,7 +50,6 @@ export default function Video(props) {
                     <Container className="ind-video-container">
                         {
                             videos.map((item, i) => {
-                                console.log(item['url'])
                                 return (
                                     <VideoItem id={i} url={item['url']} desc={item['desc']} />
                                 )

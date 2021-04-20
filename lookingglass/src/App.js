@@ -40,7 +40,7 @@ export default function App() {
           {/* <About /> */}
         </Route>
 
-        <Route path="/news/:source/:topic">
+        <Route path="/news/:source/:id/:topic">
           <div className="mobile-container">
             <News data={data} />
             <Global />
@@ -95,7 +95,7 @@ function Footer() {
   return (
     <footer>
       <span>Copyright 2021 &copy; The Looking Glass</span>
-      <span>&emsp; Supported by &emsp;<img src={nml} style={{ width: "auto", height: "10px" }} /></span>
+      <span>&emsp; Supported by &emsp;<img src={nml} style={{ width: "auto", height: "10px" }} alt="nml" /></span>
     </footer>
   )
 }

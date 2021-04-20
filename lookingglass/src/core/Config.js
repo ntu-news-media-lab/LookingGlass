@@ -45,7 +45,7 @@ export function makeGoogleCSVURL(url_or_key) {
  * 
  * @param {string} url 
  */
-export async function readGoogleAsCSV(url, basic_search,sheets_proxy) {
+export async function readGoogleAsCSV(url, basic_search,serial_number,sheets_proxy) {
 
     let rows = []
 
@@ -88,46 +88,77 @@ export async function readGoogleAsCSV(url, basic_search,sheets_proxy) {
         }
     });
     let promises = [];
-   topic_list_config.topics.forEach((topic,i)=>{
-        try{
-            if(topic.article_url){
-                let keyword =topic.topic_keyword;
-                let keyword_cleaned = encodeURI(keyword.trim());
-                let twitter_id = topic.twitter_id;
-                let global_cov = topic.global_cov;
-                // let local = "http://127.0.0.1:5000/"
-
-                if (basic_search){
-                    // let url = local + `basics?url=${topic.article_url}`;
-                    let url = `https://looking-glass-backend.herokuapp.com/basics?url=${topic.article_url}`
-                    promises.push(read_news(url).then(res=>{
-                        topic['fetched']= res;
-                        topic_list_config[keyword]= res;
-                    }))
+    if (serial_number ===''){
+        topic_list_config.topics.forEach((topic,i)=>{
+            try{
+                if(topic.article_url){
+                    let keyword =topic.topic_keyword;
+                    let keyword_cleaned = encodeURI(keyword.trim());
+                    let twitter_id = topic.twitter_id;
+                    let global_cov = topic.global_cov;
+                    // let local = "http://127.0.0.1:5000/"
+    
+                    if (basic_search){
+                        // let url = local + `basics?url=${topic.article_url}`;
+                        let url = `https://looking-glass-backend.herokuapp.com/basics?url=${topic.article_url}`
+                        promises.push(read_news(url).then(res=>{
+                            topic['fetched']= res;
+                            topic_list_config[keyword]= res;
+                        }))
+                    }
+                    else{
+                        // let url = local + `news?url=${topic.article_url}&keyword=${keyword_cleaned}`;
+                        let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword_cleaned}`
+                        promises.push(read_news(url).then(res=>{
+                            topic['fetched']= res;
+                            res['twitter_id']=twitter_id;
+                            res['global_cov']=global_cov;
+                            topic_list_config[keyword]= res;
+                        }))
+                    }
+                    
                 }
-                else{
-                    // let url = local + `news?url=${topic.article_url}&keyword=${keyword_cleaned}`;
-                    let url = `https://looking-glass-backend.herokuapp.com/news?url=${topic.article_url}&keyword=${keyword_cleaned}`
-                    promises.push(read_news(url).then(res=>{
-                        topic['fetched']= res;
-                        res['twitter_id']=twitter_id;
-                        res['global_cov']=global_cov;
-                        topic_list_config[keyword]= res;
-                    }))
+            }
+            catch(e){
+    
+            }
+        });
+    
+        return Promise.all(promises).then(()=>{
+            // console.log(topic_list_config);
+            return topic_list_config
+        }
+        )
+    }
+    else{
+        let target_article_info = topic_list_config[serial_number];
+        try{
+            if(target_article_info.article_url){
+                let keyword =target_article_info.topic_keyword;
+                let keyword_cleaned = encodeURI(keyword.trim());
+                let twitter_id = target_article_info.twitter_id;
+                let global_cov = target_article_info.global_cov;
+                // let local = "http://127.0.0.1:5000/"
+                // let url = local + `news?url=${topic.article_url}&keyword=${keyword_cleaned}`;
+                let url = `https://looking-glass-backend.herokuapp.com/news?url=${target_article_info.article_url}&keyword=${keyword_cleaned}`
+                promises.push(read_news(url).then(res=>{
+                    target_article_info['fetched']= res;
+                    res['twitter_id']=twitter_id;
+                    res['global_cov']=global_cov;
+                    topic_list_config[keyword]= res;
+                }))
                 }
                 
             }
-        }
         catch(e){
 
-        }
-    });
-    return Promise.all(promises).then(()=>{
-        console.log(topic_list_config);
-        return topic_list_config
+        };
+        return Promise.all(promises).then(()=>{
+            // console.log("return all");
+            return topic_list_config
+    })
     }
-    )
-   
+    
 }
 
 
@@ -138,6 +169,7 @@ function handleRow(event, topic_list_config) {
         delete event.type;
     }
     topic_list_config.topics.push(event);
+    topic_list_config[event['id']] = event;
    
 }
 
@@ -168,7 +200,8 @@ function extractEventFromCSVObject(orig_row) {
         global_cov: row['global_coverage'] || "",
         twitter_id:row['twitter_url'] || "",
         header:row['header'] || '',
-        subheader:row['subheader'] || ''
+        subheader:row['subheader'] || '',
+        id:row['serial_number'] || ''
 
     }
 
@@ -191,7 +224,7 @@ export async function youtube_video(keyword){
             window.fetch(url, { mode: 'cors' })
                 .then(response=> {
                     res = response.json();
-                    console.log(res);
+                    // console.log(res);
                     resolve(res);
                 })
                 .catch(msg=>{
@@ -211,7 +244,7 @@ export async function global_coverage_search(keyword){
             window.fetch(url, { mode: 'cors' })
                 .then(response=> {
                     res = response.json();
-                    console.log(res);
+                    // console.log(res);
                     resolve(res);
                 })
                 .catch(msg=>{

@@ -16,7 +16,7 @@ export default function Pastconv(props) {
 
     if (props.past_convs) {
         const pastconv_result = props.past_convs;
-        console.log(pastconv_result);
+        // console.log(pastconv_result);
         return (
             <div className="pastConv_container">
                 <div className="secTitle">
@@ -44,7 +44,7 @@ function ControlledCarousel(props) {
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
-    console.log(props);
+    // console.log(props);
     const past_ind = props.pastconv_result.map((item, i) => {
         return (
             <Carousel.Item id={"past_item_" + i}>
