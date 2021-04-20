@@ -9,7 +9,7 @@ import vid from "../img/LG-how-to.jpg";
 
 
 export default function Landing(props) {
-    let looking_glass_temp = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/copy";
+    let looking_glass_temp = "https://docs.google.com/spreadsheets/d/1yv_4Kk22-8aTWgeTm1hJb_MUg2UuEuKI6zEO7NUpJvY/copy";
 
     function Generate() {
         let domain = "https://looking-glass.vercel.app/topics/"
