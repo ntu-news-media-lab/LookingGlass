@@ -16,6 +16,7 @@ import {
 import TClogo from "../img/TC-logo.png";
 import Pastconv from './pastConv';
 import loadingGlass from '../img/smol-logo.png'
+import { Helmet } from 'react-helmet';
 
 
 export default function News(props) {
@@ -62,7 +63,12 @@ function MainArticle(props) {
         const authors = article_info['authors']?article_info['authors'].map((item, i) =>
                         <AuthorNew author={item} />):''
         return (
+            
+           
             <div className="article-top-container">
+             <Helmet>
+                <title>{article_info['topic']}</title>
+            </Helmet>
                 {article_info['og']['url'].includes('theconversation.com') && <IncludeGA article_id_input={article_id} />}
                 <div className="topic-container">
                     <div id="back-btn-container">

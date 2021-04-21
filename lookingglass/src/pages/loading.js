@@ -1,6 +1,6 @@
 import React from "react";
 import lg_logo from "../img/looking-glass@4x.png"
-import nml_log from "../img/NewsMediaLabLogo.png"
+import nml_log from "../img/powered-by.png"
 import cn_logo from "../img/conv-logo.svg"
 import "../css/topics.css"
 
@@ -19,7 +19,7 @@ export default function Loading() {
                     }} 
                     alt ="cn_logo"
                     /></span></div>
-                <div style={{marginTop: "70%", textAlign: "center", fontSize: "18px" }}> Powered by </div>
+                <div style={{marginTop: "70%", textAlign: "center", fontSize: "18px" }}>  </div>
                 <img src={nml_log} style={{marginBottom: "10%",  width: '30%'}} alt="nml_logo"/>
             </div>
         </div>
