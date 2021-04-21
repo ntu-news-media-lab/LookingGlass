@@ -166,14 +166,14 @@ export default function Landing(props) {
                         <Row>
                             <Col>
                                 <div className="video">
-                                    <img src={vid} alt="LG how to" style={{ width: "300px", height: "auto" }} />
-                                    {/* <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+                                    {/* <img src={vid} alt="LG how to" style={{ width: "300px", height: "auto" }} /> */}
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/IhlNf4WqQCc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
                                 </div>
                             </Col>
                             <Col>
                                 <div className="video">
-                                    <img src={vid} alt="LG-demo" style={{ width: "300px", height: "auto" }} />
-                                    {/* <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+                                    {/* <img src={vid} alt="LG-demo" style={{ width: "300px", height: "auto" }} /> */}
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cpSUCF1wS3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
                                 </div>
                             </Col>
                         </Row>
