@@ -1,12 +1,12 @@
-import react, { Component, useEffect, useState } from "react";
+import {useState } from "react";
 import "../css/pastconv.css";
 import "../css/news.css";
-import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
+// import Button from 'react-bootstrap/Button';
+// import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel'
 
-import convBubble from "../img/speech_bubble.png";
-import white_bg from "../img/white_bg.png"
+// import convBubble from "../img/speech_bubble.png";
+// import white_bg from "../img/white_bg.png"
 import cn_lgogo from "../img/conv-logo.svg"
 
 // import {IncludeGA} from "./topics"
@@ -16,7 +16,7 @@ export default function Pastconv(props) {
 
     if (props.past_convs) {
         const pastconv_result = props.past_convs;
-        console.log(pastconv_result);
+        // console.log(pastconv_result);
         return (
             <div className="pastConv_container">
                 <div className="secTitle">
@@ -44,7 +44,7 @@ function ControlledCarousel(props) {
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
-    console.log(props);
+    // console.log(props);
     const past_ind = props.pastconv_result.map((item, i) => {
         return (
             <Carousel.Item id={"past_item_" + i}>

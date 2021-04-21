@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container, Grid, Col, Row } from 'react-bootstrap';
+import React from "react";
+import { Container, Col, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../css/landing.css";
 import logo from "../img/looking-glass@4x.png";
@@ -9,7 +9,7 @@ import vid from "../img/LG-how-to.jpg";
 
 
 export default function Landing(props) {
-    let looking_glass_temp = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/copy";
+    let looking_glass_temp = "https://docs.google.com/spreadsheets/d/1yv_4Kk22-8aTWgeTm1hJb_MUg2UuEuKI6zEO7NUpJvY/copy";
 
     function Generate() {
         let domain = "https://looking-glass.vercel.app/topics/"
@@ -166,14 +166,15 @@ export default function Landing(props) {
                         <Row>
                             <Col>
                                 <div className="video">
-                                    {/* <img src={vid} alt="LG how to" style={{ width: "300px", height: "auto" }} /> */}
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/IhlNf4WqQCc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=cpSUCF1wS3c" target="_blank"><img src={"http://img.youtube.com/vi/cpSUCF1wS3c/0.jpg"} alt="LG how to" style={{ width: "300px", height: "auto" }} /></a>
+                                    {/* <iframe title="promotional" src="https://www.youtube.com/embed/cpSUCF1wS3c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+                                    
                                 </div>
                             </Col>
                             <Col>
                                 <div className="video">
-                                    {/* <img src={vid} alt="LG-demo" style={{ width: "300px", height: "auto" }} /> */}
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cpSUCF1wS3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=2A9-vFhBrEg" target="_blank"><img src={"http://img.youtube.com/vi/2A9-vFhBrEg/0.jpg"} alt="LG-demo" style={{ width: "300px", height: "auto" }} /></a>
+                                    {/* <iframe title="guidetocreate" src="https://www.youtube.com/embed/YWI5caBZziM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                                 </div>
                             </Col>
                         </Row>
@@ -299,13 +300,13 @@ export default function Landing(props) {
                         <div style={{ marginTop: "5%" }}>
                             <Row>
                                 <Col>
-                                    <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe title="demovideo1" src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </Col>
                                 <Col>
-                                    <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe  title="demovideo2" src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </Col>
                                 <Col>
-                                    <iframe src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe  title="demovideo3" src="https://www.youtube.com/embed/_Ah6fSDHTq4" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </Col>
                             </Row>
                             <a id="examples"></a>

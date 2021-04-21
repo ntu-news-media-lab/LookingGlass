@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import "../css/pastconv.css";
 import "../css/flickingFeature.css"
 import "../css/video.css"
@@ -6,10 +6,10 @@ import { youtube_video } from '../core/Config';
 import { useParams } from "react-router-dom";
 import { Container, Row } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
-import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
-import creative_commons from "../img/creative-commons.png";
-import nml from "../img/NewsMediaLabLogo.png";
+// import Button from 'react-bootstrap/Button';
+// import Image from 'react-bootstrap/Image';
+// import creative_commons from "../img/creative-commons.png";
+// import nml from "../img/NewsMediaLabLogo.png";
 
 
 export default function Video(props) {
@@ -50,7 +50,6 @@ export default function Video(props) {
                     <Container className="ind-video-container">
                         {
                             videos.map((item, i) => {
-                                console.log(item['url'])
                                 return (
                                     <VideoItem id={i} url={item['url']} desc={item['desc']} />
                                 )

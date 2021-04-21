@@ -57,11 +57,12 @@
 .topic_headline{
     font-size:18px;
     line-height: 1.4em;  
+    margin-bottom: 3%;
 }
 .topic_summary{
   font-size:14px;
   line-height: 1.4em;
-  padding-top: 3%;
+  padding-top: 5%;
 }
 .topic_left_top_tag{
   position: absolute;
