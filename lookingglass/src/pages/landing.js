@@ -10,6 +10,7 @@ import vid from "../img/LG-how-to.jpg";
 
 export default function Landing(props) {
     let looking_glass_temp = "https://docs.google.com/spreadsheets/d/1yv_4Kk22-8aTWgeTm1hJb_MUg2UuEuKI6zEO7NUpJvY/copy";
+    let nml_link="http://www.newsmedialab.wkwsci.ntu.edu.sg/index.html"
 
     function Generate() {
         let domain = "https://looking-glass.vercel.app/topics/"
@@ -329,7 +330,7 @@ export default function Landing(props) {
                 
                 <footer>
                     <span>Copyright 2021 &copy; The Looking Glass</span>
-                    <span>&emsp; Supported by &emsp;<img src={nml} style={{ width: "auto", height: "20px" }} /></span>
+                    <span>&emsp; Supported by &emsp; <a href={nml_link} target="_blank"><img src={nml} style={{ width: "auto", height: "20px" }} /></a></span>
                 </footer>
             </div>
         </div>
