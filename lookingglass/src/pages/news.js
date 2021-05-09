@@ -69,7 +69,6 @@ function MainArticle(props) {
              <Helmet>
                 <title>{article_info['topic']}</title>
             </Helmet>
-                {article_info['og']['url'].includes('theconversation.com') && <IncludeGA article_id_input={article_id} />}
                 <div className="topic-container">
                     <div id="back-btn-container">
                         <button onClick={() => {
@@ -80,7 +79,7 @@ function MainArticle(props) {
                     {article_info['topic']}
                 </div>
                 <div className="topic-text-container">
-                    <a href={article_info['og']['url'] || ""} ><div className="topic-img"><img src={article_info['og']['image']} alt="article_image" /></div>
+                    <a href={article_info['og']['url']+'?utm_source=LookingGlass&utm_medium=referral&utm_campaign=LookingGlass' || ""} ><div className="topic-img"><img src={article_info['og']['image']} alt="article_image" /></div>
 
                         <div id="content">
                         {article_info['og']['url'].includes('theconversation.com') &&<img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />}
@@ -117,7 +116,7 @@ function MainArticle(props) {
 
 }
 
-
+// loading widget rotation
 function MainArticleLoadingTest() {
     return (
         <div className="article-top-container">
@@ -162,15 +161,15 @@ const AuthorNew = (props) => {
 }
 
 
-export const IncludeGA = (props) => {
+// export const IncludeGA = (props) => {
 
-    let url = `https://counter.theconversation.com/content/${props.article_id_input}/count.gif?distributor=republish-lightbox-advanced`;
+//     let url = `https://counter.theconversation.com/content/${props.article_id_input}/count.gif?distributor=republish-lightbox-advanced`;
 
-    return (        
-            <iframe title={"counter_"+props.article_id_input} src={url} width="1" height="1"></iframe>
-    )
+//     return (        
+//             <iframe title={"counter_"+props.article_id_input} src={url} width="1" height="1"></iframe>
+//     )
 
-}
+// }
 
  {/* <Helmet> */}
         {/* <img src={url} alt="The Conversation" width="1" height="1" style="border: none !important; box-shadow: none !important; margin: 0 !important; max-height: 1px !important; max-width: 1px !important; min-height: 1px !important; min-width: 1px !important; opacity: 0 !important; outline: none !important; padding: 0 !important; text-shadow: none !important" /> */}

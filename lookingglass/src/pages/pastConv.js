@@ -48,7 +48,7 @@ function ControlledCarousel(props) {
     const past_ind = props.pastconv_result.map((item, i) => {
         return (
             <Carousel.Item id={"past_item_" + i}>
-                <a href={item['url']}>
+                <a href={item['url']+'?utm_source=LookingGlass&utm_medium=referral&utm_campaign=LookingGlass'}>
                     <div className="bubble-imge-container" />
                     <div className="convTitle">PAST COVERAGE</div>
                     <Carousel.Caption>

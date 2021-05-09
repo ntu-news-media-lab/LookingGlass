@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  useLocation
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import News from "./pages/news";
@@ -21,6 +22,10 @@ import Global from "./pages/global";
 
 
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 
 export default function App() {
   const data = {
@@ -32,6 +37,7 @@ export default function App() {
     "author_name": "Michael W. Charney",
     "author_bio": "Professor of Asian and Military History, SOAS, University of London"
   }
+  
   return (
     <Router>
       <Switch>
@@ -39,6 +45,10 @@ export default function App() {
           <SuccessDisplay />
           {/* <About /> */}
         </Route>
+
+        {/* <Route path="/test1">
+        <Child />
+        </Route> */}
 
         <Route path="/news/:source/:id/:topic">
           <div className="mobile-container">
@@ -92,6 +102,7 @@ export default function App() {
 
 
 function Footer() {
+
   return (
     <footer>
       <span>Copyright 2021 &copy; The Looking Glass</span>
@@ -99,3 +110,20 @@ function Footer() {
     </footer>
   )
 }
+
+function Child(props) {
+  let query = useQuery();
+  let name = query.get('name');
+  return (
+    <div>
+      {name ? (
+        <h3>
+          The <code>name</code> in the query string is &quot;{name}
+          &quot;
+        </h3>
+      ) : (
+        <h3>There is no name in the query string</h3>
+      )}
+    </div>
+  )
+      }
