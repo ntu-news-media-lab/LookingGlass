@@ -83,12 +83,12 @@ function MainArticle(props) {
 
                         <div id="content">
                         {article_info['og']['url'].includes('theconversation.com') &&<img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />}
-                            <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
+                            <span>{moment(article_info['pub_time']).format('MMM DD, YYYY HH:mm')}</span>
                             <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                             <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
                         </div>
                     </a>
-                    <div className="topic_left_top_tag">SPOTLIGHT</div>
+                    <div className="topic_left_top_tag">BERITA UTAMA</div>
                 </div>
 
                 <div className="author">
@@ -133,7 +133,7 @@ const TwitterSection = (props)=>{
     return(
         <div>
         <div id="line" style={{ marginLeft: "10%", marginBottom: "-3%" }}></div>
-        <p><strong>Top tweets</strong></p>
+        <p><strong>Cuitan paling viral</strong></p>
         <TwitterTweetEmbed tweetId={props.twitter_id} />
         </div>
 

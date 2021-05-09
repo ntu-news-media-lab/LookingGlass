@@ -44,6 +44,7 @@ export default function Topics(props) {
     const sub_header = topic_list[0]['subheader'] || "This Week";
 
     return (
+      <div id="mobile">
       <div className="topic_page_overall" >
 
         <Helmet>
@@ -55,8 +56,8 @@ export default function Topics(props) {
         <meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here."/>
         <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg" /> */}
         </Helmet>
-        <div className="topic_container">
           <Header header_content={topic_list} />
+        <div className="topic_container">
           <div className="topiclist">
             <ListGroup variant="flush">
               {
@@ -67,6 +68,7 @@ export default function Topics(props) {
           </div>
           <SearchBar />
         </div>
+      </div>
       </div>
     )
   }
@@ -106,7 +108,7 @@ function Header(props) {
 
   return (
     <div>
-      <div id="image-container">
+      <div className="image-container">
         <img src={smol_logo} /></div>
       <div className="topic-page-tagline" style={{ textAlign: "none" }}>
         <div id="second-tagline"><strong>{props.header_content[0]['header'] || "What's Treading?"}</strong></div>
@@ -119,7 +121,7 @@ function Header(props) {
 
 function SearchBar() {
   return (
-    <div className="mobile-container">
+    <div id="mobile">
       <div id="topic-search-container">
         <div className="search-section">
           <ListGroup variant="flush">
@@ -128,7 +130,7 @@ function SearchBar() {
             </ListGroup.Item>
           </ListGroup>
           <div className="news-org-logo">
-            <span>on &nbsp; <img src={cn_logo} /></span>
+            <span>di &nbsp; <img src={cn_logo} /></span>
           </div>
         </div>
       </div>

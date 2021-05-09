@@ -21,7 +21,7 @@ export default function Pastconv(props) {
             <div className="pastConv_container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <h3>Related News</h3>
+                    <h3>Berita Terkait</h3>
                     {/* <p>Hear From Others</p> */}
                 </div>
 
@@ -50,7 +50,7 @@ function ControlledCarousel(props) {
             <Carousel.Item id={"past_item_" + i}>
                 <a href={item['url']+'?utm_source=LookingGlass&utm_medium=referral&utm_campaign=LookingGlass'}>
                     <div className="bubble-imge-container" />
-                    <div className="convTitle">PAST COVERAGE</div>
+                    <div className="convTitle">BERITA SEBELUMNYA</div>
                     <Carousel.Caption>
                         <h3>{item['headline']}</h3>
                         <p id="past_summary">{item['summary']}</p>

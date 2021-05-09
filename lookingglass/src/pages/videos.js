@@ -43,11 +43,11 @@ export default function Video(props) {
             <div className="video-sec-container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <h3>Videos</h3>
-                    <p>See through the news</p>
+                    <h3>Video</h3>
+                    <p>Tonton beritanya</p>
                 </div>
                 <div className="videos">
-                    <Container className="ind-video-container">
+                    <div className="ind-video-container">
                         {
                             videos.map((item, i) => {
                                 return (
@@ -55,7 +55,7 @@ export default function Video(props) {
                                 )
                             })
                         }
-                    </Container>
+                    </div>
                 </div>
 
             </div>
@@ -70,8 +70,8 @@ export default function Video(props) {
             <div className="video-sec-container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <h3>Videos</h3>
-                    <p>See through the news</p>
+                    <h3>Video</h3>
+                    <p>Tonton beritanya</p>
                 </div>
                 <div className="videos">
                     <Skeleton count={5} />
@@ -90,12 +90,12 @@ const VideoItem = (props) => {
     // console.log(props.url_input);
     return (
        <div id={'video_'+props.id} className="ind-video">
-            <Row className="video" id="video-row">
-                <iframe title={'video_'+props.id} src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-            </Row>
-            <Row className="video-title">
+            <div className="video" id="video-row">
+                <iframe title={'video_'+props.id} src={props.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="true"></iframe>
+            </div>
+            <div className="video-title">
                 <span>{props.desc}</span>
-            </Row>
+            </div>
         </div>
 
     )

@@ -36,8 +36,8 @@ export default function Global(props) {
             <div className="global_container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <h3>Global Coverage</h3>
-                    <p>Hear from Others</p>
+                    <h3>Cakupan Global</h3>
+                    <p>Baca dari berita lainnya</p>
                 </div>
     
                 <div className="global_stories">

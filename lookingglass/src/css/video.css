@@ -20,6 +20,7 @@
     margin-top: 30%;
     margin-left: auto;
     margin-right:auto;
+    display: block;
 }
 .secTitle{
     margin-bottom: 5%;
@@ -33,18 +34,18 @@
     margin-top:-5px;
 }
 .ind-video-container{
-    margin-top:5%;
-    margin-bottom: 5%;
-    margin-right: auto;
     margin-left: auto;
+    margin-right: auto;
     width: 80%;
     border-radius:10px;
-    height: max-content;
 }
 .videos {
-    margin-top:10%;
     margin-left:auto;
     margin-right:auto;
+}
+#video-row {
+    margin-left:0px !important;
+    margin-bottom: 0px !important;
 }
 .video iframe{
     width: auto;
@@ -52,14 +53,14 @@
     border-radius: 10px !important;
 }
 
-
 .ind-video {
     margin-bottom:10%;
     margin-top: 5%;
 }
-
+.video-title {
+    display: block;
+}
 .video-title span {
-    padding: 3% 0% 0% 1%;
     font-family: "RedHatDisplay";
     font-weight: 400px;
     font-size: 18px;
