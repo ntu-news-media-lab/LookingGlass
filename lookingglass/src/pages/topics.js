@@ -23,10 +23,7 @@ export default function Topics(props) {
 
   let { source } = useParams();
   const [topic_list, set_topic_list] = useState([]);
-  // const [fetch_info, set_fetch_info] = useState([]);
-  // const [fetch_all, set_fetch_all] = useState({});
   const [visit_status, set_visit_status] = useState(false);
-  // const [topics,set_topics] = useState([]);
 
 
   useEffect(() => {
@@ -44,29 +41,25 @@ export default function Topics(props) {
     const sub_header = topic_list[0]['subheader'] || "This Week";
 
     return (
+      <div id="mobile">
       <div className="topic_page_overall" >
 
         <Helmet>
           <title>{header + " " + sub_header}</title>
-          {/* <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@nytimes" />
-        <meta name="twitter:creator" content="@SarahMaslinNir" />
-        <meta name="twitter:title" content="Parade of Fans for Houston’s Funeral" />
-        <meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here."/>
-        <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg" /> */}
         </Helmet>
-        <div className="topic_container">
           <Header header_content={topic_list} />
+        <div className="topic_container">
           <div className="topiclist">
             <ListGroup variant="flush">
               {
                 topic_list.map((item, i) =>
-                  <TopicListItems topic_data={item} index={i} csv_source={source} home_url={curr_url} />)
+                  <TopicListItems topic_data={item} index={i} csv_source={source} home_url={curr_url} lang={props.language}/>)
               }
             </ListGroup>
           </div>
-          <SearchBar />
+          <SearchBar translation={props.translation}/>
         </div>
+      </div>
       </div>
     )
   }
@@ -82,13 +75,11 @@ export default function Topics(props) {
 
 function TopicListItems(props) {
   const history = useHistory();
-  // function pushHistory(a, b) {
-
-  // }
-
   let news_link = "/news/" + props.csv_source + "/" + props.topic_data.id + "/" +props.topic_data.topic_keyword.replace(' ', '+');
+  if(props.lang!=='en'){
+    news_link +="?lang="+props.lang;
+  }
   if (props !== undefined) {
-
     return (
       <a href={news_link} onClick={() => history.push(props.home_url, { from: "Topics" })}>
         <ListGroup.Item>
@@ -106,8 +97,9 @@ function Header(props) {
 
   return (
     <div>
-      <div id="image-container">
-        <img src={smol_logo} /></div>
+     <a href="" target="_blank">
+      <div className="image-container">
+       <img src={smol_logo} /></div></a>
       <div className="topic-page-tagline" style={{ textAlign: "none" }}>
         <div id="second-tagline"><strong>{props.header_content[0]['header'] || "What's Treading?"}</strong></div>
         <div id="first-tagline">{props.header_content[0]['subheader'] || "THIS WEEK"}</div>
@@ -117,18 +109,18 @@ function Header(props) {
 
 }
 
-function SearchBar() {
+function SearchBar(props) {
   return (
-    <div className="mobile-container">
+    <div id="mobile">
       <div id="topic-search-container">
         <div className="search-section">
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <SearchForm />
+              <SearchForm translation={props.translation('Search')}/>
             </ListGroup.Item>
           </ListGroup>
           <div className="news-org-logo">
-            <span>on &nbsp; <img src={cn_logo} /></span>
+            <span>&nbsp; <img src={cn_logo} /></span>
           </div>
         </div>
       </div>
@@ -141,7 +133,7 @@ class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '', link: '' };
-
+    // this.translation = '';
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -163,7 +155,7 @@ class SearchForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
 
-        <input id="search_input" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search articles" />
+        <input id="search_input" type="text" value={this.state.value} onChange={this.handleChange} placeholder={this.props.translation} />
 
         <button id="search_button"><BiSearch size={25} /><input type="submit" value="" /></button>
       </form>

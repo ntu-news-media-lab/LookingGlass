@@ -6,15 +6,13 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 // import Skeleton from 'react-loading-skeleton';
 import "../css/news.css";
 // import browserHistory from "history/createBrowserHistory";
-import i18next from "i18next";
+
 import {
     // BrowserRouter as Router,
     useParams,
     useHistory
 
 } from "react-router-dom";
-import useQuery from '../core/helper';
-import { useTranslation } from 'react-i18next';
 import TClogo from "../img/TC-logo.png";
 import Pastconv from './pastConv';
 import loadingGlass from '../img/smol-logo.png'
@@ -22,25 +20,11 @@ import { Helmet } from 'react-helmet';
 
 
 export default function News(props) {
-    let query = useQuery();
-    const { t } = useTranslation();
-
     let { source,id, topic } = useParams();
     const topic_cleaned = topic.replace('+', ' ');
     const [article_info, set_article_list] = useState({});
     const [article_info_status, set_article_status] = useState(false);
-    const [lang, set_lang] = useState();
-
-    useEffect(()=>{
-        let query_lang = query.get("lang");
-        if (query_lang){
-            set_lang(query_lang);
-            i18next.changeLanguage(query_lang);
-        }
-        else{
-            set_lang('en');
-        }
-    },[])
+    moment.locale(props.language);
     
     // console.log(topic_cleaned);
     useEffect(() => {
@@ -52,16 +36,11 @@ export default function News(props) {
         }
         fetchData();
     }, []);
-    // console.log(article_info);  //This console.log returns "undefined"
-
-    // useEffect(() => {
-    //     // console.log(article_info); //check the result here
-    // }, [article_info])
 
     if (article_info_status) {
         return (
             //  <MainArticleLoadingTest />
-            <MainArticle topic_data={article_info[topic_cleaned]} flag={article_info_status} topic_word={topic_cleaned} translation={t} />
+            <MainArticle topic_data={article_info[topic_cleaned]} flag={article_info_status} topic_word={topic_cleaned} translation={props.translation} />
         )
     }
     else {
@@ -73,7 +52,7 @@ export default function News(props) {
 function MainArticle(props) {
     const history = useHistory();
     const article_info = props.topic_data;
-    const t = props.translation
+    const t = props.translation;
     // console.log(history);
     if (props.flag) {
         let url_split = article_info['og']['url'].split("-");
@@ -101,7 +80,7 @@ function MainArticle(props) {
 
                         <div id="content">
                         {article_info['og']['url'].includes('theconversation.com') &&<img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />}
-                            <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
+                            <span>{moment(article_info['pub_time']).format('MMM DD, YYYY')}</span>
                             <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                             <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
                         </div>
@@ -113,13 +92,13 @@ function MainArticle(props) {
                     {authors}
                 </div>
                 {  // only render embedded tweet if twitter_id given
-                    article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
+                    article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} translation={t}/>
                 }
                 <div className="twitter-container">
                     
                     
                     {  // only render embedded tweet if twitter_id given
-                        article_info['twitter_id'] !== '' &&  <TwitterSection twitter_id={article_info['twitter_id']}/>
+                        article_info['twitter_id'] !== '' &&  <TwitterSection twitter_id={article_info['twitter_id']} translation={t}/>
                     }
                 </div>
             </div>
@@ -148,10 +127,11 @@ function MainArticleLoadingTest() {
 }
 
 const TwitterSection = (props)=>{
+    const t = props.translation
     return(
         <div>
         <div id="line" style={{ marginLeft: "10%", marginBottom: "-3%" }}></div>
-        <p><strong>Top tweets</strong></p>
+        <p><strong>{t('TopTweets_section')}</strong></p>
         <TwitterTweetEmbed tweetId={props.twitter_id} />
         </div>
 

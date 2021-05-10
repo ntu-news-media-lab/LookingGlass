@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,11 +22,15 @@ import nml from "./img/NewsMediaLabLogo.png";
 import Pastconv from "./pages/pastConv";
 import Global from "./pages/global";
 
+// translation 
+import useQuery from './core/helper';
+import { useTranslation } from 'react-i18next';
+import i18next from "i18next";
 
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+// function useQuery() {
+//   return new URLSearchParams(useLocation().search);
+// }
 
 
 export default function App() {
@@ -39,7 +43,7 @@ export default function App() {
   //   "author_name": "Michael W. Charney",
   //   "author_bio": "Professor of Asian and Military History, SOAS, University of London"
   // }
-  
+
   return (
     <Router>
       <Switch>
@@ -53,53 +57,82 @@ export default function App() {
         </Route> */}
 
         <Route path="/news/:source/:id/:topic">
-          <div className="mobile-container">
-            <News />
-            <Global />
-            <Video />
-            <End />
-            <Footer />
-          </div>
+         <Content/>
         </Route>
 
-        <Route path="/topics/:source">
-          <div className="mobile-container">
-            <Topics  />
-          </div>
-        </Route>
+      <Route path="/topics/:source">
+        <TopicsContainer/>
+      </Route>
 
-        <Route path="/pastcov">
-          <div className="mobile-container">
-            <Pastconv />
-          </div>
-        </Route>
+      {/* <Route path="/pastcov">
+        <div className="mobile-container">
+          <Pastconv />
+        </div>
+      </Route> */}
+{/* 
+      <Route path="/global/:topic">
+      </Route> */}
 
-        <Route path="/global/:topic">
-        </Route>
+      <Route path="/">
+        <Landing />
+      </Route>
 
-        <Route path="/">
-          <Landing />
-        </Route>
       </Switch>
     </Router>
   );
 }
 
 
+function Content(props) {
 
-// function About() {
-//   return (
-//     <div id="loading_page" style={{ position: "relative", height: "100%", transition: "opacity 3s", opacity: "0" }}>
-//       <div style={{ position: "absolute" }}>
-//         <img src={lg_logo} style={{ width: '50%', marginLeft: "25%", marginTop: "50%" }} />
-//         <div style={{ marginTop: "5%", textAlign: "center", textSizeAdjust: "auto" }}>For <span style={{ color: "rgb(161,64,72)" }}>The Conversation</span></div>
-//         <div style={{ marginTop: "35%", textAlign: "center", textSizeAdjust: "auto" }}> Powered by </div>
-//         <img src={nml_log} style={{ width: '50%', marginLeft: "25%" }} />
-//       </div>
-//     </div>
-//   )
-// }
+  let query = useQuery();
+  const [lang, set_lang] = useState();
+  const { t } = useTranslation();
+  useEffect(() => {
+    let query_lang = query.get("lang");
+    if (query_lang) {
+      set_lang(query_lang);
+      i18next.changeLanguage(query_lang);
+    }
+    else {
+      set_lang('en');
+    }
+  }, []);
 
+  return (
+    <div className="mobile-container">
+      <News translation={t} language={lang}/>
+      <Global translation={t} />
+      <Video translation={t}/>
+      <End translation={t}/>
+      <Footer translation={t}/>
+    </div>
+
+  )
+}
+
+
+function TopicsContainer(props) {
+  let query = useQuery();
+  const [lang, set_lang] = useState();
+  const { t } = useTranslation();
+  useEffect(() => {
+    let query_lang = query.get("lang");
+    if (query_lang) {
+      set_lang(query_lang);
+      i18next.changeLanguage(query_lang);
+    }
+    else {
+      set_lang('en');
+    }
+  }, []);
+  return (
+    <div className="mobile-container">
+          <Topics translation={t} language={lang}/>
+        </div>
+
+  )
+}
 
 
 
@@ -113,19 +146,3 @@ function Footer() {
   )
 }
 
-function Child(props) {
-  let query = useQuery();
-  let name = query.get('name');
-  return (
-    <div>
-      {name ? (
-        <h3>
-          The <code>name</code> in the query string is &quot;{name}
-          &quot;
-        </h3>
-      ) : (
-        <h3>There is no name in the query string</h3>
-      )}
-    </div>
-  )
-      }

@@ -21,12 +21,12 @@ export default function Pastconv(props) {
             <div className="pastConv_container">
                 <div className="secTitle">
                     <div id="line"></div>
-                    <h3>Related News</h3>
+                    <h3>{props.translation("RelatedNews_section")}</h3>
                     {/* <p>Hear From Others</p> */}
                 </div>
 
                 <div className="convBubble_container">
-                    <ControlledCarousel pastconv_result={pastconv_result} />
+                    <ControlledCarousel pastconv_result={pastconv_result} t={props.translation}/>
 
                     <div className="tc-logo">
                         <img src={cn_lgogo} alt="the-conversation-logo" />
@@ -50,7 +50,7 @@ function ControlledCarousel(props) {
             <Carousel.Item id={"past_item_" + i}>
                 <a href={item['url']+'?utm_source=LookingGlass&utm_medium=referral&utm_campaign=LookingGlass'}>
                     <div className="bubble-imge-container" />
-                    <div className="convTitle">PAST COVERAGE</div>
+                    <div className="convTitle">{props.t("PastCoverage_section")}</div>
                     <Carousel.Caption>
                         <h3>{item['headline']}</h3>
                         <p id="past_summary">{item['summary']}</p>

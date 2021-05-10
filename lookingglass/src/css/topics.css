@@ -1,7 +1,8 @@
-.mobile-container {
+#mobile {
     max-width:400px;
     margin-left:auto;
-    margin-right:auto;
+    margin-right: auto;
+    text-align: center;
 }
 .topiclist{
     margin:auto;
@@ -26,19 +27,21 @@
     height: auto;
     margin-right: 5%;
 }
-#image-container {
+
+.image-container {
     position:relative;
-    margin-top: 10%;
-    margin-bottom: 5%;
-    margin-left:10%;
-    margin-right: auto;
+    margin-top: 15%;
+    margin-bottom: 2%;
 }
-#image-container img{
+
+.image-container img{
     width: 10%;
     height:auto;
 }
 .topic-page-tagline{
+    text-align: left !important;
     padding: 5% 15% 0 15%;
+
 }
 
 #first-tagline{
@@ -93,25 +96,24 @@ button:focus {
     width: 100%;
     height: max-content;
     max-height:800px;
-
+    left:auto;
+    right: auto;
 }
 .topic_container{
     width: 100%;
     height: max-content;
-    top: 0;
-    bottom: 0;
+    text-align: left !important;
     -webkit-animation: show-animation 1s linear forwards;
 
 }
 #topic-search-container {
-    max-height:800px;
-    max-width:400px;
-    margin-left: 50px;
-    margin-right:50px;
-    bottom: 5%;
-    left: auto;
-    right:auto;
-    position:absolute;
+    max-width:100%;
+    margin-bottom: 2%;
+    margin-left:auto;
+    margin-right: auto;
+    position:relative;
+    display: inline-block;
+    text-align: center;
 }
 #loading_div{
     position: absolute;
