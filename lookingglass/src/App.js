@@ -5,6 +5,8 @@ import {
   Route,
   useLocation
 } from "react-router-dom";
+
+import "./core/i18nextConf"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import News from "./pages/news";
 import Video from "./pages/videos";
@@ -28,15 +30,15 @@ function useQuery() {
 
 
 export default function App() {
-  const data = {
-    "topic_word": "Myanmar Coup",
-    "img_src": "https://images.theconversation.com/files/382241/original/file-20210203-21-90gvwb.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip",
-    "headline": "Myanmar coup: how the military has held onto power for 60 years",
-    "summary": "After arresting Aung San Suu Kyi once again, the army is clearly not ready to relinquish control.",
-    "author_icon": "https://cdn.theconversation.com/avatars/960001/width170/file-20200207-27560-1cvbuj9.jpg",
-    "author_name": "Michael W. Charney",
-    "author_bio": "Professor of Asian and Military History, SOAS, University of London"
-  }
+  // const data = {
+  //   "topic_word": "Myanmar Coup",
+  //   "img_src": "https://images.theconversation.com/files/382241/original/file-20210203-21-90gvwb.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip",
+  //   "headline": "Myanmar coup: how the military has held onto power for 60 years",
+  //   "summary": "After arresting Aung San Suu Kyi once again, the army is clearly not ready to relinquish control.",
+  //   "author_icon": "https://cdn.theconversation.com/avatars/960001/width170/file-20200207-27560-1cvbuj9.jpg",
+  //   "author_name": "Michael W. Charney",
+  //   "author_bio": "Professor of Asian and Military History, SOAS, University of London"
+  // }
   
   return (
     <Router>
@@ -52,7 +54,7 @@ export default function App() {
 
         <Route path="/news/:source/:id/:topic">
           <div className="mobile-container">
-            <News data={data} />
+            <News />
             <Global />
             <Video />
             <End />
@@ -62,7 +64,7 @@ export default function App() {
 
         <Route path="/topics/:source">
           <div className="mobile-container">
-            <Topics data={data} />
+            <Topics  />
           </div>
         </Route>
 

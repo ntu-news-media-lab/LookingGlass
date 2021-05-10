@@ -6,13 +6,15 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 // import Skeleton from 'react-loading-skeleton';
 import "../css/news.css";
 // import browserHistory from "history/createBrowserHistory";
-
+import i18next from "i18next";
 import {
     // BrowserRouter as Router,
     useParams,
     useHistory
 
 } from "react-router-dom";
+import useQuery from '../core/helper';
+import { useTranslation } from 'react-i18next';
 import TClogo from "../img/TC-logo.png";
 import Pastconv from './pastConv';
 import loadingGlass from '../img/smol-logo.png'
@@ -20,11 +22,26 @@ import { Helmet } from 'react-helmet';
 
 
 export default function News(props) {
+    let query = useQuery();
+    const { t } = useTranslation();
+
     let { source,id, topic } = useParams();
     const topic_cleaned = topic.replace('+', ' ');
     const [article_info, set_article_list] = useState({});
     const [article_info_status, set_article_status] = useState(false);
+    const [lang, set_lang] = useState();
 
+    useEffect(()=>{
+        let query_lang = query.get("lang");
+        if (query_lang){
+            set_lang(query_lang);
+            i18next.changeLanguage(query_lang);
+        }
+        else{
+            set_lang('en');
+        }
+    },[])
+    
     // console.log(topic_cleaned);
     useEffect(() => {
         const fetchData = async () => {
@@ -44,7 +61,7 @@ export default function News(props) {
     if (article_info_status) {
         return (
             //  <MainArticleLoadingTest />
-            <MainArticle topic_data={article_info[topic_cleaned]} flag={article_info_status} topic_word={topic_cleaned} />
+            <MainArticle topic_data={article_info[topic_cleaned]} flag={article_info_status} topic_word={topic_cleaned} translation={t} />
         )
     }
     else {
@@ -56,6 +73,7 @@ export default function News(props) {
 function MainArticle(props) {
     const history = useHistory();
     const article_info = props.topic_data;
+    const t = props.translation
     // console.log(history);
     if (props.flag) {
         let url_split = article_info['og']['url'].split("-");
@@ -88,7 +106,7 @@ function MainArticle(props) {
                             <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
                         </div>
                     </a>
-                    <div className="topic_left_top_tag">SPOTLIGHT</div>
+                    <div className="topic_left_top_tag">{t("SpotlightTitle")}</div>
                 </div>
 
                 <div className="author">
