@@ -179,7 +179,7 @@ export default function Landing(props) {
                         <Row>
                             <Col>
                                 <div className="video">
-                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=cpSUCF1wS3c" target="_blank"><img src={"http://img.youtube.com/vi/cpSUCF1wS3c/0.jpg"} alt="LG how to" style={{ width: "auto", height: "200px" }} /></a>
+                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=7WJUAnC8MPE" target="_blank"><img src={"http://img.youtube.com/vi/7WJUAnC8MPE/0.jpg"} alt="LG how to" style={{ width: "auto", height: "200px" }} /></a>
                                     {/* <iframe title="promotional" src="https://www.youtube.com/embed/cpSUCF1wS3c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                                     
                                 </div>
