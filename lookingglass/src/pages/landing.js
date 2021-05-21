@@ -10,6 +10,7 @@ import vid from "../img/LG-how-to.jpg";
 
 export default function Landing(props) {
     let looking_glass_temp = "https://docs.google.com/spreadsheets/d/1yv_4Kk22-8aTWgeTm1hJb_MUg2UuEuKI6zEO7NUpJvY/copy";
+    let nml_link="http://www.newsmedialab.wkwsci.ntu.edu.sg/index.html"
 
     function Generate() {
         let domain = "https://looking-glass.vercel.app/topics/"
@@ -67,80 +68,92 @@ export default function Landing(props) {
     return (
         <div>
             <div className="content">
-                <header>
-                    <div id="nav">
-                        <div className="img_logo">
-                            <a href="#"><img src={logo} style={{ height: "50px", width: "auto" }}></img></a>
-                        </div>
-                        <a id="top"></a>
-                        <div className="navbar">
-                            <a href="#about">About</a>
-                            <a href="#howitworks">How it works</a>
-                            {/* <a href="#examples">Example</a> */}
+                <div id="nav">
+                    <div className="img_logo">
+                        <a href="#"><img src={logo} style={{ height: "50px", width: "auto" }}></img></a>
+                    </div>
+                    <a id="top"></a>
+                    <div className="navbar">
+                        <a href="#about">About</a>
+                        <a href="#howitworks">How it works</a>
+                        {/* <a href="#examples">Example</a> */}
+                    </div>
+                </div>
+
+                <div className="title">
+                    <div id="line"></div>
+                    <span> Create A </span><br></br>
+                    <span>Looking Glass Page</span><br></br>
+                    <p style={{ marginTop: "5%", marginBottom: "5%", lineHeight: "1.5em", fontFamily: 'Krub' }}>Simply copy and paste the URL onto your social media post to publicise it, or use the iframe to embed the Looking Glass widget on your website!</p>
+                    <div className="input-group input-group-mb-3 round" style={{ marginTop: "20px" }}>
+                        <input type="text" id="sheet" className="form-control round" placeholder="Google Spreadsheet URL" />
+                        <input type="text" className="form-control round" placeholder="Image URL of Logo (optional)" />
+                        <div class="input-group-append round">
+                            <button onClick={() => Show()} className="btn btn-outline-secondary round" style={{ backgroundColor: "#c11010", width: "80px" }}><i class="bi bi-chevron-right" aria-hidden="true" style={{ color: "white" }}></i></button>
                         </div>
                     </div>
-                </header>
-
-                <Container>
-                    <div className="title">
-                        <div id="line"></div>
-                        <span> Create A </span><br></br>
-                        <span>Looking Glass Page</span><br></br>
-                        <p style={{ marginTop: "5%", marginBottom: "5%", lineHeight: "1.5em", fontFamily: 'Krub' }}>Simply copy and paste the URL onto your social media post to publicise it, or use the iframe to embed the Looking Glass widget on your website!</p>
-                        <div className="input-group input-group-mb-3 round" style={{ marginTop: "20px" }}>
-                            <input type="text" id="sheet" className="form-control round" placeholder="Google Spreadsheet URL" />
-                            <input type="text" className="form-control round" placeholder="Image URL of Logo (optional)" />
-                            <div class="input-group-append round">
-                                <button onClick={() => Show()} className="btn btn-outline-secondary round" style={{ backgroundColor: "#c11010", width: "80px" }}><i class="bi bi-chevron-right" aria-hidden="true" style={{ color: "white" }}></i></button>
+                </div>
+                <div id="pane-1">
+                    <div className="row">
+                        <div className="col"><br></br><span style={{ color: "white" }}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></div>
+                        <div className="col-sm-2">
+                        <br></br>
+                            <div className="preview-tab">
+                                <a id="preview-link" href="" target="_blank" style={{ textDecoration: "none", color: "white" }}>
+                                    <button><i className="bi bi-box-arrow-up-right" style={{ fontSize: "25px" }}></i><br></br><span>Open preview</span></button>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="col-md-4" style={{marginBottom: "10%"}}>
+                            <span id="copy-title" style={{marginLeft:"8%"}}>Looking Glass URL</span>
+                            <div className="input-group-2">
+                                <div className="input-group-2-icon"><button onClick={() => Copy(1)}><i class="bi bi-files" aria-hidden="true" style={{ fontSize: "25px" }}></i><span> Copy link</span></button></div>
+                                <div className="input-group-2-area"><input type="text" id="link" placeholder="Email Address" value="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650" flex-wrap="wrap" readOnly /></div>
+                            </div>
+                        </div>
+                        <div className="col-md-4" style={{marginBottom: "10%"}}>
+                            <span id="copy-title" style={{marginLeft:"8%"}}>Embed</span>
+                            <div className="input-group-2">
+                                <div className="input-group-2-icon"><button onClick={() => Copy(0)}><i class="bi bi-files" aria-hidden="true" style={{ fontSize: "25px" }}></i><span> Copy link</span></button></div>
+                                <div className="input-group-2-area"><input type="text" id="iframe" placeholder="Email Address" value="<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameBorder='0'></iframe>" wrap="hard" readOnly /></div>
+                                <br></br>
                             </div>
                         </div>
                     </div>
-                </Container>
-                <Container>
-                    <div id="pane-1">
-                        <Row>
-                            <Col></Col>
-                            <Col md="auto"></Col>
-                            <Col><div><span id="copy-title">Looking Glass URL</span></div></Col>
-                            <Col><div><span id="copy-title" style={{marginLeft:"8%"}}>Embed</span></div></Col>
-                        </Row>
-                        <Row>
-                            <Col md="auto"><span style={{ color: "white" }}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></Col>
-                            <Col md="auto">
-                                <div className="preview-tab">
-                                    <a id="preview-link" href="" target="_blank" style={{ textDecoration: "none", color: "white" }}>
-                                        <button><i className="bi bi-box-arrow-up-right" style={{ fontSize: "25px" }}></i><br></br><span>Open preview</span></button>
-                                    </a>
-                                </div>
-                            </Col>
-                            <Col>
-                                <div className="input-group-2">
-                                    <div className="input-group-2-icon"><button onClick={() => Copy(1)}><i class="bi bi-files" aria-hidden="true" style={{ fontSize: "25px" }}></i><span> Copy link</span></button></div>
-                                    <div className="input-group-2-area"><input type="text" id="link" placeholder="Email Address" value="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650" flex-wrap="wrap" readOnly /></div>
-                                </div>
-                                {/* <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                     <span class="input-group-text" id="inputGroup-sizing-lg" style={{textAlign: "center"}}><i class="bi bi-files" aria-hidden="true"></i><span style={{fontSize: "14px"}}> Copy link</span></span>
                 </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650" />
-                </div> */}
-                            </Col>
-                            <Col>
-                                <div className="input-group-2">
-                                    <div className="input-group-2-icon"><button onClick={() => Copy(0)}><i class="bi bi-files" aria-hidden="true" style={{ fontSize: "25px" }}></i><span> Copy link</span></button></div>
-                                    <div className="input-group-2-area"><input type="text" id="iframe" placeholder="Email Address" value="<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameBorder='0'></iframe>" wrap="hard" readOnly /></div>
-                                </div>
-                                {/* <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-lg"><button><i class="bi bi-files" aria-hidden="true"></i><span style={{fontSize: "14px"}}> Copy link</span></button></span>
+            {/* <Container>
+                <div id="pane-1">
+                    <Row>
+                        <Col></Col>
+                        <Col md="auto"></Col>
+                        <Col><div><span id="copy-title">Looking Glass URL</span></div></Col>
+                        <Col><div><span id="copy-title" style={{marginLeft:"8%"}}>Embed</span></div></Col>
+                    </Row>
+                    <Row>
+                        <Col md="auto"><span style={{ color: "white" }}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></Col>
+                        <Col md="auto">
+                            <div className="preview-tab">
+                                <a id="preview-link" href="" target="_blank" style={{ textDecoration: "none", color: "white" }}>
+                                    <button><i className="bi bi-box-arrow-up-right" style={{ fontSize: "25px" }}></i><br></br><span>Open preview</span></button>
+                                </a>
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className="input-group-2">
+                                <div className="input-group-2-icon"><button onClick={() => Copy(1)}><i class="bi bi-files" aria-hidden="true" style={{ fontSize: "25px" }}></i><span> Copy link</span></button></div>
+                                <div className="input-group-2-area"><input type="text" id="link" placeholder="Email Address" value="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650" flex-wrap="wrap" readOnly /></div>
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className="input-group-2">
+                                <div className="input-group-2-icon"><button onClick={() => Copy(0)}><i class="bi bi-files" aria-hidden="true" style={{ fontSize: "25px" }}></i><span> Copy link</span></button></div>
+                                <div className="input-group-2-area"><input type="text" id="iframe" placeholder="Email Address" value="<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameBorder='0'></iframe>" wrap="hard" readOnly /></div>
+                            </div>
+                        </Col>
+                    </Row>
                 </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value="<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aK824tSDEO4L8HARACYyPx5c3VLLK2jQ8vd8aPamqNg&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>" />
-                </div>  */}
-                            </Col>
-                        </Row>
-                    </div>
-                </Container>
-                <div className="pane-2">
+            </Container> */}
+                <div className="pane-2"> 
                     <a id="about"></a>
                     <div className="left-pane">
                         <div id="line" style={{ marginLeft: "0%" }}></div>
@@ -166,14 +179,14 @@ export default function Landing(props) {
                         <Row>
                             <Col>
                                 <div className="video">
-                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=cpSUCF1wS3c" target="_blank"><img src={"http://img.youtube.com/vi/cpSUCF1wS3c/0.jpg"} alt="LG how to" style={{ width: "300px", height: "auto" }} /></a>
+                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=7WJUAnC8MPE" target="_blank"><img src={"http://img.youtube.com/vi/7WJUAnC8MPE/0.jpg"} alt="LG how to" style={{ width: "auto", height: "200px" }} /></a>
                                     {/* <iframe title="promotional" src="https://www.youtube.com/embed/cpSUCF1wS3c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                                     
                                 </div>
                             </Col>
                             <Col>
                                 <div className="video">
-                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=2A9-vFhBrEg" target="_blank"><img src={"http://img.youtube.com/vi/2A9-vFhBrEg/0.jpg"} alt="LG-demo" style={{ width: "300px", height: "auto" }} /></a>
+                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=bFBv5kjA7g0" target="_blank"><img src={"http://img.youtube.com/vi/bFBv5kjA7g0/0.jpg"} alt="LG-demo" style={{ width: "auto", height: "200px" }} /></a>
                                     {/* <iframe title="guidetocreate" src="https://www.youtube.com/embed/YWI5caBZziM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                                 </div>
                             </Col>
@@ -317,7 +330,7 @@ export default function Landing(props) {
                 
                 <footer>
                     <span>Copyright 2021 &copy; The Looking Glass</span>
-                    <span>&emsp; Supported by &emsp;<img src={nml} style={{ width: "auto", height: "20px" }} /></span>
+                    <span>&emsp; Supported by &emsp; <a href={nml_link} target="_blank"><img src={nml} style={{ width: "auto", height: "20px" }} /></a></span>
                 </footer>
             </div>
         </div>

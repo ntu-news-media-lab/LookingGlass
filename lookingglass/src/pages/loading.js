@@ -1,11 +1,11 @@
 import React from "react";
 import lg_logo from "../img/looking-glass@4x.png"
-import nml_log from "../img/powered-by.png"
+import nml_logo from "../img/powered-by.png"
 import cn_logo from "../img/conv-logo.svg"
 import "../css/topics.css"
 
 export default function Loading() {
-
+    let nml_link="http://www.newsmedialab.wkwsci.ntu.edu.sg/index.html"
     // transition: "opacity 5s",opacity:"0"
     return (
         // <div id="loading_page" style={{ position: "relative", height: "100%"}}>
@@ -19,8 +19,10 @@ export default function Loading() {
                     }} 
                     alt ="cn_logo"
                     /></span></div>
-                <div style={{marginTop: "70%", textAlign: "center", fontSize: "18px" }}>  </div>
-                <img src={nml_log} style={{marginBottom: "10%",  width: '30%'}} alt="nml_logo"/>
+                    <a href={nml_link} target="_blank">
+                    <img src={nml_logo} style={{marginTop: "50%", marginBottom: "10%", width: '30%'}} alt="nml_logo"/>
+                    </a>
+
             </div>
         </div>
     )

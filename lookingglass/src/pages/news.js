@@ -24,7 +24,8 @@ export default function News(props) {
     const topic_cleaned = topic.replace('+', ' ');
     const [article_info, set_article_list] = useState({});
     const [article_info_status, set_article_status] = useState(false);
-
+    moment.locale(props.language);
+    
     // console.log(topic_cleaned);
     useEffect(() => {
         const fetchData = async () => {
@@ -35,16 +36,11 @@ export default function News(props) {
         }
         fetchData();
     }, []);
-    // console.log(article_info);  //This console.log returns "undefined"
-
-    // useEffect(() => {
-    //     // console.log(article_info); //check the result here
-    // }, [article_info])
 
     if (article_info_status) {
         return (
             //  <MainArticleLoadingTest />
-            <MainArticle topic_data={article_info[topic_cleaned]} flag={article_info_status} topic_word={topic_cleaned} />
+            <MainArticle topic_data={article_info[topic_cleaned]} flag={article_info_status} topic_word={topic_cleaned} translation={props.translation} />
         )
     }
     else {
@@ -56,6 +52,7 @@ export default function News(props) {
 function MainArticle(props) {
     const history = useHistory();
     const article_info = props.topic_data;
+    const t = props.translation;
     // console.log(history);
     if (props.flag) {
         let url_split = article_info['og']['url'].split("-");
@@ -69,7 +66,6 @@ function MainArticle(props) {
              <Helmet>
                 <title>{article_info['topic']}</title>
             </Helmet>
-                {article_info['og']['url'].includes('theconversation.com') && <IncludeGA article_id_input={article_id} />}
                 <div className="topic-container">
                     <div id="back-btn-container">
                         <button onClick={() => {
@@ -80,29 +76,29 @@ function MainArticle(props) {
                     {article_info['topic']}
                 </div>
                 <div className="topic-text-container">
-                    <a href={article_info['og']['url'] || ""} ><div className="topic-img"><img src={article_info['og']['image']} alt="article_image" /></div>
+                    <a href={article_info['og']['url']+'?utm_source=LookingGlass&utm_medium=referral&utm_campaign=LookingGlass' || ""} ><div className="topic-img"><img src={article_info['og']['image']} alt="article_image" /></div>
 
                         <div id="content">
                         {article_info['og']['url'].includes('theconversation.com') &&<img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />}
-                            <span>{moment(article_info['pub_time']).format('DD-MM-YYYY HH:mm')}</span>
+                            <span>{moment(article_info['pub_time']).format('MMM DD, YYYY')}</span>
                             <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                             <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
                         </div>
                     </a>
-                    <div className="topic_left_top_tag">SPOTLIGHT</div>
+                    <div className="topic_left_top_tag">{t("SpotlightTitle")}</div>
                 </div>
 
                 <div className="author">
                     {authors}
                 </div>
                 {  // only render embedded tweet if twitter_id given
-                    article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} />
+                    article_info['past_conv'].length > 0 && <Pastconv past_convs={article_info['past_conv']} translation={t}/>
                 }
                 <div className="twitter-container">
                     
                     
                     {  // only render embedded tweet if twitter_id given
-                        article_info['twitter_id'] !== '' &&  <TwitterSection twitter_id={article_info['twitter_id']}/>
+                        article_info['twitter_id'] !== '' &&  <TwitterSection twitter_id={article_info['twitter_id']} translation={t}/>
                     }
                 </div>
             </div>
@@ -117,7 +113,7 @@ function MainArticle(props) {
 
 }
 
-
+// loading widget rotation
 function MainArticleLoadingTest() {
     return (
         <div className="article-top-container">
@@ -131,10 +127,11 @@ function MainArticleLoadingTest() {
 }
 
 const TwitterSection = (props)=>{
+    const t = props.translation
     return(
         <div>
         <div id="line" style={{ marginLeft: "10%", marginBottom: "-3%" }}></div>
-        <p><strong>Top tweets</strong></p>
+        <p><strong>{t('TopTweets_section')}</strong></p>
         <TwitterTweetEmbed tweetId={props.twitter_id} />
         </div>
 
@@ -162,15 +159,15 @@ const AuthorNew = (props) => {
 }
 
 
-export const IncludeGA = (props) => {
+// export const IncludeGA = (props) => {
 
-    let url = `https://counter.theconversation.com/content/${props.article_id_input}/count.gif?distributor=republish-lightbox-advanced`;
+//     let url = `https://counter.theconversation.com/content/${props.article_id_input}/count.gif?distributor=republish-lightbox-advanced`;
 
-    return (        
-            <iframe title={"counter_"+props.article_id_input} src={url} width="1" height="1"></iframe>
-    )
+//     return (        
+//             <iframe title={"counter_"+props.article_id_input} src={url} width="1" height="1"></iframe>
+//     )
 
-}
+// }
 
  {/* <Helmet> */}
         {/* <img src={url} alt="The Conversation" width="1" height="1" style="border: none !important; box-shadow: none !important; margin: 0 !important; max-height: 1px !important; max-width: 1px !important; min-height: 1px !important; min-width: 1px !important; opacity: 0 !important; outline: none !important; padding: 0 !important; text-shadow: none !important" /> */}

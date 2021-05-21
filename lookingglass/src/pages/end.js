@@ -13,17 +13,17 @@ export default function End(props){
         <div className="end-pane">
                 <div id="double-line"></div>
                     <div className="logo"><i className="bi bi-check-circle"></i></div>
-                    <div id="h3-title">You're All Caught Up!</div>
+                    <div id="h3-title">{props.translation('Ending_section')}</div>
                 <div id="double-line"></div>
                 <div id="certificate">
                     <img src={creative_commons} style={{width: "auto", height: "20px"}} alt="creative commons"/>
-                    <h3>{title} supports the free flow of information</h3>
-                    <p>{title} is not-for-profit company with a unique collaboration between academics and journalists. Our editors turn knowledge and insights from academics into easy-to-read articles.</p>
+                    <h3>{title} {props.translation('Creative_Commons')}</h3>
+                    <p>{props.translation('Creative_Commons2')}</p>
                 </div>
                 <a href={newsroom_url} target="_blank" rel="noreferrer">
                     <div className="btn-learn-more">
                         <div className="textbox">
-                            <p>Read more on</p>
+                            <p>{props.translation('ReadMore')}</p>
                             <p id="title">{title}</p>
                         </div>
                         <div className="arrow-right"><i class="bi bi-arrow-right"></i></div>

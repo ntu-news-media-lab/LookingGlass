@@ -1,9 +1,12 @@
-import React from "react";
+import React,{ useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  useLocation
 } from "react-router-dom";
+
+import "./core/i18nextConf"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import News from "./pages/news";
 import Video from "./pages/videos";
@@ -19,19 +22,28 @@ import nml from "./img/NewsMediaLabLogo.png";
 import Pastconv from "./pages/pastConv";
 import Global from "./pages/global";
 
+// translation 
+import useQuery from './core/helper';
+import { useTranslation } from 'react-i18next';
+import i18next from "i18next";
 
+
+// function useQuery() {
+//   return new URLSearchParams(useLocation().search);
+// }
 
 
 export default function App() {
-  const data = {
-    "topic_word": "Myanmar Coup",
-    "img_src": "https://images.theconversation.com/files/382241/original/file-20210203-21-90gvwb.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip",
-    "headline": "Myanmar coup: how the military has held onto power for 60 years",
-    "summary": "After arresting Aung San Suu Kyi once again, the army is clearly not ready to relinquish control.",
-    "author_icon": "https://cdn.theconversation.com/avatars/960001/width170/file-20200207-27560-1cvbuj9.jpg",
-    "author_name": "Michael W. Charney",
-    "author_bio": "Professor of Asian and Military History, SOAS, University of London"
-  }
+  // const data = {
+  //   "topic_word": "Myanmar Coup",
+  //   "img_src": "https://images.theconversation.com/files/382241/original/file-20210203-21-90gvwb.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip",
+  //   "headline": "Myanmar coup: how the military has held onto power for 60 years",
+  //   "summary": "After arresting Aung San Suu Kyi once again, the army is clearly not ready to relinquish control.",
+  //   "author_icon": "https://cdn.theconversation.com/avatars/960001/width170/file-20200207-27560-1cvbuj9.jpg",
+  //   "author_name": "Michael W. Charney",
+  //   "author_bio": "Professor of Asian and Military History, SOAS, University of London"
+  // }
+
   return (
     <Router>
       <Switch>
@@ -40,58 +52,92 @@ export default function App() {
           {/* <About /> */}
         </Route>
 
+        {/* <Route path="/test1">
+        <Child />
+        </Route> */}
+
         <Route path="/news/:source/:id/:topic">
-          <div className="mobile-container">
-            <News data={data} />
-            <Global />
-            <Video />
-            <End />
-            <Footer />
-          </div>
+         <Content/>
         </Route>
 
-        <Route path="/topics/:source">
-          <div className="mobile-container">
-            <Topics data={data} />
-          </div>
-        </Route>
+      <Route path="/topics/:source">
+        <TopicsContainer/>
+      </Route>
 
-        <Route path="/pastcov">
-          <div className="mobile-container">
-            <Pastconv />
-          </div>
-        </Route>
+      {/* <Route path="/pastcov">
+        <div className="mobile-container">
+          <Pastconv />
+        </div>
+      </Route> */}
+{/* 
+      <Route path="/global/:topic">
+      </Route> */}
 
-        <Route path="/global/:topic">
-        </Route>
+      <Route path="/">
+        <Landing />
+      </Route>
 
-        <Route path="/">
-          <Landing />
-        </Route>
       </Switch>
     </Router>
   );
 }
 
 
+function Content(props) {
 
-// function About() {
-//   return (
-//     <div id="loading_page" style={{ position: "relative", height: "100%", transition: "opacity 3s", opacity: "0" }}>
-//       <div style={{ position: "absolute" }}>
-//         <img src={lg_logo} style={{ width: '50%', marginLeft: "25%", marginTop: "50%" }} />
-//         <div style={{ marginTop: "5%", textAlign: "center", textSizeAdjust: "auto" }}>For <span style={{ color: "rgb(161,64,72)" }}>The Conversation</span></div>
-//         <div style={{ marginTop: "35%", textAlign: "center", textSizeAdjust: "auto" }}> Powered by </div>
-//         <img src={nml_log} style={{ width: '50%', marginLeft: "25%" }} />
-//       </div>
-//     </div>
-//   )
-// }
+  let query = useQuery();
+  const [lang, set_lang] = useState();
+  const { t } = useTranslation();
+  useEffect(() => {
+    let query_lang = query.get("lang");
+    if (query_lang) {
+      set_lang(query_lang);
+      i18next.changeLanguage(query_lang);
+    }
+    else {
+      set_lang('en');
+    }
+  }, []);
 
+  return (
+    <div className="mobile-container">
+      <News translation={t} language={lang}/>
+      <Global translation={t} />
+      <Video translation={t}/>
+      <End translation={t}/>
+      <Footer translation={t}/>
+    </div>
+
+  )
+}
+
+
+function TopicsContainer(props) {
+  let query = useQuery();
+  const [lang, set_lang] = useState();
+  const { t } = useTranslation();
+  useEffect(() => {
+    let query_lang = query.get("lang");
+    if (query_lang) {
+      set_lang(query_lang);
+      i18next.changeLanguage(query_lang);
+    }
+    else {
+      set_lang('en');
+    }
+  }, []);
+  return (
+    <div className="mobile-container">
+          <Topics translation={t} language={lang}/>
+        </div>
+
+  )
+}
 
 
 
 function Footer() {
+
   return (
     <footer>
       <span>Copyright 2021 &copy; The Looking Glass</span>
@@ -99,3 +145,4 @@ function Footer() {
     </footer>
   )
 }
+
