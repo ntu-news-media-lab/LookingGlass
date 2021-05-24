@@ -2,6 +2,7 @@
 LookingGlass is a standalone webpage generation tool that allows news organisation to better provide mobile-friendly news reading experience and alleviate news fatigue for busy young adults by curated topic pages and multiple perspectives. 
 
 
+
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=7WJUAnC8MPE" target="_blank"><img src="./src/LookingGlass.png" 
 alt="IMAGE ALT TEXT HERE" width="50%" height="auto" border="10" /></a>
 
@@ -81,3 +82,10 @@ alt="IMAGE ALT TEXT HERE" width="75%" height="50%" border="10" />
 **Designers**: [Josie Kiew](https://www.linkedin.com/in/josiekiew/) and [Sylvia Low](https://www.linkedin.com/in/sylvia-low/)
 
 **Developer**: [Ng Xin Ping](https://www.linkedin.com/in/xin-ping-n62020b/) and [Yang Nanyang](https://www.linkedin.com/in/yang-nanyang/)
+
+# 7. License and Attribution
+LookingGlass was developed as part of Nanyang Technological University’s News Media Lab curriculum. It is licensed under The MIT License, hence it is free and open-source.
+
+We encourage any and all budding innovators to use LookingGlass either commercially or for experimental pet projects. All that we kindly ask is that you retain the News Media Lab branding and display our logo within the product’s interface.
+
+Do reach out to us if you are interested in further contributing to LookingGlass, or if you wish to use LookingGlass for your organization/news media agency. We actively welcome anyone who is as keen as us to help turn the wonderful ideas of our students into reality.
